@@ -1,15 +1,18 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
 import {Layout, Menu, Icon} from "antd";
-import router from "./routers";
+
+// 路由的导入
+import router from "@/routers";
 
 // 导入 iconfont 图标库中的图标
-import {IconFont} from './tools/IconFontSetting'
+import {IconFont} from '@/tools/IconFontSetting'
 
 // 控制面板
-import ControlPanel from './components/ControlPanel'
+import ControlPanel from '@/components/ControlPanel'
+
 // 浮动播放器
-import FixedPlayer from './components/FixedPlayer'
+import FixedPlayer from '@/components/FixedPlayer'
 
 const App: React.FC = () => {
     const {Header, Sider, Content, Footer} = Layout;
@@ -26,7 +29,7 @@ const App: React.FC = () => {
                 }}>
                     <ControlPanel/>
                 </Header>
-                <Layout style={{background: "#fff"}}>
+                <Layout style={{background: "#fff"}} className='ref-content'>
                     <Sider width={255} style={{height: '100%'}}>
                         <Menu
                             onClick={e => {

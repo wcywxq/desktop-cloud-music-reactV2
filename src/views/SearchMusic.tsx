@@ -1,29 +1,21 @@
-import React, {useEffect} from 'react'
-import {useParams} from 'react-router-dom'
-import {Tabs} from 'antd'
+import React, { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { Tabs } from 'antd'
 
-import {
-    Single,
-    Singer,
-    Album,
-    Video,
-    Playlist,
-    Lyric,
-    Radio,
-    User
-} from '../components/Search'
+import { Single, Singer, Album, Video, Playlist, Lyric, Radio, User } from '@/components/Search'
 import './SearchMusic.scss'
-import {useSearchMusic} from "../hooks/useSearchMusic";
+
+import { useSearchMusic } from "@/hooks";
 
 const SearchMusic: React.FC = () => {
     // 组件
-    const {TabPane} = Tabs
+    const { TabPane } = Tabs
 
     // 获取参数
-    const {keywords} = useParams()
+    const { keywords } = useParams()
 
     // 获取数据请求方法
-    const {state, setParams} = useSearchMusic({
+    const { state, setParams } = useSearchMusic({
         keywords: '',
         limit: 100,
         offset: 0
@@ -32,11 +24,7 @@ const SearchMusic: React.FC = () => {
 
     // 数据请求
     useEffect(() => {
-        setParams({
-            keywords,
-            limit: 100,
-            offset: 0
-        })
+        setParams({ keywords, limit: 100, offset: 0 })
     }, [keywords, setParams])
 
     return (
@@ -49,33 +37,33 @@ const SearchMusic: React.FC = () => {
                 <Tabs defaultActiveKey="1" onChange={key => console.log(key)}>
                     <TabPane tab="单曲" key="1">
                         <div className="m-s-tab-item m-s-single">
-                            <Single {...state} setParams={setParams}/>
+                            <Single {...state} setParams={setParams} />
                         </div>
                     </TabPane>
                     <TabPane tab="歌手" key="2">
                         <div className="m-s-tab-item m-s-singer">
-                            <Singer/>
+                            <Singer />
                         </div>
                     </TabPane>
                     <TabPane tab="专辑" key="3">
                         <div className="m-s-single">
-                            <Album/>
+                            <Album />
                         </div>
                     </TabPane>
                     <TabPane tab="视频" key="4">
-                        <Video/>
+                        <Video />
                     </TabPane>
                     <TabPane tab="歌单" key="5">
-                        <Playlist/>
+                        <Playlist />
                     </TabPane>
                     <TabPane tab="歌词" key="6">
-                        <Lyric/>
+                        <Lyric />
                     </TabPane>
                     <TabPane tab="主播电台" key="7">
-                        <Radio/>
+                        <Radio />
                     </TabPane>
                     <TabPane tab="用户" key="8">
-                        <User/>
+                        <User />
                     </TabPane>
                 </Tabs>
             </article>

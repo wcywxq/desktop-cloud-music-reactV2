@@ -1,13 +1,10 @@
-import {useEffect} from 'react'
-import {useReducer} from 'reinspect'
+import { useEffect } from 'react'
+import { useReducer } from 'reinspect'
 import axios from 'axios'
-import {searchHotReducer} from '../redux'
-import {
-    SEARCH_HOT_FAIL,
-    SEARCH_HOT_INIT,
-    SEARCH_HOT_SUCCESS
-} from '../redux/constants'
-import {fetchApi} from "../api";
+
+import { searchHotReducer } from '@/redux'
+import { SEARCH_HOT_FAIL, SEARCH_HOT_INIT, SEARCH_HOT_SUCCESS } from '@/redux/constants'
+import { fetchApi } from "@/api";
 
 export const useSearchHot = (initialData: any) => {
     const [state, dispatch] = useReducer(searchHotReducer, {
@@ -19,7 +16,7 @@ export const useSearchHot = (initialData: any) => {
     useEffect(() => {
         let didCancel = false
         const fetchData = async () => {
-            dispatch({type: SEARCH_HOT_INIT})
+            dispatch({ type: SEARCH_HOT_INIT })
             try {
                 const result = await axios.get(fetchApi.hot)
                 console.log(result.data.data)
@@ -31,7 +28,7 @@ export const useSearchHot = (initialData: any) => {
                 }
             } catch (error) {
                 if (!didCancel) {
-                    dispatch({type: SEARCH_HOT_FAIL})
+                    dispatch({ type: SEARCH_HOT_FAIL })
                 }
             }
         }
@@ -41,5 +38,5 @@ export const useSearchHot = (initialData: any) => {
         }
     }, [])
 
-    return {state}
+    return { state }
 }

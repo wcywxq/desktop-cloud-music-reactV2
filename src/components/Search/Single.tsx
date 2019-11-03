@@ -1,14 +1,17 @@
 import * as React from 'react'
-import {useState} from 'reinspect'
-import {useParams} from 'react-router-dom'
-import {Table, Icon} from 'antd';
+import { useState } from 'reinspect'
+import { useParams } from 'react-router-dom'
+import { Icon, Table } from 'antd';
 
-import {formatDuration} from '../../tools/format'
+import { formatDuration } from '@/tools'
 import './Single.scss'
 
 // 类型
-import {PaginationConfig, ColumnProps} from 'antd/lib/table';
-import {InitialParams} from '../../hooks/useSearchMusic'
+import { ColumnProps, PaginationConfig } from 'antd/lib/table';
+import { InitialParams } from '@/hooks'
+
+// 添加音乐到播放列表的 reducer
+import { useMusicPlayList } from "@/hooks";
 
 // props 的类型
 interface IProps {
@@ -31,56 +34,30 @@ interface SingleData {
 
 export function Single(props: IProps) {
     // 获取参数
-    const {keywords} = useParams()
+    const { keywords } = useParams()
 
     // 当前页码
     const [page, setPage] = useState(1, '当前页码')
 
-    // 获取 reducer 数据
-    const {
-        isLoading,
-        isError,
-        data,
-        count,
-        setParams
-    } = props
+    // 获取搜索渲染列表的 reducer 数据
+    const { isLoading, isError, data, count, setParams } = props
 
     // 表头和索引
     const columns: ColumnProps<SingleData>[] = [
+        { title: '序号', dataIndex: 'index', width: 80, className: 'm-s-single-order' },
         {
-            title: '序号',
-            dataIndex: 'index',
-            width: 80,
-            className: 'm-s-single-order'
-        },
-        {
-            title: '喜欢/下载',
-            dataIndex: 'icon',
-            width: 100,
+            title: '喜欢/下载', dataIndex: 'icon', width: 100,
             render: () => (
                 <span>
-                    <Icon type="heart" className="icon"/>{" "}
-                    <Icon type="download" className="icon"/>
+                    <Icon type="heart" className="icon" />{" "}
+                    <Icon type="download" className="icon" />
                 </span>
             ),
         },
-        {
-            title: '音乐标题',
-            dataIndex: 'name',
-            width: 400
-        },
-        {
-            title: '歌手',
-            dataIndex: 'artists.name',
-        },
-        {
-            title: '专辑',
-            dataIndex: 'album.name'
-        },
-        {
-            title: '时长',
-            dataIndex: 'duration'
-        }
+        { title: '音乐标题', dataIndex: 'name', width: 400 },
+        { title: '歌手', dataIndex: 'artists.name', },
+        { title: '专辑', dataIndex: 'album.name' },
+        { title: '时长', dataIndex: 'duration' }
     ];
 
     // 表格渲染
@@ -114,14 +91,27 @@ export function Single(props: IProps) {
         }
     }
 
+    // 发送双击的歌曲到 reducer
+    const { setRecord } = useMusicPlayList()
+
     return (
         <Table<SingleData>
             loading={isLoading}
             columns={columns}
             dataSource={dataSource}
             pagination={pagination}
-            scroll={{y: 365}}
+            scroll={{ y: 365 }}
             onChange={onHandleChange}
+            onRow={record => {
+                return {
+                    // 双击行
+                    onDoubleClick: event => {
+                        console.log(record)
+                        // eslint-disable-next-line react-hooks/rules-of-hooks
+                        setRecord(record)
+                    }
+                }
+            }}
         />
     )
 }

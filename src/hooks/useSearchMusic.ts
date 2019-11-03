@@ -1,14 +1,11 @@
-import {useEffect} from 'react'
-import {useState, useReducer} from 'reinspect'
+import { useEffect } from 'react'
+import { useState, useReducer } from 'reinspect'
 import axios from 'axios'
-import {searchMusicReducer} from '../redux'
-import {
-    SEARCH_MUSIC_INIT,
-    SEARCH_MUSIC_SUCCESS,
-    SEARCH_MUSIC_FAIL
-} from '../redux/constants'
 
-import {fetchApi} from '../api'
+import { searchMusicReducer } from '@/redux'
+import { SEARCH_MUSIC_INIT, SEARCH_MUSIC_SUCCESS, SEARCH_MUSIC_FAIL } from '@/redux/constants'
+
+import { fetchApi } from '@/api'
 
 export interface InitialParams {
     keywords: string | undefined,
@@ -30,9 +27,9 @@ export const useSearchMusic = (initialParams: InitialParams, initialData: any[])
     useEffect(() => {
         let didCancel = false
         const fetchData = async () => {
-            dispatch({type: SEARCH_MUSIC_INIT})
+            dispatch({ type: SEARCH_MUSIC_INIT })
             try {
-                const result = await axios.get(fetchApi.search, {params})
+                const result = await axios.get(fetchApi.search, { params })
                 if (!didCancel && result.data.code === 200) {
                     dispatch({
                         type: SEARCH_MUSIC_SUCCESS,
@@ -42,7 +39,7 @@ export const useSearchMusic = (initialParams: InitialParams, initialData: any[])
                 }
             } catch (error) {
                 if (!didCancel) {
-                    dispatch({type: SEARCH_MUSIC_FAIL})
+                    dispatch({ type: SEARCH_MUSIC_FAIL })
                 }
             }
         }
@@ -54,5 +51,5 @@ export const useSearchMusic = (initialParams: InitialParams, initialData: any[])
         };
     }, [params])
 
-    return {state, setParams}
+    return { state, setParams }
 }

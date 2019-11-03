@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="85c9a38d-7305-462b-8f7e-391c6d04d9a7" name="Default Changelist" comment="" />
+    <list default="true" id="85c9a38d-7305-462b-8f7e-391c6d04d9a7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/hooks/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useMusicMessage.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useMusicPlayList.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/music.message.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/music.playList.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tools/RemoveDuplicates.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FixedPlayer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FixedPlayer.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FixedPlayer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FixedPlayer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Search/Single.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/Single.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useSearchHot.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useSearchHot.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useSearchMusic.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useSearchMusic.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routers/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/SearchMusic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/SearchMusic.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,8 +34,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -24,8 +47,11 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
@@ -54,7 +80,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572330852823</updated>
-      <workItem from="1572330856937" duration="66555000" />
+      <workItem from="1572330856937" duration="93598000" />
     </task>
     <servers />
   </component>

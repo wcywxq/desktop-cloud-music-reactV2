@@ -1,8 +1,8 @@
-import FindMusic from "../views/FindMusic"
-import PersonalFm from "../views/PersonalFm"
-import Videos from "../views/Videos"
-import Penpal from "../views/Penpal"
-import SearchMusic from "../views/SearchMusic"
+import FindMusic from "@/views/FindMusic"
+import PersonalFm from "@/views/PersonalFm"
+import Videos from "@/views/Videos"
+import Penpal from "@/views/Penpal"
+import SearchMusic from "@/views/SearchMusic"
 
 interface RouterArray {
   path: string;

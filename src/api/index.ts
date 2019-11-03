@@ -8,6 +8,7 @@ export const fetchApi = {
   hot: BaseUrl + 'search/hot/detail',
   // 最佳匹配
   multiMatch: BaseUrl + 'search/multimatch',
-  // 搜索建议
-  suggest: BaseUrl + 'search/suggest'
+  // 获取音乐 url /song/url?id=405998841,33894312
+  getMusicUrl: BaseUrl + 'song/url'
+  // /song/url?id=405998841,33894312
 }
