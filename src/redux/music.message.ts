@@ -6,7 +6,12 @@ export interface MusicMessageInitAction {
 
 export interface MusicMessageSuccessAction {
     type: MUSIC_MESSAGE_SUCCESS,
-    result: any // 传递数据
+    url: string[],
+    picUrl: string,
+    name: string,
+    alia: string, // 别名
+    artist: string[],
+    duration: number
 }
 
 export interface MusicMessageFailAction {
@@ -18,7 +23,12 @@ export type MusicMessageAction = MusicMessageInitAction | MusicMessageSuccessAct
 interface MusicMessageState {
     isLoading: boolean,
     isError: boolean,
-    data: any
+    url: string[],
+    picUrl: string,
+    name: string,
+    alia: string,
+    artist: string[],
+    duration: number
 }
 
 export const musicUrlReducer = (
@@ -37,7 +47,11 @@ export const musicUrlReducer = (
                 ...state,
                 isLoading: false,
                 isError: false,
-                data: action.result
+                url: action.url,
+                picUrl: action.picUrl,
+                name: action.name,
+                artist: action.artist,
+                duration: action.duration
             }
         case "MUSIC_MESSAGE_FAIL":
             return {
@@ -45,6 +59,7 @@ export const musicUrlReducer = (
                 isLoading: false,
                 isError: true
             }
+        // case ""
         default:
             throw new Error()
     }

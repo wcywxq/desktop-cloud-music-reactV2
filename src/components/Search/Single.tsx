@@ -11,7 +11,7 @@ import { ColumnProps, PaginationConfig } from 'antd/lib/table';
 import { InitialParams } from '@/hooks'
 
 // 添加音乐到播放列表的 reducer
-import { useMusicPlayList } from "@/hooks";
+import { useMusicPlayList, useMusicMessage } from "@/hooks";
 
 // props 的类型
 interface IProps {
@@ -29,7 +29,7 @@ interface SingleData {
     name: string,
     "artists.name": string,
     "album.name": string,
-    duration: string
+    duration: number
 }
 
 export function Single(props: IProps) {
@@ -57,7 +57,7 @@ export function Single(props: IProps) {
         { title: '音乐标题', dataIndex: 'name', width: 400 },
         { title: '歌手', dataIndex: 'artists.name', },
         { title: '专辑', dataIndex: 'album.name' },
-        { title: '时长', dataIndex: 'duration' }
+        { title: '时长', dataIndex: 'duration', render: (text) => <span>{formatDuration(text)}</span>}
     ];
 
     // 表格渲染
@@ -68,7 +68,7 @@ export function Single(props: IProps) {
             name: item.name,
             "artists.name": item.artists[0].name,
             "album.name": item.album.name,
-            duration: formatDuration(item.duration)
+            duration: item.duration
         }
     })
 
@@ -94,6 +94,9 @@ export function Single(props: IProps) {
     // 发送双击的歌曲到 reducer
     const { setRecord } = useMusicPlayList()
 
+    // 双击传递音乐id，从而获取音乐的url
+    const { setID, setDuration } = useMusicMessage()
+
     return (
         <Table<SingleData>
             loading={isLoading}
@@ -107,8 +110,9 @@ export function Single(props: IProps) {
                     // 双击行
                     onDoubleClick: event => {
                         console.log(record)
-                        // eslint-disable-next-line react-hooks/rules-of-hooks
                         setRecord(record)
+                        setID(record.key)
+                        setDuration(record.duration)
                     }
                 }
             }}
