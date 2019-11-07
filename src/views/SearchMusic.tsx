@@ -1,26 +1,25 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { Tabs } from 'antd'
+import { useParams } from 'react-router-dom';
+import { Tabs } from 'antd';
 
-import { Single, Singer, Album, Video, Playlist, Lyric, Radio, User } from '@/components/Search'
-import './SearchMusic.scss'
+import { Single, Singer, Album, Video, Playlist, Lyric, Radio, User } from '@/components/Search';
+import './SearchMusic.scss';
 
 import { useSearchMusic } from "@/hooks";
 
 const SearchMusic: React.FC = () => {
-    // 组件
-    const { TabPane } = Tabs
-
     // 获取参数
-    const { keywords } = useParams()
+    const { keywords } = useParams();
 
     // 获取数据请求方法
     const { state, setParams } = useSearchMusic({
         keywords: '',
         limit: 100,
         offset: 0
-    }, [])
+    }, []);
 
+    // 组件
+    const { TabPane } = Tabs;
 
     // 数据请求
     useEffect(() => {

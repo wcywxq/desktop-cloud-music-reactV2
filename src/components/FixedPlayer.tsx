@@ -24,16 +24,30 @@ interface PlayListData {
 }
 
 const FixedPlayer: React.FC = () => {
+    // 是否喜欢控制
     const [like, setLike] = useState(false, '是否喜欢');
+
+    // 是否暂停播放控制
     const [flag, setFlag] = useState(false, '控制播放暂停');
+
+    // 是否静音控制
     const [mute, setMute] = useState(false, '是否静音');
-    const [isPlayList, setIsPlayList] = useState(true, '是否是播放音乐列表，否则是历史记录列表')
+
+    // 播放音乐列表和历史记录列表的路由控制
+    const [isPlayList, setIsPlayList] = useState(true, '是否是播放音乐列表，否则是历史记录列表');
+
+    // 播放时间控制
+    const [currentTime, setCurrentTime] = useState<any>(0, '当前时间');
+
+    // 播放控制部分
+    const audioRef: MutableRefObject<any> = useRef();
+    const audio = audioRef.current as unknown as HTMLMediaElement;
 
     // 获取添加到音乐播放列表的歌曲
     const { state, dispatch } = useMusicPlayList();
 
     // 获取音乐信息, 包括url
-    const { musicMsgState, setListIndex } = useMusicMessage();
+    const { musicMsgState, setListIndex, setID, setDuration } = useMusicMessage();
 
     // 音量控制
     const SoundControl = <Slider vertical defaultValue={30} style={{ height: '100px' }} />;
@@ -88,10 +102,10 @@ const FixedPlayer: React.FC = () => {
             }
         }
     ];
-    // 播放列表数据渲染
+
+    // 播放列表数据渲染, 如果有 sessionStorage，则用 sessionStorage 来获取数据
     let dataSource: PlayListData[];
 
-    // 利用 sessionStorage 来获取数据
     if (sessionStorage.getItem('data') && sessionStorage.getItem('data') !== '[]') {
         let sessionData = JSON.parse(sessionStorage.getItem('data') as string)
         dataSource = sessionData.map((item: MusicProjectState, index: number) => {
@@ -114,9 +128,6 @@ const FixedPlayer: React.FC = () => {
             }
         })
     }
-
-    // 双击传递音乐id，从而获取音乐的url
-    const { setID, setDuration } = useMusicMessage();
 
     // 音乐播放列表
     const MusicPlayList = (
@@ -161,12 +172,8 @@ const FixedPlayer: React.FC = () => {
         </div>
     );
 
-    // 播放控制部分
-    const audioRef: MutableRefObject<any> = useRef();
-    const audio = audioRef.current as unknown as HTMLMediaElement;
-
     // 点击暂停播放按钮
-    const handlePlayClick: React.MouseEventHandler<HTMLElement> = () => {
+    function handlePlayClick(event: React.MouseEvent<HTMLElement, MouseEvent>): void {
         // 若 audio 不为 null
         if (audio) {
             // setFlag(!flag)
@@ -184,9 +191,15 @@ const FixedPlayer: React.FC = () => {
         }
     };
 
-    // 播放时间控制
-    const [currentTime, setCurrentTime] = useState<any>(0, '当前时间')
+    // 播放器控制条改变的回调函数
+    function onSliderChange(value: any) {
+        // 将进度条的值赋予给 audio 播放的当前时间
+        audio.currentTime = value / 1000;
+        // 将当前播放时间传递给 state
+        setCurrentTime(value)
+    };
 
+    // 监听 audio 事件
     useEffect(() => {
         if (audio) {
             // 元数据已加载
@@ -224,14 +237,6 @@ const FixedPlayer: React.FC = () => {
             )
         }
     }, [audio]);
-
-    // 控制条改变的回调函数
-    const onSliderChange = (value: any) => {
-        // 将进度条的值赋予给 audio 播放的当前时间
-        audio.currentTime = value / 1000;
-        // 将当前播放时间传递给 state
-        setCurrentTime(value)
-    };
 
     // 切换歌曲, 上一首 or 下一首
     useEffect(() => {
