@@ -7,8 +7,9 @@ import { musicUrlReducer } from '@/redux'
 import { fetchApi } from "@/api";
 
 export const useMusicMessage = () => {
-    const [id, setID] = useState(0, '获取音乐id')
-    const [duration, setDuration] = useState(0, '持续时间')
+    const [id, setID] = useState(0, '获取音乐id');
+    const [listIndex, setListIndex] = useState(0, '传递给音乐播放列表的索引');
+    const [duration, setDuration] = useState(0, '持续时间');
     const [musicMsgState, dispatch] = useReducer(musicUrlReducer, {
         isLoading: false,
         isError: false,
@@ -17,23 +18,24 @@ export const useMusicMessage = () => {
         name: '',
         alia: '',
         artist: [],
-        duration
-    }, '获取音乐信息的reducer')
+        duration,
+        "list.index": 0
+    }, '获取音乐信息的reducer');
 
     useEffect(() => {
-        let didCancel = false
+        let didCancel = false;
 
         const fetchData = async () => {
-            dispatch({ type: MUSIC_MESSAGE_INIT })
+            dispatch({ type: MUSIC_MESSAGE_INIT });
             try {
                 // 获取音乐 url
                 const resMusicUrl = await axios.get(fetchApi.getMusicUrl, {
                     params: { id }
-                })
+                });
                 // 获取音乐详情，背景图片
                 const resMusicDetail = await axios.get(fetchApi.getMusicDetail, {
                     params: { ids: id }
-                })
+                });
 
                 if (!didCancel &&
                     resMusicUrl.data.code === 200 &&
@@ -49,7 +51,8 @@ export const useMusicMessage = () => {
                         artist: resMusicDetail.data.songs[0].ar.map((item: any) => {
                             return item.name
                         }),
-                        duration
+                        duration,
+                        "list.index": listIndex
                     })
                 }
             } catch (err) {
@@ -57,7 +60,7 @@ export const useMusicMessage = () => {
                     dispatch({ type: MUSIC_MESSAGE_FAIL })
                 }
             }
-        }
+        };
         if(id) {
             fetchData()
         }
@@ -65,7 +68,7 @@ export const useMusicMessage = () => {
         return () => {
             didCancel = true
         }
-    }, [id])
+    }, [duration, id, listIndex]);
 
-    return { musicMsgState, setID, setDuration }
-}
+    return { musicMsgState, setID, setDuration, setListIndex }
+};

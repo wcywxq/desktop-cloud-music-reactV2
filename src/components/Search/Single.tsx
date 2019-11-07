@@ -7,44 +7,54 @@ import { formatDuration } from '@/tools'
 import './Single.scss'
 
 // 类型
-import { ColumnProps, PaginationConfig } from 'antd/lib/table';
+import { ColumnProps, PaginationConfig } from 'antd/lib/table'
+import { MusicProjectState } from "@/redux"
 import { InitialParams } from '@/hooks'
 
 // 添加音乐到播放列表的 reducer
-import { useMusicPlayList, useMusicMessage } from "@/hooks";
+import { useMusicPlayList, useMusicMessage } from "@/hooks"
 
 // props 的类型
 interface IProps {
-    isLoading: boolean,
-    isError: boolean,
-    data: any[],
-    count: number,
-    setParams: React.Dispatch<React.SetStateAction<InitialParams>>
+    isLoading: boolean;
+    isError: boolean;
+    data: any[];
+    count: number;
+    setParams: React.Dispatch<React.SetStateAction<InitialParams>>;
 }
 
 // 单曲列表数据渲染的类型
 interface SingleData {
-    key: number,
-    index: number,
-    name: string,
-    "artists.name": string,
-    "album.name": string,
-    duration: number
+    key: number;
+    index: number;
+    name: string;
+    "artists.name": string;
+    "album.name": string;
+    duration: number;
 }
 
 export function Single(props: IProps) {
     // 获取参数
-    const { keywords } = useParams()
+    const { keywords } = useParams();
 
     // 当前页码
-    const [page, setPage] = useState(1, '当前页码')
+    const [page, setPage] = useState(1, '当前页码');
 
     // 获取搜索渲染列表的 reducer 数据
-    const { isLoading, isError, data, count, setParams } = props
+    const { isLoading, isError, data, count, setParams } = props;
 
     // 表头和索引
     const columns: ColumnProps<SingleData>[] = [
-        { title: '序号', dataIndex: 'index', width: 80, className: 'm-s-single-order' },
+        {
+            title: '序号', dataIndex: 'index', width: 80, className: 'm-s-single-order',
+            render: (text: number) => (
+                <span>
+                    <Icon type="caret-right" style={{color: '#f00', cursor: 'pointer'}} />{" "}
+                    {/* <Icon type="pause" style={{color: '#f00'}} />{" "} */}
+                    <span>{text}</span>
+                </span>
+            )
+        },
         {
             title: '喜欢/下载', dataIndex: 'icon', width: 100,
             render: () => (
@@ -57,7 +67,7 @@ export function Single(props: IProps) {
         { title: '音乐标题', dataIndex: 'name', width: 400 },
         { title: '歌手', dataIndex: 'artists.name', },
         { title: '专辑', dataIndex: 'album.name' },
-        { title: '时长', dataIndex: 'duration', render: (text) => <span>{formatDuration(text)}</span>}
+        { title: '时长', dataIndex: 'duration', render: (text) => <span>{formatDuration(text)}</span> }
     ];
 
     // 表格渲染
@@ -70,32 +80,47 @@ export function Single(props: IProps) {
             "album.name": item.album.name,
             duration: item.duration
         }
-    })
+    });
 
     // 表格分页显示配置
     const pagination = {
         total: count,
         pageSize: 100,
         current: page
-    }
+    };
 
     // 点击分页按钮重新发起请求
     const onHandleChange = (pagination: PaginationConfig) => {
         if (pagination.current) {
-            setPage(pagination.current)
+            setPage(pagination.current);
             setParams({
                 keywords,
                 limit: 100,
                 offset: (pagination.current - 1) * 100
-            })
+            });
         }
-    }
+    };
 
-    // 发送双击的歌曲到 reducer
-    const { setRecord } = useMusicPlayList()
+    // 发送双击的歌曲到 reducer，同时获取 state 或者 sessionStorage 中的数组长度，用来传递索引
+    const { state, setRecord } = useMusicPlayList();
 
     // 双击传递音乐id，从而获取音乐的url
-    const { setID, setDuration } = useMusicMessage()
+    const { setID, setDuration, setListIndex } = useMusicMessage();
+
+    // 双击之后的回调函数
+    const onHandleDoubleClick = (record: SingleData) => {
+        setRecord(record);
+        setID(record.key);
+        setDuration(record.duration);
+        if (sessionStorage.getItem('data') && sessionStorage.getItem('data') !== '[]') {
+            let sessionData: MusicProjectState[] = JSON.parse(sessionStorage.getItem('data') as string)
+            setListIndex(sessionData.length); // 传递音乐播放列表索引
+            console.log(state)
+        } else {
+            setListIndex((state as MusicProjectState[]).length); // 传递音乐播放列表索引
+            console.log(state)
+        }
+    };
 
     return (
         <Table<SingleData>
@@ -108,12 +133,7 @@ export function Single(props: IProps) {
             onRow={record => {
                 return {
                     // 双击行
-                    onDoubleClick: event => {
-                        console.log(record)
-                        setRecord(record)
-                        setID(record.key)
-                        setDuration(record.duration)
-                    }
+                    onDoubleClick: () => onHandleDoubleClick(record)
                 }
             }}
         />

@@ -8,27 +8,44 @@ import './FixedPlayer.scss'
 import { IconFont, formatDuration } from '@/tools'
 
 // 删除
-import { MUSIC_PROJECT_DELETE } from "@/redux/constants";
-import { MusicProjectState } from "@/redux";
-import { useMusicMessage, useMusicPlayList } from "@/hooks";
+import { MUSIC_PROJECT_DELETE } from "@/redux/constants"
+import { MusicProjectState } from "@/redux"
+import { useMusicMessage, useMusicPlayList } from "@/hooks"
+
+// 类型
+import { ColumnProps } from "antd/lib/table"
+
+interface PlayListData {
+    index: number;
+    key: number;
+    name: string;
+    "artist.name": string;
+    duration: number;
+}
 
 const FixedPlayer: React.FC = () => {
-    const [like, setLike] = useState(false, '是否喜欢')
-    const [flag, setFlag] = useState(false, '控制播放暂停')
-    const [mute, setMute] = useState(false, '是否静音')
+    const [like, setLike] = useState(false, '是否喜欢');
+    const [flag, setFlag] = useState(false, '控制播放暂停');
+    const [mute, setMute] = useState(false, '是否静音');
     const [isPlayList, setIsPlayList] = useState(true, '是否是播放音乐列表，否则是历史记录列表')
 
     // 获取添加到音乐播放列表的歌曲
-    const { state, dispatch } = useMusicPlayList()
+    const { state, dispatch } = useMusicPlayList();
 
     // 获取音乐信息, 包括url
-    const { musicMsgState } = useMusicMessage();
+    const { musicMsgState, setListIndex } = useMusicMessage();
 
     // 音量控制
-    const SoundControl = <Slider vertical defaultValue={30} style={{ height: '100px' }} />
+    const SoundControl = <Slider vertical defaultValue={30} style={{ height: '100px' }} />;
 
     // 表格设置
-    const columns = [
+    const columns: ColumnProps<PlayListData>[] = [
+        {
+            title: () => <span style={{ fontSize: '12px', color: '#d2d2d2' }}>序号</span>,
+            dataIndex: 'index',
+            width: 50,
+            className: 'fz'
+        },
         {
             title: () => <span style={{ fontSize: '12px', color: '#d2d2d2' }}>总{dataSource.length}首</span>,
             dataIndex: 'name',
@@ -46,7 +63,7 @@ const FixedPlayer: React.FC = () => {
                     <Icon type="folder-add" />{" "}收藏全部
                  </span>
             ),
-            dataIndex: 'artist',
+            dataIndex: 'artist.name',
             width: 110,
             className: 'fz',
             render: (text: string) => {
@@ -66,33 +83,40 @@ const FixedPlayer: React.FC = () => {
             dataIndex: 'duration',
             width: 110,
             className: 'fz',
+            render: (text: number) => {
+                return <span>{formatDuration(text)}</span>
+            }
         }
     ];
-
     // 播放列表数据渲染
-    let dataSource;
+    let dataSource: PlayListData[];
 
     // 利用 sessionStorage 来获取数据
     if (sessionStorage.getItem('data') && sessionStorage.getItem('data') !== '[]') {
         let sessionData = JSON.parse(sessionStorage.getItem('data') as string)
-        dataSource = sessionData.map((item: MusicProjectState) => {
+        dataSource = sessionData.map((item: MusicProjectState, index: number) => {
             return {
+                index: index + 1,
                 key: item.key,
                 name: item.musicName,
-                artist: item.artist,
+                "artist.name": item["artist.name"],
                 duration: item.duration
             }
         })
     } else {
-        dataSource = state.map((item: MusicProjectState) => {
+        dataSource = state.map((item: MusicProjectState, index: number) => {
             return {
+                index: index + 1,
                 key: item.key,
                 name: item.musicName,
-                artist: item.artist,
+                "artist.name": item["artist.name"],
                 duration: item.duration
             }
         })
     }
+
+    // 双击传递音乐id，从而获取音乐的url
+    const { setID, setDuration } = useMusicMessage();
 
     // 音乐播放列表
     const MusicPlayList = (
@@ -122,15 +146,24 @@ const FixedPlayer: React.FC = () => {
                     dataSource={dataSource}
                     pagination={{ total: dataSource.length, pageSize: 100 }}
                     scroll={{ y: 500 }}
+                    style={{ userSelect: 'none' }}
+                    onRow={record => {
+                        return {
+                            onDoubleClick: () => {
+                                setID(record.key);
+                                setDuration(record.duration);
+                            }
+                        }
+                    }}
                 // onChange={onHandleChange}
                 />
             </div>
         </div>
-    )
+    );
 
     // 播放控制部分
-    const audioRef: MutableRefObject<any> = useRef()
-    const audio = audioRef.current as unknown as HTMLMediaElement
+    const audioRef: MutableRefObject<any> = useRef();
+    const audio = audioRef.current as unknown as HTMLMediaElement;
 
     // 点击暂停播放按钮
     const handlePlayClick: React.MouseEventHandler<HTMLElement> = () => {
@@ -141,15 +174,15 @@ const FixedPlayer: React.FC = () => {
             if (audio.src) {
                 // 播放暂停控制
                 if (audio.paused) {
-                    setFlag(true)
+                    setFlag(true);
                     audio.play()
                 } else {
-                    setFlag(false)
+                    setFlag(false);
                     audio.pause()
                 }
             }
         }
-    }
+    };
 
     // 播放时间控制
     const [currentTime, setCurrentTime] = useState<any>(0, '当前时间')
@@ -160,58 +193,64 @@ const FixedPlayer: React.FC = () => {
             audio.addEventListener(
                 'loadedmetadata',
                 () => {
-                    setFlag(true)
+                    setFlag(true);
                     audio.play()
                 }
-            )
+            );
             // 监听播放时间
             audio.addEventListener(
                 'timeupdate',
                 () => {
-                    console.log(audio.currentTime)
                     setCurrentTime(audio.currentTime * 1000)
-                },
-                false
-            )
+                }
+            );
             // 播放结束
             audio.addEventListener(
                 'ended',
                 () => {
-                    setFlag(false)
-                    audio.pause()
+                    setFlag(false);
+                    audio.pause();
                     // 循环播放单曲
-                    setCurrentTime(0)
-                    setFlag(true)
-                    audio.play()
+                    setCurrentTime(0);
+                    setFlag(true);
+                    setTimeout(() => audio.play(), 300)
+                }
+            );
+            audio.addEventListener(
+                'abort',
+                () => {
+                    console.log(audio.currentSrc)
                 }
             )
         }
-    }, [audio])
+    }, [audio]);
 
     // 控制条改变的回调函数
     const onSliderChange = (value: any) => {
         // 将进度条的值赋予给 audio 播放的当前时间
-        audio.currentTime = value / 1000
+        audio.currentTime = value / 1000;
         // 将当前播放时间传递给 state
         setCurrentTime(value)
-    }
+    };
 
-    // // 成功获取资源长度的回调，刚获取完元数据的回调
-    // audio.addEventListener(
-    //     "loadedmetadata",
-    //     () => {
-    //         this.iconTab = false;
-    //     },
-    //     false
-    // );
-    // // 播放结束的回调
-    // audio.addEventListener(
-    //     "ended",
-    //     () => {
-    //         this.iconTab = false;
-    //     },
-    //     false
-    // );
+    // 切换歌曲, 上一首 or 下一首
+    useEffect(() => {
+        let data;
+        if (sessionStorage.getItem('data') && sessionStorage.getItem('data') !== '[]') {
+            let sessionData: MusicProjectState[] = JSON.parse(sessionStorage.getItem('data') as string)
+            data = sessionData;
+        } else {
+            data = state;
+        }
+        if (musicMsgState["list.index"] > data.length - 1) {
+            setListIndex(0);
+        } else if (musicMsgState["list.index"] < 0) {
+            setListIndex(data.length - 1);
+        } else {
+            setID(data[musicMsgState["list.index"]].key);
+            setDuration(data[musicMsgState["list.index"]].duration);
+        }
+    }, [musicMsgState, setDuration, setID, setListIndex, state])
 
     // 渲染
     return (
@@ -223,12 +262,6 @@ const FixedPlayer: React.FC = () => {
                 max={musicMsgState.duration}
                 tipFormatter={value => formatDuration(value)}
                 onChange={onSliderChange}
-                // onAfterChange={val => console.log(val)}
-                // onChange={val => {
-                //     // setCurrentTime(val)
-                //     // console.log(audio.currentTime)
-                //     // val = Math.ceil(currentTime * 1000)
-                // }}
                 style={{
                     position: "absolute",
                     width: '100%',
@@ -244,12 +277,22 @@ const FixedPlayer: React.FC = () => {
                                     src={musicMsgState.picUrl}
                                     alt={musicMsgState.name} />
                             </Col>
-                            <Col span={3}>
+                            <Col span={7}>
                                 <p>
-                                    <span className='music-name'>{musicMsgState.name}</span>
+                                    <span className='music-name'>
+                                        {
+                                            musicMsgState.name.length >= 10 ?
+                                                musicMsgState.name.substring(0, 10) + '...' :
+                                                musicMsgState.name
+                                        }
+                                    </span>
                                     {" "}-{" "}
                                     <span className='music-value' style={{ color: 'rgb(128, 128, 128)' }}>
-                                        {musicMsgState.artist.join(' / ')}
+                                        {
+                                            musicMsgState.artist.join(' / ').length >= 16 ?
+                                                musicMsgState.artist.join(' / ').substring(0, 30) + '...' :
+                                                musicMsgState.artist.join(' / ')
+                                        }
                                     </span>
                                 </p>
                                 <p>
@@ -259,9 +302,8 @@ const FixedPlayer: React.FC = () => {
                                 </p>
                             </Col>
                         </div>
-                        : <Col span={4} /> : <Col span={4} />
+                        : <Col span={8} /> : <Col span={8} />
                 }
-                <Col span={4} />
                 <Col span={8} className='music-control'>
                     <Icon type='heart'
                         className={like ? 'music-control-icon music-control-color' : 'music-control-icon'}
@@ -272,6 +314,7 @@ const FixedPlayer: React.FC = () => {
                     <Icon type="step-backward"
                         className='music-control-icon music-control-color'
                         style={{ fontSize: '24px' }}
+                        onClick={() => setListIndex(musicMsgState["list.index"] - 1)}
                     />
                     <Icon type={flag ? "pause-circle" : "play-circle"} theme="filled"
                         className='music-control-icon music-control-color'
@@ -280,7 +323,9 @@ const FixedPlayer: React.FC = () => {
                     />
                     <Icon type="step-forward"
                         className='music-control-icon music-control-color'
-                        style={{ fontSize: '24px' }} />
+                        style={{ fontSize: '24px' }}
+                        onClick={() => setListIndex(musicMsgState["list.index"] + 1)}
+                    />
                     <IconFont type='icon-share'
                         className='music-control-icon'
                         style={{ fontSize: '18px' }} />
@@ -303,6 +348,6 @@ const FixedPlayer: React.FC = () => {
             </Row>
         </div>
     )
-}
+};
 
 export default FixedPlayer

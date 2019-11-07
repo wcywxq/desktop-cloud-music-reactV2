@@ -11,7 +11,8 @@ export interface MusicMessageSuccessAction {
     name: string,
     alia: string, // 别名
     artist: string[],
-    duration: number
+    duration: number,
+    "list.index": number
 }
 
 export interface MusicMessageFailAction {
@@ -28,7 +29,8 @@ interface MusicMessageState {
     name: string,
     alia: string,
     artist: string[],
-    duration: number
+    duration: number,
+    "list.index": number
 }
 
 export const musicUrlReducer = (
@@ -41,7 +43,7 @@ export const musicUrlReducer = (
                 ...state,
                 isLoading: true,
                 isError: false
-            }
+            };
         case "MUSIC_MESSAGE_SUCCESS":
             return {
                 ...state,
@@ -51,16 +53,16 @@ export const musicUrlReducer = (
                 picUrl: action.picUrl,
                 name: action.name,
                 artist: action.artist,
-                duration: action.duration
-            }
+                duration: action.duration,
+                "list.index": action["list.index"]
+            };
         case "MUSIC_MESSAGE_FAIL":
             return {
                 ...state,
                 isLoading: false,
                 isError: true
-            }
-        // case ""
+            };
         default:
             throw new Error()
     }
-}
+};

@@ -3,11 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="85c9a38d-7305-462b-8f7e-391c6d04d9a7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/FixedPlayer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FixedPlayer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Search/Single.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/Single.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hooks/useMusicMessage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useMusicMessage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useMusicPlayList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useMusicPlayList.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/music.message.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/music.message.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/music.playList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/music.playList.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tools/format.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/tools/format.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,6 +70,7 @@
       <workItem from="1572330856937" duration="93598000" />
       <workItem from="1572764211394" duration="20479000" />
       <workItem from="1572920307996" duration="271000" />
+      <workItem from="1573003378010" duration="22870000" />
     </task>
     <servers />
   </component>

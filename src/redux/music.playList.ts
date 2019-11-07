@@ -3,12 +3,12 @@ import { removeDuplicates } from '@/tools'
 
 // action creators
 export interface MusicProjectAddAction {
-    type: MUSIC_PROJECT_ADD,
+    type: MUSIC_PROJECT_ADD;
     // 传递的数据
-    key: number,
-    musicName: string,
-    artist: string,
-    duration: string
+    key: number;
+    musicName: string;
+    "artist.name": string;
+    duration: number;
 }
 
 export interface MusicProjectFilterAction {
@@ -24,10 +24,10 @@ export type MusicProjectAction = MusicProjectAddAction | MusicProjectFilterActio
 
 // 初始化数据类型
 export interface MusicProjectState {
-    key: number,
-    musicName: string,
-    artist: string,
-    duration: string
+    key: number;
+    musicName: string;
+    "artist.name": string;
+    duration: number;
 }
 
 export const musicPlayListReducer = (state: MusicProjectState[], action: MusicProjectAction) => {
@@ -37,7 +37,7 @@ export const musicPlayListReducer = (state: MusicProjectState[], action: MusicPr
             // 存到 sessionStorage
             if (sessionStorage.getItem('data')
                 && (sessionStorage.getItem('data') as string) !== '[]') {
-                let sessionData = JSON.parse(sessionStorage.getItem('data') as string)
+                let sessionData = JSON.parse(sessionStorage.getItem('data') as string);
                 sessionStorage.setItem('data', JSON.stringify(
                     removeDuplicates([...sessionData, ...state])
                 ))
@@ -50,7 +50,7 @@ export const musicPlayListReducer = (state: MusicProjectState[], action: MusicPr
                 {
                     key: action.key,
                     musicName: action.musicName,
-                    artist: action.artist,
+                    "artist.name": action["artist.name"],
                     duration: action.duration
                 }
             ]
