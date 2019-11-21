@@ -21,7 +21,7 @@ export interface MusicMessageFailAction {
 
 export type MusicMessageAction = MusicMessageInitAction | MusicMessageSuccessAction | MusicMessageFailAction
 
-interface MusicMessageState {
+export interface MusicMessageState {
     isLoading: boolean,
     isError: boolean,
     url: string[],

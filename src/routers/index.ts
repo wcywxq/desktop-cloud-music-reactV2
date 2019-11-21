@@ -32,6 +32,6 @@ const router: Array<RouterArray> = [
     path: "/search/:keywords",
     component: SearchMusic
   }
-]
+];
 
 export default router

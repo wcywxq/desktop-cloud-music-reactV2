@@ -1,4 +1,6 @@
+export * from './banner'
 export * from './search.music'
 export * from './search.hot'
 export * from './music.playList'
 export * from './music.message'
+export * from './music.canuse'

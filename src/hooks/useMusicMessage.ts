@@ -70,5 +70,6 @@ export const useMusicMessage = () => {
         }
     }, [duration, id, listIndex]);
 
+    console.log(musicMsgState);
     return { musicMsgState, setID, setDuration, setListIndex }
 };

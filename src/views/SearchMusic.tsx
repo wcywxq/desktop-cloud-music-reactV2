@@ -24,7 +24,7 @@ const SearchMusic: React.FC = () => {
     // 数据请求
     useEffect(() => {
         setParams({ keywords, limit: 100, offset: 0 })
-    }, [keywords, setParams])
+    }, [keywords, setParams]);
 
     return (
         <div>
@@ -68,6 +68,6 @@ const SearchMusic: React.FC = () => {
             </article>
         </div>
     )
-}
+};
 
 export default SearchMusic

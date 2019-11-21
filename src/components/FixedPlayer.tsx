@@ -1,20 +1,24 @@
 // MutableRefObject 泛型接口，接收一个参数，作为 useRef 的类型定义,参数可以为T类型，即任意类型
-import React, { useRef, MutableRefObject, useEffect } from "react"
-import { useState } from 'reinspect'
-import { Row, Col, Button, Icon, Slider, Popover, Table } from 'antd'
+import React, {useRef, MutableRefObject, useEffect} from "react"
+import {useState} from 'reinspect'
+import {Row, Col, Button, Icon, Slider, Popover, Table} from 'antd'
 
 import './FixedPlayer.scss'
 
-import { IconFont, formatDuration } from '@/tools'
+import {IconFont, formatDuration} from '@/tools'
 
 // 删除
-import { MUSIC_PROJECT_DELETE } from "@/redux/constants"
-import { MusicProjectState } from "@/redux"
-import { useMusicMessage, useMusicPlayList } from "@/hooks"
+import {MUSIC_PROJECT_DELETE} from "@/redux/constants"
+import {MusicMessageState, MusicProjectState} from "@/redux"
+import {useMusicPlayList} from "@/hooks"
 
 // 类型
-import { ColumnProps } from "antd/lib/table"
+import {ColumnProps} from "antd/lib/table"
 
+// 组件
+import MusicDetail from "@/components/MusicDetail";
+
+// 接口
 interface PlayListData {
     index: number;
     key: number;
@@ -23,45 +27,57 @@ interface PlayListData {
     duration: number;
 }
 
-const FixedPlayer: React.FC = () => {
-    // 是否喜欢控制
+interface IProps {
+    musicMsgState: MusicMessageState;
+    setListIndex: React.Dispatch<React.SetStateAction<number>>;
+    setID: React.Dispatch<React.SetStateAction<number>>;
+    setDuration: React.Dispatch<React.SetStateAction<number>>;
+}
+
+// 样式
+const styles: { [propsName: string]: React.CSSProperties } = {
+    Table: {
+        userSelect: 'none'
+    }
+};
+
+const FixedPlayer = (props: IProps) => {
+    // 获取音乐信息, 包括url
+    const {musicMsgState, setListIndex, setID, setDuration} = props;
+
+    // 遮罩层
+    const [visible, setVisible] = useState(false, '是否打开遮罩层');
+    // 是否喜欢
     const [like, setLike] = useState(false, '是否喜欢');
-
-    // 是否暂停播放控制
+    // 是否暂停播放
     const [flag, setFlag] = useState(false, '控制播放暂停');
-
-    // 是否静音控制
+    // 是否静音
     const [mute, setMute] = useState(false, '是否静音');
-
-    // 播放音乐列表和历史记录列表的路由控制
+    // 播放音乐列表和历史记录列表的路由
     const [isPlayList, setIsPlayList] = useState(true, '是否是播放音乐列表，否则是历史记录列表');
-
-    // 播放时间控制
+    // 播放时间
     const [currentTime, setCurrentTime] = useState<any>(0, '当前时间');
 
     // 播放控制部分
     const audioRef: MutableRefObject<any> = useRef();
     const audio = audioRef.current as unknown as HTMLMediaElement;
 
-    // 获取添加到音乐播放列表的歌曲
-    const { state, dispatch } = useMusicPlayList();
-
-    // 获取音乐信息, 包括url
-    const { musicMsgState, setListIndex, setID, setDuration } = useMusicMessage();
-
     // 音量控制
-    const SoundControl = <Slider vertical defaultValue={30} style={{ height: '100px' }} />;
+    const SoundControl = <Slider vertical defaultValue={30} style={{height: '100px'}}/>;
+
+    // 获取添加到音乐播放列表的歌曲
+    const {state, dispatch} = useMusicPlayList();
 
     // 表格设置
     const columns: ColumnProps<PlayListData>[] = [
         {
-            title: () => <span style={{ fontSize: '12px', color: '#d2d2d2' }}>序号</span>,
+            title: () => <span style={{fontSize: '12px', color: '#d2d2d2'}}>序号</span>,
             dataIndex: 'index',
             width: 50,
             className: 'fz'
         },
         {
-            title: () => <span style={{ fontSize: '12px', color: '#d2d2d2' }}>总{dataSource.length}首</span>,
+            title: () => <span style={{fontSize: '12px', color: '#d2d2d2'}}>总{dataSource.length}首</span>,
             dataIndex: 'name',
             width: 180,
             className: 'fz',
@@ -73,8 +89,8 @@ const FixedPlayer: React.FC = () => {
         },
         {
             title: () => (
-                <span style={{ fontSize: '12px', cursor: 'pointer' }}>
-                    <Icon type="folder-add" />{" "}收藏全部
+                <span style={{fontSize: '12px', cursor: 'pointer'}}>
+                    <Icon type="folder-add"/>{" "}收藏全部
                  </span>
             ),
             dataIndex: 'artist.name',
@@ -88,10 +104,10 @@ const FixedPlayer: React.FC = () => {
         },
         {
             title: () => (
-                <span style={{ fontSize: '12px', cursor: 'pointer' }}
-                    onClick={() => dispatch({ type: MUSIC_PROJECT_DELETE })}
+                <span style={{fontSize: '12px', cursor: 'pointer'}}
+                      onClick={() => dispatch({type: MUSIC_PROJECT_DELETE})}
                 >
-                    <Icon type="delete" />{" "}清空
+                    <Icon type="delete"/>{" "}清空
                  </span>
             ),
             dataIndex: 'duration',
@@ -107,7 +123,7 @@ const FixedPlayer: React.FC = () => {
     let dataSource: PlayListData[];
 
     if (sessionStorage.getItem('data') && sessionStorage.getItem('data') !== '[]') {
-        let sessionData = JSON.parse(sessionStorage.getItem('data') as string)
+        let sessionData = JSON.parse(sessionStorage.getItem('data') as string);
         dataSource = sessionData.map((item: MusicProjectState, index: number) => {
             return {
                 index: index + 1,
@@ -150,14 +166,14 @@ const FixedPlayer: React.FC = () => {
                     历史记录
                 </Button>
             </div>
-            <div style={{ marginTop: '15px' }}>
+            <div style={{marginTop: '15px'}}>
                 <Table
                     // loading={true}
                     columns={columns}
                     dataSource={dataSource}
-                    pagination={{ total: dataSource.length, pageSize: 100 }}
-                    scroll={{ y: 500 }}
-                    style={{ userSelect: 'none' }}
+                    pagination={{total: dataSource.length, pageSize: 100}}
+                    scroll={{y: 500}}
+                    style={styles.Table}
                     onRow={record => {
                         return {
                             onDoubleClick: () => {
@@ -166,14 +182,14 @@ const FixedPlayer: React.FC = () => {
                             }
                         }
                     }}
-                // onChange={onHandleChange}
+                    // onChange={onHandleChange}
                 />
             </div>
         </div>
     );
 
     // 点击暂停播放按钮
-    function handlePlayClick(event: React.MouseEvent<HTMLElement, MouseEvent>): void {
+    function handlePlayClick(event: React.MouseEvent<HTMLElement, MouseEvent>) {
         // 若 audio 不为 null
         if (audio) {
             // setFlag(!flag)
@@ -189,7 +205,7 @@ const FixedPlayer: React.FC = () => {
                 }
             }
         }
-    };
+    }
 
     // 播放器控制条改变的回调函数
     function onSliderChange(value: any) {
@@ -197,7 +213,7 @@ const FixedPlayer: React.FC = () => {
         audio.currentTime = value / 1000;
         // 将当前播放时间传递给 state
         setCurrentTime(value)
-    };
+    }
 
     // 监听 audio 事件
     useEffect(() => {
@@ -242,29 +258,34 @@ const FixedPlayer: React.FC = () => {
     useEffect(() => {
         let data;
         if (sessionStorage.getItem('data') && sessionStorage.getItem('data') !== '[]') {
-            let sessionData: MusicProjectState[] = JSON.parse(sessionStorage.getItem('data') as string)
+            let sessionData: MusicProjectState[] = JSON.parse(sessionStorage.getItem('data') as string);
             data = sessionData;
         } else {
             data = state;
         }
-        if (musicMsgState["list.index"] > data.length - 1) {
-            setListIndex(0);
-        } else if (musicMsgState["list.index"] < 0) {
-            setListIndex(data.length - 1);
-        } else {
-            setID(data[musicMsgState["list.index"]].key);
-            setDuration(data[musicMsgState["list.index"]].duration);
+
+        if (musicMsgState) {
+            if (musicMsgState["list.index"] > data.length - 1) {
+                setListIndex(0);
+            } else if (musicMsgState["list.index"] < 0) {
+                setListIndex(data.length - 1);
+            } else {
+                setID(data[musicMsgState["list.index"]].key);
+                setDuration(data[musicMsgState["list.index"]].duration);
+            }
         }
-    }, [musicMsgState, setDuration, setID, setListIndex, state])
+    }, [musicMsgState, setDuration, setID, setListIndex, state]);
+
+    console.log(musicMsgState);
 
     // 渲染
     return (
         <div className='fixed-player'>
-            <audio ref={audioRef} src={musicMsgState.url[0]} />
+            <audio ref={audioRef} src={musicMsgState ? musicMsgState.url[0] : ''}/>
             <Slider
                 disabled={!audio}
                 value={currentTime}
-                max={musicMsgState.duration}
+                max={musicMsgState ? musicMsgState.duration : undefined}
                 tipFormatter={value => formatDuration(value)}
                 onChange={onSliderChange}
                 style={{
@@ -272,77 +293,97 @@ const FixedPlayer: React.FC = () => {
                     width: '100%',
                     top: '-32px',
                     left: 0,
-                }} />
+                }}/>
             <Row>
                 {
                     audio ? audio.src ?
                         <div>
                             <Col span={1}>
                                 <img
-                                    src={musicMsgState.picUrl}
-                                    alt={musicMsgState.name} />
+                                    src={musicMsgState ? musicMsgState.picUrl : ''}
+                                    alt=''
+                                    onClick={() => setVisible(!visible)}
+                                />
+                                <MusicDetail visible={visible} setVisible={setVisible}/>
                             </Col>
                             <Col span={7}>
+                                {
+                                    musicMsgState ?
+                                        (
+                                            <p>
+                                                <span className='music-name'>
+                                                    {
+                                                        musicMsgState.name.length >= 10 ?
+                                                            musicMsgState.name.substring(0, 10) + '...' :
+                                                            musicMsgState.name
+                                                    }
+                                                </span>
+                                                {" "}-{" "}
+                                                <span className='music-value' style={{color: 'rgb(128, 128, 128)'}}>
+                                                    {
+                                                        musicMsgState.artist.join(' / ').length >= 16 ?
+                                                            musicMsgState.artist.join(' / ').substring(0, 30) + '...' :
+                                                            musicMsgState.artist.join(' / ')
+                                                    }
+                                                </span>
+                                            </p>
+                                        ) : null
+                                }
                                 <p>
-                                    <span className='music-name'>
+                                    <span className='music-value' style={{color: 'rgb(180, 180, 180)'}}>
                                         {
-                                            musicMsgState.name.length >= 10 ?
-                                                musicMsgState.name.substring(0, 10) + '...' :
-                                                musicMsgState.name
+                                            musicMsgState ?
+                                                `${formatDuration(currentTime)} / ${formatDuration(musicMsgState.duration)}`
+                                                : null
                                         }
-                                    </span>
-                                    {" "}-{" "}
-                                    <span className='music-value' style={{ color: 'rgb(128, 128, 128)' }}>
-                                        {
-                                            musicMsgState.artist.join(' / ').length >= 16 ?
-                                                musicMsgState.artist.join(' / ').substring(0, 30) + '...' :
-                                                musicMsgState.artist.join(' / ')
-                                        }
-                                    </span>
-                                </p>
-                                <p>
-                                    <span className='music-value' style={{ color: 'rgb(180, 180, 180)' }}>
-                                        {formatDuration(currentTime)} / {formatDuration(musicMsgState.duration)}
                                     </span>
                                 </p>
                             </Col>
                         </div>
-                        : <Col span={8} /> : <Col span={8} />
+                        : <Col span={8}/> : <Col span={8}/>
                 }
                 <Col span={8} className='music-control'>
                     <Icon type='heart'
-                        className={like ? 'music-control-icon music-control-color' : 'music-control-icon'}
-                        theme={like ? "filled" : undefined}
-                        style={{ fontSize: '18px' }}
-                        onClick={() => setLike(!like)}
+                          className={like ? 'music-control-icon music-control-color' : 'music-control-icon'}
+                          theme={like ? "filled" : undefined}
+                          style={{fontSize: '18px'}}
+                          onClick={() => setLike(!like)}
                     />
                     <Icon type="step-backward"
-                        className='music-control-icon music-control-color'
-                        style={{ fontSize: '24px' }}
-                        onClick={() => setListIndex(musicMsgState["list.index"] - 1)}
+                          className='music-control-icon music-control-color'
+                          style={{fontSize: '24px'}}
+                          onClick={() => {
+                              if (musicMsgState) {
+                                  setListIndex(musicMsgState["list.index"] - 1)
+                              }
+                          }}
                     />
                     <Icon type={flag ? "pause-circle" : "play-circle"} theme="filled"
-                        className='music-control-icon music-control-color'
-                        style={{ fontSize: '40px' }}
-                        onClick={handlePlayClick}
+                          className='music-control-icon music-control-color'
+                          style={{fontSize: '40px'}}
+                          onClick={handlePlayClick}
                     />
                     <Icon type="step-forward"
-                        className='music-control-icon music-control-color'
-                        style={{ fontSize: '24px' }}
-                        onClick={() => setListIndex(musicMsgState["list.index"] + 1)}
+                          className='music-control-icon music-control-color'
+                          style={{fontSize: '24px'}}
+                          onClick={() => {
+                              if(musicMsgState) {
+                                  setListIndex(musicMsgState["list.index"] + 1)
+                              }
+                          }}
                     />
                     <IconFont type='icon-share'
-                        className='music-control-icon'
-                        style={{ fontSize: '18px' }} />
+                              className='music-control-icon'
+                              style={{fontSize: '18px'}}/>
                 </Col>
-                <Col span={4} />
+                <Col span={4}/>
                 <Col span={4} className='music-list'>
-                    <IconFont type='icon-xindong' className='music-list-icon' />
+                    <IconFont type='icon-xindong' className='music-list-icon'/>
                     <Popover content={MusicPlayList} placement='top' trigger="click">
-                        <IconFont type='icon-bofangliebiao' className='music-list-icon' />
+                        <IconFont type='icon-bofangliebiao' className='music-list-icon'/>
                     </Popover>
-                    <IconFont type='icon-geci' className='music-list-icon' />
-                    <Popover content={SoundControl} style={{ height: '100px' }}>
+                    <IconFont type='icon-geci' className='music-list-icon'/>
+                    <Popover content={SoundControl} style={{height: '100px'}}>
                         <IconFont
                             type={mute ? 'icon-jingyin' : 'icon-shengyin'}
                             className='music-list-icon'

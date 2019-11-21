@@ -53,16 +53,16 @@ export const musicPlayListReducer = (state: MusicProjectState[], action: MusicPr
                     "artist.name": action["artist.name"],
                     duration: action.duration
                 }
-            ]
+            ];
         // 查
         case MUSIC_PROJECT_FILTER:
             // 新数组
-            return removeDuplicates(state)
+            return removeDuplicates(state);
         // 删除
         case MUSIC_PROJECT_DELETE:
             // 先删除 sessionStorage 中的数据
-            sessionStorage.clear()
+            sessionStorage.clear();
             // 然后删除 state 中的数据
             return []
     }
-}
+};

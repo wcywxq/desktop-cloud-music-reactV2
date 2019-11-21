@@ -11,7 +11,7 @@ export const useMusicPlayList = () => {
     useEffect(() => {
         let didCancel = false;
 
-        if (!didCancel && Object.keys(record).length !== 0) {
+        if (!didCancel && record && Object.keys(record).length !== 0) {
             // 先添加
             dispatch({
                 type: MUSIC_PROJECT_ADD,

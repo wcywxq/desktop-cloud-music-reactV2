@@ -11,15 +11,14 @@ export const useSearchHot = (initialData: any) => {
         isError: false,
         isLoading: false,
         data: initialData
-    }, '热搜的reducer')
+    }, '热搜的reducer');
 
     useEffect(() => {
-        let didCancel = false
+        let didCancel = false;
         const fetchData = async () => {
-            dispatch({ type: SEARCH_HOT_INIT })
+            dispatch({ type: SEARCH_HOT_INIT });
             try {
-                const result = await axios.get(fetchApi.hot)
-                console.log(result.data.data)
+                const result = await axios.get(fetchApi.hot);
                 if (!didCancel && result.data.code === 200) {
                     dispatch({
                         type: SEARCH_HOT_SUCCESS,
@@ -31,12 +30,12 @@ export const useSearchHot = (initialData: any) => {
                     dispatch({ type: SEARCH_HOT_FAIL })
                 }
             }
-        }
-        fetchData()
+        };
+        fetchData();
         return () => {
             didCancel = true
         }
-    }, [])
+    }, []);
 
     return { state }
-}
+};

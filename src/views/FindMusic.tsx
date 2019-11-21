@@ -1,22 +1,22 @@
 import * as React from 'react'
-// import { StickyContainer, Sticky } from "react-sticky";
 import { Tabs } from 'antd'
-// import { TabsProps } from "antd/lib/tabs";
-// import './FindMusic.scss'
+
+import { useBanner } from '@/hooks'
+import Banner from "@/components/Banner";
 
 const FindMusic: React.FC = () => {
-  const { TabPane } = Tabs
-
+  const { state } = useBanner();
+  const { TabPane } = Tabs;
   return (
     <div className="find-music">
       <header>
         <aside>
-          <Tabs 
-            defaultActiveKey="1" 
+          <Tabs
+            defaultActiveKey="1"
             onChange={key => console.log(key)}
           >
             <TabPane tab="个性推荐" key="1">
-              123
+              <Banner data={state.bannerUrl} />
             </TabPane>
             <TabPane tab="歌单" key="2">
               Content of Tab Pane 2
