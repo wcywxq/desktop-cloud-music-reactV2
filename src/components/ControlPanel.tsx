@@ -7,10 +7,10 @@ import { useSearchHot } from "@/hooks";
 
 const ControlPanel: React.FC = () => {
     // react-router 提供的 HOOKS
-    const history = useHistory()
+    const history = useHistory();
 
     // 获取热搜列表
-    const { state } = useSearchHot([])
+    const { state } = useSearchHot([]);
 
     // 热搜标签
     const suggestContent = (
@@ -28,7 +28,7 @@ const ControlPanel: React.FC = () => {
                                     padding: '3px 10px',
                                     borderRadius: '20px'
                                 }} key={index}>
-                                    <Link to={`/search/${item.searchWord}`}>{item.searchWord}</Link>
+                                    <Link to={`/search/${item.searchWord}/1`}>{item.searchWord}</Link>
                                 </Tag>
                             )
                         })
@@ -63,9 +63,9 @@ const ControlPanel: React.FC = () => {
                             console.log(e.target.value)
                         }}
                         onPressEnter={event => {
-                            const target = event.target as HTMLInputElement
+                            const target = event.target as HTMLInputElement;
                             if (target.value) {
-                                history.push('/search/' + target.value)
+                                history.push(`/search/${target.value}/1`)
                             }
                         }}
                     />

@@ -1,19 +1,19 @@
 // MutableRefObject 泛型接口，接收一个参数，作为 useRef 的类型定义,参数可以为T类型，即任意类型
-import React, {useRef, MutableRefObject, useEffect} from "react"
-import {useState} from 'reinspect'
-import {Row, Col, Button, Icon, Slider, Popover, Table} from 'antd'
+import React, { useRef, MutableRefObject, useEffect } from "react"
+import { useState } from 'reinspect'
+import { Row, Col, Button, Icon, Slider, Popover, Table } from 'antd'
 
 import './FixedPlayer.scss'
 
-import {IconFont, formatDuration} from '@/tools'
+import { IconFont, formatDuration } from '@/tools'
 
 // 删除
-import {MUSIC_PROJECT_DELETE} from "@/redux/constants"
-import {MusicMessageState, MusicProjectState} from "@/redux"
-import {useMusicPlayList} from "@/hooks"
+import { MUSIC_PROJECT_DELETE } from "@/redux/constants"
+import { MusicMessageState, MusicProjectState } from "@/redux"
+import { useMusicPlayList } from "@/hooks"
 
 // 类型
-import {ColumnProps} from "antd/lib/table"
+import { ColumnProps } from "antd/lib/table"
 
 // 组件
 import MusicDetail from "@/components/MusicDetail";
@@ -43,7 +43,7 @@ const styles: { [propsName: string]: React.CSSProperties } = {
 
 const FixedPlayer = (props: IProps) => {
     // 获取音乐信息, 包括url
-    const {musicMsgState, setListIndex, setID, setDuration} = props;
+    const { musicMsgState, setListIndex, setID, setDuration } = props;
 
     // 遮罩层
     const [visible, setVisible] = useState(false, '是否打开遮罩层');
@@ -63,21 +63,21 @@ const FixedPlayer = (props: IProps) => {
     const audio = audioRef.current as unknown as HTMLMediaElement;
 
     // 音量控制
-    const SoundControl = <Slider vertical defaultValue={30} style={{height: '100px'}}/>;
+    const SoundControl = <Slider vertical defaultValue={30} style={{ height: '100px' }} />;
 
     // 获取添加到音乐播放列表的歌曲
-    const {state, dispatch} = useMusicPlayList();
+    const { state, dispatch } = useMusicPlayList();
 
     // 表格设置
     const columns: ColumnProps<PlayListData>[] = [
         {
-            title: () => <span style={{fontSize: '12px', color: '#d2d2d2'}}>序号</span>,
+            title: () => <span style={{ fontSize: '12px', color: '#d2d2d2' }}>序号</span>,
             dataIndex: 'index',
             width: 50,
             className: 'fz'
         },
         {
-            title: () => <span style={{fontSize: '12px', color: '#d2d2d2'}}>总{dataSource.length}首</span>,
+            title: () => <span style={{ fontSize: '12px', color: '#d2d2d2' }}>总{dataSource.length}首</span>,
             dataIndex: 'name',
             width: 180,
             className: 'fz',
@@ -89,8 +89,8 @@ const FixedPlayer = (props: IProps) => {
         },
         {
             title: () => (
-                <span style={{fontSize: '12px', cursor: 'pointer'}}>
-                    <Icon type="folder-add"/>{" "}收藏全部
+                <span style={{ fontSize: '12px', cursor: 'pointer' }}>
+                    <Icon type="folder-add" />{" "}收藏全部
                  </span>
             ),
             dataIndex: 'artist.name',
@@ -104,10 +104,10 @@ const FixedPlayer = (props: IProps) => {
         },
         {
             title: () => (
-                <span style={{fontSize: '12px', cursor: 'pointer'}}
-                      onClick={() => dispatch({type: MUSIC_PROJECT_DELETE})}
+                <span style={{ fontSize: '12px', cursor: 'pointer' }}
+                    onClick={() => dispatch({ type: MUSIC_PROJECT_DELETE })}
                 >
-                    <Icon type="delete"/>{" "}清空
+                    <Icon type="delete" />{" "}清空
                  </span>
             ),
             dataIndex: 'duration',
@@ -166,13 +166,13 @@ const FixedPlayer = (props: IProps) => {
                     历史记录
                 </Button>
             </div>
-            <div style={{marginTop: '15px'}}>
+            <div style={{ marginTop: '15px' }}>
                 <Table
                     // loading={true}
                     columns={columns}
                     dataSource={dataSource}
-                    pagination={{total: dataSource.length, pageSize: 100}}
-                    scroll={{y: 500}}
+                    pagination={{ total: dataSource.length, pageSize: 100 }}
+                    scroll={{ y: 500 }}
                     style={styles.Table}
                     onRow={record => {
                         return {
@@ -182,7 +182,7 @@ const FixedPlayer = (props: IProps) => {
                             }
                         }
                     }}
-                    // onChange={onHandleChange}
+                // onChange={onHandleChange}
                 />
             </div>
         </div>
@@ -248,7 +248,7 @@ const FixedPlayer = (props: IProps) => {
             audio.addEventListener(
                 'abort',
                 () => {
-                    console.log(audio.currentSrc)
+                    // console.log(audio.currentSrc)
                 }
             )
         }
@@ -276,12 +276,10 @@ const FixedPlayer = (props: IProps) => {
         }
     }, [musicMsgState, setDuration, setID, setListIndex, state]);
 
-    console.log(musicMsgState);
-
     // 渲染
     return (
         <div className='fixed-player'>
-            <audio ref={audioRef} src={musicMsgState ? musicMsgState.url[0] : ''}/>
+            <audio ref={audioRef} src={musicMsgState ? musicMsgState.url[0] : ''} />
             <Slider
                 disabled={!audio}
                 value={currentTime}
@@ -293,7 +291,7 @@ const FixedPlayer = (props: IProps) => {
                     width: '100%',
                     top: '-32px',
                     left: 0,
-                }}/>
+                }} />
             <Row>
                 {
                     audio ? audio.src ?
@@ -304,7 +302,7 @@ const FixedPlayer = (props: IProps) => {
                                     alt=''
                                     onClick={() => setVisible(!visible)}
                                 />
-                                <MusicDetail visible={visible} setVisible={setVisible}/>
+                                <MusicDetail visible={visible} setVisible={setVisible} />
                             </Col>
                             <Col span={7}>
                                 {
@@ -319,7 +317,7 @@ const FixedPlayer = (props: IProps) => {
                                                     }
                                                 </span>
                                                 {" "}-{" "}
-                                                <span className='music-value' style={{color: 'rgb(128, 128, 128)'}}>
+                                                <span className='music-value' style={{ color: 'rgb(128, 128, 128)' }}>
                                                     {
                                                         musicMsgState.artist.join(' / ').length >= 16 ?
                                                             musicMsgState.artist.join(' / ').substring(0, 30) + '...' :
@@ -330,7 +328,7 @@ const FixedPlayer = (props: IProps) => {
                                         ) : null
                                 }
                                 <p>
-                                    <span className='music-value' style={{color: 'rgb(180, 180, 180)'}}>
+                                    <span className='music-value' style={{ color: 'rgb(180, 180, 180)' }}>
                                         {
                                             musicMsgState ?
                                                 `${formatDuration(currentTime)} / ${formatDuration(musicMsgState.duration)}`
@@ -340,50 +338,50 @@ const FixedPlayer = (props: IProps) => {
                                 </p>
                             </Col>
                         </div>
-                        : <Col span={8}/> : <Col span={8}/>
+                        : <Col span={8} /> : <Col span={8} />
                 }
                 <Col span={8} className='music-control'>
                     <Icon type='heart'
-                          className={like ? 'music-control-icon music-control-color' : 'music-control-icon'}
-                          theme={like ? "filled" : undefined}
-                          style={{fontSize: '18px'}}
-                          onClick={() => setLike(!like)}
+                        className={like ? 'music-control-icon music-control-color' : 'music-control-icon'}
+                        theme={like ? "filled" : undefined}
+                        style={{ fontSize: '18px' }}
+                        onClick={() => setLike(!like)}
                     />
                     <Icon type="step-backward"
-                          className='music-control-icon music-control-color'
-                          style={{fontSize: '24px'}}
-                          onClick={() => {
-                              if (musicMsgState) {
-                                  setListIndex(musicMsgState["list.index"] - 1)
-                              }
-                          }}
+                        className='music-control-icon music-control-color'
+                        style={{ fontSize: '24px' }}
+                        onClick={() => {
+                            if (musicMsgState) {
+                                setListIndex(musicMsgState["list.index"] - 1)
+                            }
+                        }}
                     />
                     <Icon type={flag ? "pause-circle" : "play-circle"} theme="filled"
-                          className='music-control-icon music-control-color'
-                          style={{fontSize: '40px'}}
-                          onClick={handlePlayClick}
+                        className='music-control-icon music-control-color'
+                        style={{ fontSize: '40px' }}
+                        onClick={handlePlayClick}
                     />
                     <Icon type="step-forward"
-                          className='music-control-icon music-control-color'
-                          style={{fontSize: '24px'}}
-                          onClick={() => {
-                              if(musicMsgState) {
-                                  setListIndex(musicMsgState["list.index"] + 1)
-                              }
-                          }}
+                        className='music-control-icon music-control-color'
+                        style={{ fontSize: '24px' }}
+                        onClick={() => {
+                            if (musicMsgState) {
+                                setListIndex(musicMsgState["list.index"] + 1)
+                            }
+                        }}
                     />
                     <IconFont type='icon-share'
-                              className='music-control-icon'
-                              style={{fontSize: '18px'}}/>
+                        className='music-control-icon'
+                        style={{ fontSize: '18px' }} />
                 </Col>
-                <Col span={4}/>
+                <Col span={4} />
                 <Col span={4} className='music-list'>
-                    <IconFont type='icon-xindong' className='music-list-icon'/>
+                    <IconFont type='icon-xindong' className='music-list-icon' />
                     <Popover content={MusicPlayList} placement='top' trigger="click">
-                        <IconFont type='icon-bofangliebiao' className='music-list-icon'/>
+                        <IconFont type='icon-bofangliebiao' className='music-list-icon' />
                     </Popover>
-                    <IconFont type='icon-geci' className='music-list-icon'/>
-                    <Popover content={SoundControl} style={{height: '100px'}}>
+                    <IconFont type='icon-geci' className='music-list-icon' />
+                    <Popover content={SoundControl} style={{ height: '100px' }}>
                         <IconFont
                             type={mute ? 'icon-jingyin' : 'icon-shengyin'}
                             className='music-list-icon'

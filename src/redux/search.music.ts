@@ -11,8 +11,9 @@ export interface SearchMusicInitAction {
 
 export interface SearchMusicSuccessAction {
     type: SEARCH_MUSIC_SUCCESS,
-    payLoad: any[],
-    count: number
+    dataType: string,
+    count: number,
+    payLoad: any[]
 }
 
 export interface SearchMusicFailAction {
@@ -25,8 +26,17 @@ export type SearchMusicAction = SearchMusicInitAction | SearchMusicSuccessAction
 export interface SearchMusicState {
     isLoading: boolean,
     isError: boolean,
-    data: any[],
-    count: number
+    dataType: string,
+    dataObj: {
+        songs: { count: number, data: any[] },
+        artists: { count: number, data: any[] },
+        albums: { count: number, data: any[] },
+        videos: { count: number, data: any[] },
+        playlists: { count: number, data: any[] },
+        lyrics: { count: number, data: any[] },
+        djRadios: { count: number, data: any[] },
+        userprofiles: { count: number, data: any[] }
+    }
 }
 
 // reducer
@@ -40,22 +50,28 @@ export const searchMusicReducer = (
                 ...state,
                 isLoading: true,
                 isError: false
-            }
+            };
         case SEARCH_MUSIC_SUCCESS:
             return {
                 ...state,
                 isLoading: false,
                 isError: false,
-                data: action.payLoad,
-                count: action.count,
-            }
+                dataObj: {
+                    ...state.dataObj,
+                    [action.dataType]: {
+                        // ...state.dataObj[action.dataType as any],
+                        count: action.count,
+                        data: action.payLoad
+                    }
+                }
+            };
         case SEARCH_MUSIC_FAIL:
             return {
                 ...state,
                 isLoading: false,
                 isError: true
-            }
+            };
         default:
             throw new Error();
     }
-}
+};

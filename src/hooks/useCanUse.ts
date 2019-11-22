@@ -19,9 +19,8 @@ export const useCanUse = () => {
         const fetchData = async () => {
             try {
                 const result = await axios.get(fetchApi.check, {
-                    params: {id: mid}
+                    params: { id: mid }
                 });
-                console.log(result.data);
                 if (!didCancel && result.status === 200) {
                     dispatch({
                         type: MUSIC_CAN_USE,

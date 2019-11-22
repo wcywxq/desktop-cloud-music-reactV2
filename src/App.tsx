@@ -1,12 +1,12 @@
 import * as React from "react";
-import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
-import {Layout, Menu, Icon} from "antd";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { Layout, Menu, Icon } from "antd";
 
 // 路由的导入
 import router from "@/routers";
 
 // 导入 iconfont 图标库中的图标
-import {IconFont} from '@/tools/IconFontSetting';
+import { IconFont } from '@/tools/IconFontSetting';
 
 // 控制面板
 import ControlPanel from '@/components/ControlPanel';
@@ -15,10 +15,10 @@ import ControlPanel from '@/components/ControlPanel';
 import FixedPlayer from '@/components/FixedPlayer';
 
 // 获取音乐信息
-import {useMusicMessage} from "@/hooks";
+import { useMusicMessage } from "@/hooks";
 
 // 内联样式
-const styles: {[propName: string]: React.CSSProperties} = {
+const styles: { [propName: string]: React.CSSProperties } = {
     Header: {
         height: "auto",
         padding: "0",
@@ -56,7 +56,7 @@ const menuMessage = [
             { k: 1, routerLink: "/", iconType: "icon-Music", text: "发现音乐" },
             { k: 2, routerLink: "/fm", iconType: "icon-tubiaozhizuomobanyihuifu-", text: "私人FM" },
             { k: 3, routerLink: "/videos", iconType: "icon-shipin", text: "视频" },
-            { k: 4, routerLink: "/penpal", iconType: "icon-pengyou", text: "朋友"}
+            { k: 4, routerLink: "/penpal", iconType: "icon-pengyou", text: "朋友" }
         ]
     },
     {
@@ -72,7 +72,7 @@ const menuMessage = [
         key: "sub3",
         title: (
             <span>
-                <Icon type="setting"/>
+                <Icon type="setting" />
                 <span>创建的歌单</span>
             </span>
         ),
@@ -83,17 +83,17 @@ const menuMessage = [
 ];
 
 const App: React.FC = () => {
-    const {Header, Sider, Content, Footer} = Layout;
-    const {SubMenu} = Menu;
+    const { Header, Sider, Content, Footer } = Layout;
+    const { SubMenu } = Menu;
 
     // 获取音乐信息, 包括url
-    const {musicMsgState, setListIndex, setID, setDuration} = useMusicMessage();
+    const { musicMsgState, setListIndex, setID, setDuration } = useMusicMessage();
 
     return (
         <Router>
             <Layout>
                 <Header style={styles.Header}>
-                    <ControlPanel/>
+                    <ControlPanel />
                 </Header>
                 <Layout style={styles.Layout} className='ref-content'>
                     <Sider width={255} style={styles.Sider}>

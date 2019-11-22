@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import Swiper from "swiper";
 
 import './Banner.scss'
@@ -9,10 +9,11 @@ interface IProps {
 
 const Banner = (props: IProps) => {
     const sliderRef = useRef(null);
-    const {data} = props;
+    const { data } = props;
 
+    // 初始化 Swiper
     useEffect(() => {
-        // swiper 初始化
+        // swiper 配置
         // @ts-ignore
         const mySwiper = new Swiper('.swiper-container', {
             init: false, // 是否立即初始化
@@ -22,7 +23,7 @@ const Banner = (props: IProps) => {
             autoplay: true, // 自动播放
             loop: true, // 循环模式选项
             loopedSlides: 3, // 设置所要用到的loop个数(一般设置大于可视slide个数2个即可)
-            // parallax: true, // 开启视差效果。
+            parallax: true, // 开启视差效果。
             preloadImages: false, // 是否强制加载所有图片
             updateOnImagesReady: true, // 所有的内嵌图像（img标签）加载完成后 Swiper 会重新初始化。因此需要设置为 true
             spaceBetween: -215, // slider 之间的距离
@@ -76,7 +77,7 @@ const Banner = (props: IProps) => {
 
     return (
         <div>
-            <div className="swiper-container" style={{margin: "0 50px", borderRadius: "10px"}}>
+            <div className="swiper-container" style={{ margin: "0 50px", borderRadius: "10px" }}>
                 <div className="swiper-wrapper">
                     {data.map((item, index) => {
                         return (
@@ -84,9 +85,12 @@ const Banner = (props: IProps) => {
                                 key={index}
                                 className="swiper-slide"
                                 ref={sliderRef}
-                                style={{position: 'relative', width: '500px'}}
+                                style={{
+                                    position: 'relative',
+                                    width: '500px'
+                                }}
                             >
-                                <img src={item.imgSrc} alt="" style={{width: "500px", borderRadius: "10px"}}/>
+                                <img src={item.imgSrc} style={{ width: "500px", borderRadius: "10px" }} alt='' />
                                 <span style={{
                                     position: 'absolute',
                                     bottom: 0,
@@ -103,10 +107,10 @@ const Banner = (props: IProps) => {
                 </div>
 
                 {/* 分页器 */}
-                <div className="swiper-pagination"/>
+                <div className="swiper-pagination" />
                 {/* 导航按钮 */}
-                <div className="swiper-button-prev hover"/>
-                <div className="swiper-button-next hover"/>
+                <div className="swiper-button-prev hover" />
+                <div className="swiper-button-next hover" />
             </div>
 
         </div>

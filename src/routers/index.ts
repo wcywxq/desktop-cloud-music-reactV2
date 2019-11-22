@@ -29,7 +29,7 @@ const router: Array<RouterArray> = [
     component: Penpal
   },
   {
-    path: "/search/:keywords",
+    path: "/search/:keywords/:type",
     component: SearchMusic
   }
 ];
