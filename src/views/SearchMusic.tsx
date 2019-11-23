@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'reinspect'
 import { useHistory, useParams } from 'react-router-dom';
-import { Tabs } from 'antd';
+import { Tabs, Tag } from 'antd';
 
 import { Single, Singer, Album, Video, Playlist, Lyric, Radio, User } from '@/components/Search';
 import './SearchMusic.scss';
@@ -15,7 +15,8 @@ const SearchMusic: React.FC = () => {
     // 获取参数
     const { keywords } = useParams();
 
-    const [name, setName] = useState('单曲', '显示的名字');
+    // 显示的名字 
+    const [name, setName] = useState(['单曲', '首'], '显示的名字');
 
     // 获取数据请求方法
     const { searchMusicState, setParams } = useSearchMusic({ keywords: '', limit: 100, offset: 0 });
@@ -31,39 +32,54 @@ const SearchMusic: React.FC = () => {
     return (
         <div>
             <header>
-                <span className="m-s-name">{keywords}</span>{" "}{" "}{" "}
-                找到 {0} {name}
+                <Tag color="gold" style={{
+                    height: '30px',
+                    lineHeight: '30px',
+                    fontSize: '14px'
+                }}>{keywords}</Tag>
+                <Tag color="cyan">找到{" "}{searchMusicState.dataCount}{" "}{name[1]}{name[0]}</Tag>
             </header>
             <article>
                 <Tabs defaultActiveKey="1" onChange={key => {
                     history.push(`/search/${keywords}/${key}`);
-                    if (key === '100') {
-                        setName('歌手');
-                    } else if (key === '10') {
-                        setName('专辑');
-                    } else if (key === '1014') {
-                        setName('视频');
-                    } else if (key === '1000') {
-                        setName('歌单');
-                    } else if (key === '1006') {
-                        setName('歌词');
-                    } else if (key === '1009') {
-                        setName('电台');
-                    } else if (key === '1002') {
-                        setName('用户');
-                    } else {
-                        setName('单曲');
-                    }
                     setParams({ keywords, type: key, limit: 100, offset: 0 });
+                    if (key === '100') {
+                        setName(['歌手', '位']);
+                    } else if (key === '10') {
+                        setName(['专辑', '张']);
+                    } else if (key === '1014') {
+                        setName(['视频', '个']);
+                    } else if (key === '1000') {
+                        setName(['歌单', '个']);
+                    } else if (key === '1006') {
+                        setName(['歌词', '首']);
+                    } else if (key === '1009') {
+                        setName(['电台', '个']);
+                    } else if (key === '1002') {
+                        setName(['用户', '位']);
+                    } else {
+                        setName(['单曲', '首']);
+                    }
                 }}>
                     <TabPane tab="单曲" key="1">
                         <div className="m-s-tab-item m-s-single">
-                            <Single {...searchMusicState} {...searchMusicState.dataObj.songs} setParams={setParams} />
+                            <Single
+                                {...searchMusicState}
+                                data={searchMusicState.dataObj.songs}
+                                count={searchMusicState.dataCount}
+                                setParams={setParams}
+                            />
                         </div>
                     </TabPane>
                     <TabPane tab="歌手" key="100">
                         <div className="m-s-tab-item m-s-singer">
                             <Singer />
+                            {/* <Singer 
+                                {...searchMusicState}
+                                data={searchMusicState.dataObj.artists}
+                                count={searchMusicState.dataCount}
+                                setParams={setParams}
+                            /> */}
                         </div>
                     </TabPane>
                     <TabPane tab="专辑" key="10">

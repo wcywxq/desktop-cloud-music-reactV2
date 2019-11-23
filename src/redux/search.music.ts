@@ -28,15 +28,16 @@ export interface SearchMusicState {
     isError: boolean,
     dataType: string,
     dataObj: {
-        songs: { count: number, data: any[] },
-        artists: { count: number, data: any[] },
-        albums: { count: number, data: any[] },
-        videos: { count: number, data: any[] },
-        playlists: { count: number, data: any[] },
-        lyrics: { count: number, data: any[] },
-        djRadios: { count: number, data: any[] },
-        userprofiles: { count: number, data: any[] }
-    }
+        songs: any[],
+        artists: any[],
+        albums: any[],
+        videos: any[],
+        playlists: any[],
+        lyrics: any[],
+        djRadios: any[],
+        userprofiles: any[]
+    },
+    dataCount: number
 }
 
 // reducer
@@ -58,12 +59,9 @@ export const searchMusicReducer = (
                 isError: false,
                 dataObj: {
                     ...state.dataObj,
-                    [action.dataType]: {
-                        // ...state.dataObj[action.dataType as any],
-                        count: action.count,
-                        data: action.payLoad
-                    }
-                }
+                    [action.dataType]: action.payLoad
+                },
+                dataCount: action.count
             };
         case SEARCH_MUSIC_FAIL:
             return {

@@ -166,6 +166,7 @@ export function Single(props: IProps) {
                     <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={<span>请求失败</span>} />
                     :
                     <Table<SingleData>
+                        style={{ cursor: 'pointer' }}
                         loading={isLoading}
                         columns={columns}
                         dataSource={dataSource}

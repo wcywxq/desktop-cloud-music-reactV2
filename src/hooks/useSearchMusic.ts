@@ -23,15 +23,16 @@ export const useSearchMusic = (initialParams: InitialParams) => {
         isError: false,
         dataType: 'songs',
         dataObj: {
-            songs: { count: 0, data: [] },
-            artists: { count: 0, data: [] },
-            albums: { count: 0, data: [] },
-            videos: { count: 0, data: [] },
-            playlists: { count: 0, data: [] },
-            lyrics: { count: 0, data: [] },
-            djRadios: { count: 0, data: [] },
-            userprofiles: { count: 0, data: [] }
-        }
+            songs: [],
+            artists: [],
+            albums: [],
+            videos: [],
+            playlists: [],
+            lyrics: [],
+            djRadios: [],
+            userprofiles: []
+        },
+        dataCount: 0
     }, '音乐搜索的reducer');
 
     useEffect(() => {
