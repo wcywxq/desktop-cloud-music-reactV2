@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Swiper from "swiper";
 
-import './Banner.scss'
+import './BannerWidget.scss'
 
 interface IProps {
     data: any[]

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import { Input, Icon, Badge, Popover, Tag, Spin } from 'antd'
 
-import './ControlPanel.scss'
+import './ControlPanelWidget.scss'
 import { useSearchHot } from "@/hooks";
 
 const ControlPanel: React.FC = () => {

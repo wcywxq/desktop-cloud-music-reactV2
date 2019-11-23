@@ -3,7 +3,7 @@ import React, { useRef, MutableRefObject, useEffect } from "react"
 import { useState } from 'reinspect'
 import { Row, Col, Button, Icon, Slider, Popover, Table } from 'antd'
 
-import './FixedPlayer.scss'
+import './FixedPlayerWidget.scss'
 
 import { IconFont, formatDuration } from '@/tools'
 
@@ -16,7 +16,7 @@ import { useMusicPlayList } from "@/hooks"
 import { ColumnProps } from "antd/lib/table"
 
 // 组件
-import MusicDetail from "@/components/MusicDetail";
+import MusicDetailWidget from "@/components/MusicDetailWidget";
 
 // 接口
 interface PlayListData {
@@ -302,7 +302,7 @@ const FixedPlayer = (props: IProps) => {
                                     alt=''
                                     onClick={() => setVisible(!visible)}
                                 />
-                                <MusicDetail visible={visible} setVisible={setVisible} />
+                                <MusicDetailWidget visible={visible} setVisible={setVisible} />
                             </Col>
                             <Col span={7}>
                                 {

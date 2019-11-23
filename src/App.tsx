@@ -9,10 +9,10 @@ import router from "@/routers";
 import { IconFont } from '@/tools/IconFontSetting';
 
 // 控制面板
-import ControlPanel from '@/components/ControlPanel';
+import ControlPanelWidget from '@/components/ControlPanelWidget';
 
 // 浮动播放器
-import FixedPlayer from '@/components/FixedPlayer';
+import FixedPlayerWidget from '@/components/FixedPlayerWidget';
 
 // 获取音乐信息
 import { useMusicMessage } from "@/hooks";
@@ -93,7 +93,7 @@ const App: React.FC = () => {
         <Router>
             <Layout>
                 <Header style={styles.Header}>
-                    <ControlPanel />
+                    <ControlPanelWidget />
                 </Header>
                 <Layout style={styles.Layout} className='ref-content'>
                     <Sider width={255} style={styles.Sider}>
@@ -136,7 +136,7 @@ const App: React.FC = () => {
                     </Content>
                 </Layout>
                 <Footer style={styles.Footer}>
-                    <FixedPlayer
+                    <FixedPlayerWidget
                         musicMsgState={musicMsgState}
                         setListIndex={setListIndex}
                         setID={setID}

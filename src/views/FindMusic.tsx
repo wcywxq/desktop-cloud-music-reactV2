@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Tabs } from 'antd'
 
 import { useBanner } from '@/hooks'
-import Banner from "@/components/Banner";
+import BannerWidget from "@/components/BannerWidget";
 
 const FindMusic: React.FC = () => {
   const { state } = useBanner();
@@ -16,7 +16,7 @@ const FindMusic: React.FC = () => {
             onChange={key => console.log(key)}
           >
             <TabPane tab="个性推荐" key="1">
-              <Banner data={state.bannerUrl} />
+              <BannerWidget data={state.bannerUrl} />
             </TabPane>
             <TabPane tab="歌单" key="2">
               Content of Tab Pane 2
