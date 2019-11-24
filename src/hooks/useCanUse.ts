@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { useReducer, useState } from 'reinspect'
-import axios from 'axios'
 
 import { MUSIC_CAN_USE } from '@/redux/constants'
 import { musicCanuseReducer } from '@/redux'
@@ -18,9 +17,7 @@ export const useCanUse = () => {
 
         const fetchData = async () => {
             try {
-                const result = await axios.get(fetchApi.check, {
-                    params: { id: mid }
-                });
+                const result = await fetchApi.check({ id: mid });
                 if (!didCancel && result.status === 200) {
                     dispatch({
                         type: MUSIC_CAN_USE,
@@ -45,5 +42,5 @@ export const useCanUse = () => {
         }
     }, [mid]);
 
-    return {canUseState, setMid}
+    return { canUseState, setMid }
 };

@@ -1,10 +1,9 @@
-import {useEffect} from "react";
-import {useReducer} from 'reinspect'
-import axios from 'axios'
+import { useEffect } from "react";
+import { useReducer } from 'reinspect'
 
-import {fetchApi} from '@/api'
-import {bannerReducer} from '@/redux'
-import {BANNER_FAIL, BANNER_INIT, BANNER_SUCCESS} from '@/redux/constants'
+import { fetchApi } from '@/api'
+import { bannerReducer } from '@/redux'
+import { BANNER_FAIL, BANNER_INIT, BANNER_SUCCESS } from '@/redux/constants'
 
 export const useBanner = () => {
     const [state, dispatch] = useReducer(bannerReducer, {
@@ -17,11 +16,10 @@ export const useBanner = () => {
         let didCancel = false;
 
         const fetchData = async () => {
-            dispatch({type: BANNER_INIT});
+            dispatch({ type: BANNER_INIT });
             try {
-                const result = await axios.get(fetchApi.banner);
-                if(!didCancel && result.data.code === 200) {
-                    console.log(result.data.banners);
+                const result = await fetchApi.banner();
+                if (!didCancel && result.data.code === 200) {
                     dispatch({
                         type: BANNER_SUCCESS,
                         bannerUrl: result.data.banners.map((item: any) => {
@@ -34,8 +32,8 @@ export const useBanner = () => {
                     })
                 }
             } catch (err) {
-                if(!didCancel) {
-                    dispatch({type: BANNER_FAIL})
+                if (!didCancel) {
+                    dispatch({ type: BANNER_FAIL })
                 }
             }
         };

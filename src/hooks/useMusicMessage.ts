@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { useReducer, useState } from "reinspect";
-import axios from 'axios'
 
 import { MUSIC_MESSAGE_FAIL, MUSIC_MESSAGE_INIT, MUSIC_MESSAGE_SUCCESS } from "@/redux/constants";
 import { musicUrlReducer } from '@/redux'
@@ -29,13 +28,9 @@ export const useMusicMessage = () => {
             dispatch({ type: MUSIC_MESSAGE_INIT });
             try {
                 // 获取音乐 url
-                const resMusicUrl = await axios.get(fetchApi.getMusicUrl, {
-                    params: { id }
-                });
+                const resMusicUrl = await fetchApi.getMusicUrl({ id });
                 // 获取音乐详情，背景图片
-                const resMusicDetail = await axios.get(fetchApi.getMusicDetail, {
-                    params: { ids: id }
-                });
+                const resMusicDetail = await fetchApi.getMusicDetail({ ids: id });
 
                 if (!didCancel &&
                     resMusicUrl.data.code === 200 &&
@@ -61,7 +56,7 @@ export const useMusicMessage = () => {
                 }
             }
         };
-        if(id) {
+        if (id) {
             fetchData()
         }
 

@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { useReducer } from 'reinspect'
-import axios from 'axios'
 
 import { searchHotReducer } from '@/redux'
 import { SEARCH_HOT_FAIL, SEARCH_HOT_INIT, SEARCH_HOT_SUCCESS } from '@/redux/constants'
@@ -18,7 +17,7 @@ export const useSearchHot = (initialData: any) => {
         const fetchData = async () => {
             dispatch({ type: SEARCH_HOT_INIT });
             try {
-                const result = await axios.get(fetchApi.hot);
+                const result = await fetchApi.hot();
                 if (!didCancel && result.data.code === 200) {
                     dispatch({
                         type: SEARCH_HOT_SUCCESS,

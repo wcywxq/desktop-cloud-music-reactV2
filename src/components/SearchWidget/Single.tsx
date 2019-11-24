@@ -9,7 +9,7 @@ import './Single.scss'
 // 类型
 import { ColumnProps, PaginationConfig } from 'antd/lib/table'
 import { MusicProjectState } from "@/redux"
-import { InitialParams } from '@/hooks'
+import { SearchParams } from '@/api'
 
 // 添加音乐到播放列表的 reducer
 import { useMusicPlayList, useMusicMessage, useCanUse } from "@/hooks"
@@ -20,7 +20,7 @@ interface IProps {
     isError: boolean;
     data: any[];
     count: number;
-    setParams: React.Dispatch<React.SetStateAction<InitialParams>>;
+    setParams: React.Dispatch<React.SetStateAction<SearchParams>>;
 }
 
 // 单曲列表数据渲染的类型
