@@ -113,5 +113,5 @@ export const fetchApi = {
    * 推荐 MV
    * @example /personalized/mv
    */
-  recommendMv: () => get('personalized/mv'),
+  recommendMv: () => get('personalized/mv')
 };
