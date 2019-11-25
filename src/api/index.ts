@@ -14,19 +14,13 @@ axios.interceptors.request.use(
     };
     return config;
   },
-  (error: AxiosError) => {
-    return Promise.reject(error)
-  }
+  (error: AxiosError) => Promise.reject(error)
 )
 
 // http response 拦截，捕获异常
 axios.interceptors.response.use(
-  (response: AxiosResponse) => {
-    return response;
-  },
-  (error: AxiosError) => {
-    return Promise.reject(error.response);
-  }
+  (response: AxiosResponse) => response,
+  (error: AxiosError) => Promise.reject(error.response)
 )
 
 /**
