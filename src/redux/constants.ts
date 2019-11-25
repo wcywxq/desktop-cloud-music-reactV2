@@ -63,3 +63,17 @@ export type MUSIC_MESSAGE_FAIL = typeof MUSIC_MESSAGE_FAIL
 // 音乐是否可用
 export const MUSIC_CAN_USE = 'MUSIC_CAN_USE';
 export type MUSIC_CAN_USE = typeof MUSIC_CAN_USE
+
+
+/**
+ * 个性推荐
+ */
+// init
+export const RECOMMAND_INIT = 'RECOMMAND_INIT';
+export type RECOMMAND_INIT = typeof RECOMMAND_INIT
+// success
+export const RECOMMAND_SUCCESS = 'RECOMMAND_SUCCESS';
+export type RECOMMAND_SUCCESS = typeof RECOMMAND_SUCCESS
+// fail
+export const RECOMMAND_FAIL = 'RECOMMAND_FAIL';
+export type RECOMMAND_FAIL = typeof RECOMMAND_FAIL

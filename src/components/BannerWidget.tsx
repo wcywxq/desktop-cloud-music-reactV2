@@ -76,7 +76,7 @@ const Banner = (props: IProps) => {
     }, [data.length]);
 
     return (
-        <div>
+        <div style={{ marginBottom: '20px' }}>
             <div className="swiper-container" style={{ margin: "0 50px", borderRadius: "10px" }}>
                 <div className="swiper-wrapper">
                     {data.map((item, index) => {

@@ -27,13 +27,15 @@ const styles: { [propName: string]: React.CSSProperties } = {
         zIndex: 10
     },
     Layout: {
-        background: "#fff"
+        background: "#fff",
+        paddingBottom: '162px'
     },
     Sider: {
         height: "100%"
     },
     Content: {
-        padding: "0 40px"
+        padding: "0 40px",
+        background: "rgb(250, 250, 250)"
     },
     Footer: {
         position: 'fixed',

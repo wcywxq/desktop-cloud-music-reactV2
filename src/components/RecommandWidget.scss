@@ -1,0 +1,79 @@
+.recommendSongList {
+  padding: 15px 0 30px;
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  text-align: center;
+  cursor: pointer;
+}
+
+.exclusiveBroadcast {
+  padding: 15px 0 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  justify-content: space-between;
+  cursor: pointer;
+
+  &-item {
+    position: relative;
+    width: 250px;
+
+    &:hover {
+      .icon {
+        animation: showIcon 1s ease;
+        color: #ff6700;
+      }
+    }
+
+    @keyframes showIcon {
+      from {
+        color: rgba(0, 0, 0, 0.7);
+      }
+
+      to {
+        color: #ff6700;
+      }
+    }
+
+    .icon {
+      font-size: 20px;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+    }
+  }
+}
+
+.newSong {
+  border: 1px solid #eee;
+  padding: 5px 0 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-column-gap: 15px;
+
+  &-item {
+    border-bottom: 1px solid #eee;
+    align-self: center;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgb(235, 235, 235);
+    }
+
+    .music-name {
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .artist-name {
+      font-size: 12px;
+      color: rgb(105, 105, 105);
+
+      &:hover {
+        cursor: pointer;
+        color: #333;
+      }
+    }
+  }
+}

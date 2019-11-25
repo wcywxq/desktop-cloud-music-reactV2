@@ -92,6 +92,7 @@ export const fetchApi = {
    * @example /song/detail?ids=347230,347231
    */
   getMusicDetail: (params: { ids: number | number[] }) => get('song/detail', params),
+  // 个性推荐部分
   /** 
    * 推荐歌单
    * @param [limit] 取出数量
@@ -104,14 +105,18 @@ export const fetchApi = {
    */
   exclusiveBroadcast: () => get('personalized/privatecontent'),
   /**
-   * 最新音乐 -> 新歌速递
-   * @param [type] 全部:0 华语:7 欧美:96 日本:8 韩国:16
-   * @example /top/song?type=96
+   * 推荐新音乐 
+   * @example /personalized/newsong
    */
-  newestMusic: (params: { type: number }) => get('top/song', params),
+  newSong: () => get('personalized/newsong'),
   /**
    * 推荐 MV
    * @example /personalized/mv
    */
-  recommendMv: () => get('personalized/mv')
+  recommendMv: () => get('personalized/mv'),
+  /**
+   * 推荐电台
+   * @example /personalized/djprogram
+   */
+  djprogram: () => get('personalized/djprogram')
 };

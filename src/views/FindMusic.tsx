@@ -2,12 +2,15 @@ import * as React from 'react'
 import { Tabs } from 'antd'
 
 import BannerWidget from "@/components/BannerWidget";
-import RecommandTitleWidget from '@/components/RecommandTitleWidget';
-import { useBanner } from '@/hooks'
+import RecommandWidget from '@/components/RecommandWidget';
+import { useBanner, useRecommand } from '@/hooks'
 
 const FindMusic: React.FC = () => {
   const { state } = useBanner();
+  const { recommandState } = useRecommand();
+
   const { TabPane } = Tabs;
+
   return (
     <div className="find-music">
       <header>
@@ -18,7 +21,7 @@ const FindMusic: React.FC = () => {
           >
             <TabPane tab="个性推荐" key="1">
               <BannerWidget data={state.bannerUrl} />
-              <RecommandTitleWidget title='章三' routerLink='/' />
+              <RecommandWidget {...recommandState.variety} />
             </TabPane>
             <TabPane tab="歌单" key="2">
               Content of Tab Pane 2
