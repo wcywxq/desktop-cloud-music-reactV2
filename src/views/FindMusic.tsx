@@ -1,8 +1,7 @@
 import * as React from 'react'
 import { Tabs } from 'antd'
 
-import BannerWidget from "@/components/BannerWidget";
-import RecommandWidget from '@/components/RecommandWidget';
+import { Banner, Recommand, Adjustment } from "@/components/FindMusicWidget";
 import { useBanner, useRecommand } from '@/hooks'
 
 const FindMusic: React.FC = () => {
@@ -20,8 +19,12 @@ const FindMusic: React.FC = () => {
             onChange={key => console.log(key)}
           >
             <TabPane tab="个性推荐" key="1">
-              <BannerWidget data={state.bannerUrl} />
-              <RecommandWidget {...recommandState.variety} />
+              {/* 轮播图 */}
+              <Banner data={state.bannerUrl} />
+              {/* 推荐内容 */}
+              <Recommand {...recommandState.variety} />
+              {/* 调整排版控件 */}
+              <Adjustment />
             </TabPane>
             <TabPane tab="歌单" key="2">
               Content of Tab Pane 2

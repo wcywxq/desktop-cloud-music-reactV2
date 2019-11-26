@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import Swiper from "swiper";
 
-import './BannerWidget.scss'
+import './Banner.scss'
 
 interface IProps {
     data: any[]
 }
 
-const Banner = (props: IProps) => {
+export const Banner = (props: IProps) => {
     const sliderRef = useRef(null);
     const { data } = props;
 
@@ -116,5 +116,3 @@ const Banner = (props: IProps) => {
         </div>
     )
 };
-
-export default Banner
