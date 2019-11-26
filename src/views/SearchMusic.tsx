@@ -3,7 +3,7 @@ import { useState } from 'reinspect'
 import { useHistory, useParams } from 'react-router-dom';
 import { Tabs, Tag } from 'antd';
 
-import { Single, Singer, Album, Video, Playlist, Lyric, Radio, User } from '@/components/SearchWidget';
+import { Single, Singer, Album, Video, Playlist, Lyric, Radio, User } from '@/components/search';
 import './SearchMusic.scss';
 
 import { useSearchMusic } from '@/hooks';

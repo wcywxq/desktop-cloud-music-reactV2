@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Tabs } from 'antd'
 
-import { Banner, Recommand, Adjustment } from "@/components/FindMusicWidget";
+import { Banner, Recommand, Adjustment } from "@/components/find-music";
 import { useBanner, useRecommand } from '@/hooks'
 
 const FindMusic: React.FC = () => {
