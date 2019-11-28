@@ -8,11 +8,8 @@ import router from "@/routers";
 // 导入 iconfont 图标库中的图标
 import { IconFont } from '@/tools/IconFontSetting';
 
-// 控制面板
-import ControlPanelWidget from '@/components/ControlPanelWidget';
-
-// 浮动播放器
-import FixedPlayerWidget from '@/components/FixedPlayerWidget';
+// 头部控制组件，播放器悬浮组件
+import { Top, Bottom } from '@/components/controls';
 
 // 获取音乐信息
 import { useMusicMessage } from "@/hooks";
@@ -27,8 +24,7 @@ const styles: { [propName: string]: React.CSSProperties } = {
         zIndex: 10
     },
     Layout: {
-        background: "#fff",
-        paddingBottom: '162px'
+        background: "#fff"
     },
     Sider: {
         height: "100%"
@@ -84,7 +80,7 @@ const menuMessage = [
     }
 ];
 
-const App: React.FC = () => {
+const App = () => {
     const { Header, Sider, Content, Footer } = Layout;
     const { SubMenu } = Menu;
 
@@ -95,7 +91,7 @@ const App: React.FC = () => {
         <Router>
             <Layout>
                 <Header style={styles.Header}>
-                    <ControlPanelWidget />
+                    <Top />
                 </Header>
                 <Layout style={styles.Layout} className='ref-content'>
                     <Sider width={255} style={styles.Sider}>
@@ -138,7 +134,7 @@ const App: React.FC = () => {
                     </Content>
                 </Layout>
                 <Footer style={styles.Footer}>
-                    <FixedPlayerWidget
+                    <Bottom
                         musicMsgState={musicMsgState}
                         setListIndex={setListIndex}
                         setID={setID}

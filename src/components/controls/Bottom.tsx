@@ -3,7 +3,7 @@ import React, { useRef, MutableRefObject, useEffect } from "react"
 import { useState } from 'reinspect'
 import { Row, Col, Button, Icon, Slider, Popover, Table } from 'antd'
 
-import './FixedPlayerWidget.scss'
+import './Bottom.scss'
 
 import { IconFont, formatDuration } from '@/tools'
 
@@ -41,7 +41,7 @@ const styles: { [propsName: string]: React.CSSProperties } = {
     }
 };
 
-const FixedPlayer = (props: IProps) => {
+export const Bottom = (props: IProps) => {
     // 获取音乐信息, 包括url
     const { musicMsgState, setListIndex, setID, setDuration } = props;
 
@@ -394,4 +394,3 @@ const FixedPlayer = (props: IProps) => {
     )
 };
 
-export default FixedPlayer

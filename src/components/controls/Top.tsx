@@ -3,10 +3,10 @@ import { useState } from 'reinspect'
 import { useHistory, Link } from 'react-router-dom'
 import { Input, Icon, Badge, Popover, Tag, Spin, Row, Col, Modal } from 'antd'
 
-import './ControlPanelWidget.scss'
+import './Top.scss'
 import { useSearchHot } from "@/hooks";
 
-const ControlPanel: React.FC = () => {
+export const Top: React.FC = () => {
     // react-router 提供的 HOOKS
     const history = useHistory();
 
@@ -112,7 +112,5 @@ const ControlPanel: React.FC = () => {
         </div>
     )
 }
-
-export default ControlPanel
 
 

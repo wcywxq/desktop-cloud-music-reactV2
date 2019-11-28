@@ -1,7 +1,14 @@
-// 推荐歌单
-.recommendSongList {
+.recommendSongList,
+.exclusiveBroadcast,
+.newSong,
+.recommandMv,
+.djprogram {
   padding: 15px 0 30px;
   display: grid;
+}
+
+// 推荐歌单
+.recommendSongList {
   grid-template-columns: repeat(5, 20%);
   margin: 0 auto;
   text-align: center;
@@ -122,8 +129,6 @@
 
 // 独家放送
 .exclusiveBroadcast {
-  padding: 15px 0 30px;
-  display: grid;
   grid-template-columns: repeat(4, 25%);
   justify-content: space-between;
   cursor: pointer;
@@ -166,8 +171,6 @@
 
 // 最新音乐
 .newSong {
-  padding: 5px 0 30px;
-  display: grid;
   grid-template-columns: repeat(2, 50%);
   grid-column-gap: 15px;
 
@@ -256,8 +259,6 @@
 
 // 推荐Mv
 .recommandMv {
-  padding: 15px 0 30px;
-  display: grid;
   grid-template-columns: repeat(4, 25%);
 
   &-item {
@@ -339,7 +340,6 @@
 
 // 推荐电台
 .djprogram {
-  display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 10px;
   grid-row-gap: 10px;
@@ -347,6 +347,7 @@
   &-item {
     display: flex;
     align-items: center;
+    border-bottom: 1px solid #eee;
     border-radius: 10px;
     cursor: pointer;
 

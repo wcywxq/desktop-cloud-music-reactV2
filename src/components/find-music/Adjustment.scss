@@ -1,3 +1,70 @@
 .adjustment {
-  padding: 64px auto;
+  margin: 64px auto 128px;
+  text-align: center;
+
+  .intro {
+    cursor: pointer;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: rgb(195, 195, 195);
+
+    &:hover {
+      color: #333;
+    }
+  }
+
+  .btn {
+    width: 120px;
+    border-color: #C2453A;
+    border-radius: 20px;
+    font-size: 12px;
+    color: #C2453A;
+
+    &:hover {
+      animation: adjustChangeColor .5s ease .3s forwards;
+    }
+
+    @keyframes adjustChangeColor {
+      100% {
+        background-color: #C2453A;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+.sort {
+  &-title {
+    font-size: 12px;
+    color: rgb(190, 190, 190);
+  }
+
+  &-item {
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 12px;
+
+    &:hover {
+      animation: sortItem .3s ease .3s forwards;
+    }
+
+    @keyframes sortItem {
+      100% {
+        background-color: rgb(235, 235, 235);
+      }
+    }
+
+    &-icon {
+      padding-right: 10px;
+    }
+
+    &-text {
+      padding-left: 10px;
+    }
+  }
+}
+
+.orange-background-class {
+  color: #ffffff !important;
+  background-color: #ff6700 !important;
 }

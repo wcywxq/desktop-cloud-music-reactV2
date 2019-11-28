@@ -1,36 +1,33 @@
-import FindMusic from "@/views/FindMusic"
-import PersonalFm from "@/views/PersonalFm"
-import Videos from "@/views/Videos"
-import Penpal from "@/views/Penpal"
-import SearchMusic from "@/views/SearchMusic"
+import Loadable from 'react-loadable';
+import { Loading } from "./Loading";
 
 interface RouterArray {
   path: string;
-  component: React.FC;
+  component: React.ComponentType;
   exact?: boolean;
 }
 
 const router: Array<RouterArray> = [
   {
     path: "/",
-    component: FindMusic,
+    component: Loadable({ loader: () => import('@/views/FindMusic'), loading: Loading }),
     exact: true
   },
   {
     path: "/fm",
-    component: PersonalFm
+    component: Loadable({ loader: () => import('@/views/PersonalFm'), loading: Loading })
   },
   {
     path: "/videos",
-    component: Videos
+    component: Loadable({ loader: () => import('@/views/Videos'), loading: Loading })
   },
   {
     path: "/penpal",
-    component: Penpal
+    component: Loadable({ loader: () => import('@/views/Penpal'), loading: Loading })
   },
   {
     path: "/search/:keywords/:type",
-    component: SearchMusic
+    component: Loadable({ loader: () => import('@/views/SearchMusic'), loading: Loading })
   }
 ];
 
