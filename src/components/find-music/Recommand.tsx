@@ -235,7 +235,7 @@ export const Recommand = (props: IProps) => {
 
   return (
     <div>
-      {showElement.map((item: any, index: number) => {
+      {showElement.map((item: ArrElementTypes, index: number) => {
         return (
           <div key={index}>
             {item.titleELement}
