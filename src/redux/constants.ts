@@ -77,3 +77,16 @@ export type RECOMMAND_SUCCESS = typeof RECOMMAND_SUCCESS
 // fail
 export const RECOMMAND_FAIL = 'RECOMMAND_FAIL';
 export type RECOMMAND_FAIL = typeof RECOMMAND_FAIL
+
+/**
+ * 视频详情
+ */
+// init
+export const VIDEO_DETAIL_INIT = 'VIDEO_DETAIL_INIT';
+export type VIDEO_DETAIL_INIT = typeof VIDEO_DETAIL_INIT
+// success
+export const VIDEO_DETAIL_SUCCESS = 'VIDEO_DETAIL_SUCCESS';
+export type VIDEO_DETAIL_SUCCESS = typeof VIDEO_DETAIL_SUCCESS
+// fail
+export const VIDEO_DETAIL_FAIL = 'VIDEO_DETAIL_FAIL';
+export type VIDEO_DETAIL_FAIL = typeof VIDEO_DETAIL_FAIL

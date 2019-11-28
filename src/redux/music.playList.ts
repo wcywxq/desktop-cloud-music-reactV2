@@ -63,6 +63,8 @@ export const musicPlayListReducer = (state: MusicProjectState[], action: MusicPr
             // 先删除 sessionStorage 中的数据
             sessionStorage.clear();
             // 然后删除 state 中的数据
-            return []
+            return [];
+        default:
+            throw new Error();
     }
 };

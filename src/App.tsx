@@ -98,7 +98,7 @@ const App = () => {
                     <Top />
                 </Header>
                 <Switch>
-                    <Route path="/video-detail" component={Loadable({ loader: () => import('@/views/VideoDetail'), loading: Loading })} />
+                    <Route path="/video-detail/:id" component={Loadable({ loader: () => import('@/views/VideoDetail'), loading: Loading })} />
                     <Route>
                         <Layout style={styles.Layout} className='ref-content'>
                             <Sider width={255} style={styles.Sider}>

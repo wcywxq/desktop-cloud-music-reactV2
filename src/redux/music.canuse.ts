@@ -23,6 +23,6 @@ export const musicCanuseReducer = (
                 message: action.message
             };
         default:
-            return state;
+            throw new Error();
     }
 };

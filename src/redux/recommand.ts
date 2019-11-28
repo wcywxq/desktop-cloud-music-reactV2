@@ -63,6 +63,6 @@ export const RecommandReducer = (
         isError: true
       }
     default:
-      return state
+      throw new Error();
   }
 }

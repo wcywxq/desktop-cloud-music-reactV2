@@ -51,6 +51,6 @@ export const searchHotReducer = (
                 isError: true
             }
         default:
-            throw new Error()
+            throw new Error();
     }
 }

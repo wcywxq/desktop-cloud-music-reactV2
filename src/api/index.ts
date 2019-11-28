@@ -118,5 +118,11 @@ export const fetchApi = {
    * 推荐电台
    * @example /personalized/djprogram
    */
-  djprogram: () => get('personalized/djprogram')
+  djprogram: () => get('personalized/djprogram'),
+  /**
+   * 获取视频详情
+   * @param id
+   * @example /video/detail?id=89ADDE33C0AAE8EC14B99F6750DB954D
+   */
+  videoDetail: (params: { id: string | number }) => get('video/detail', params)
 };
