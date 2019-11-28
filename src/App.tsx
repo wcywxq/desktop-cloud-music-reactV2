@@ -1,9 +1,13 @@
 import * as React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { Layout, Menu, Icon } from "antd";
+import Loadable from 'react-loadable'
 
 // 路由的导入
 import router from "@/routers";
+
+// 路由加载动画
+import { Loading } from "@/routers/Loading";
 
 // 导入 iconfont 图标库中的图标
 import { IconFont } from '@/tools/IconFontSetting';
@@ -93,54 +97,59 @@ const App = () => {
                 <Header style={styles.Header}>
                     <Top />
                 </Header>
-                <Layout style={styles.Layout} className='ref-content'>
-                    <Sider width={255} style={styles.Sider}>
-                        <Menu
-                            onClick={e => console.log("click ", e)}
-                            defaultSelectedKeys={["1"]}
-                            defaultOpenKeys={["sub1", "sub2", "sub3"]}
-                            mode="inline"
-                        >
-                            {menuMessage.map(item => {
-                                return (
-                                    <SubMenu key={item.key} title={item.title}>
-                                        {
-                                            item.menuItem.map(sub_item => {
-                                                return (
-                                                    <Menu.Item key={sub_item.k}>
-                                                        <Link to={sub_item.routerLink}>
-                                                            <IconFont type={sub_item.iconType} />
-                                                            {sub_item.text}
-                                                        </Link>
-                                                    </Menu.Item>
-                                                )
-                                            })
+                <Switch>
+                    <Route path="/video-detail" component={Loadable({ loader: () => import('@/views/VideoDetail'), loading: Loading })} />
+                    <Route>
+                        <Layout style={styles.Layout} className='ref-content'>
+                            <Sider width={255} style={styles.Sider}>
+                                <Menu
+                                    onClick={e => console.log("click ", e)}
+                                    defaultSelectedKeys={["1"]}
+                                    defaultOpenKeys={["sub1", "sub2", "sub3"]}
+                                    mode="inline"
+                                >
+                                    {menuMessage.map(item => {
+                                        return (
+                                            <SubMenu key={item.key} title={item.title}>
+                                                {
+                                                    item.menuItem.map(sub_item => {
+                                                        return (
+                                                            <Menu.Item key={sub_item.k}>
+                                                                <Link to={sub_item.routerLink}>
+                                                                    <IconFont type={sub_item.iconType} />
+                                                                    {sub_item.text}
+                                                                </Link>
+                                                            </Menu.Item>
+                                                        )
+                                                    })
+                                                }
+                                            </SubMenu>
+                                        )
+                                    })}
+                                </Menu>
+                            </Sider>
+                            <Content style={styles.Content}>
+                                <Switch>
+                                    {router.map((route, key) => {
+                                        if (route.exact) {
+                                            return <Route exact key={key} path={route.path} component={route.component} />
+                                        } else {
+                                            return <Route key={key} path={route.path} component={route.component} />
                                         }
-                                    </SubMenu>
-                                )
-                            })}
-                        </Menu>
-                    </Sider>
-                    <Content style={styles.Content}>
-                        <Switch>
-                            {router.map((route, key) => {
-                                if (route.exact) {
-                                    return <Route exact key={key} path={route.path} component={route.component} />
-                                } else {
-                                    return <Route key={key} path={route.path} component={route.component} />
-                                }
-                            })}
-                        </Switch>
-                    </Content>
-                </Layout>
-                <Footer style={styles.Footer}>
-                    <Bottom
-                        musicMsgState={musicMsgState}
-                        setListIndex={setListIndex}
-                        setID={setID}
-                        setDuration={setDuration}
-                    />
-                </Footer>
+                                    })}
+                                </Switch>
+                            </Content>
+                        </Layout>
+                        <Footer style={styles.Footer}>
+                            <Bottom
+                                musicMsgState={musicMsgState}
+                                setListIndex={setListIndex}
+                                setID={setID}
+                                setDuration={setDuration}
+                            />
+                        </Footer>
+                    </Route>
+                </Switch>
             </Layout>
         </Router>
     );
