@@ -1,6 +1,10 @@
 @mixin skin-color {
   .s {
     &-cl {
+      &-default {
+        color: #C2453A !important;
+      }
+
       &-black {
         color: #000000 !important;
       }
@@ -567,6 +571,10 @@
     }
 
     &-bgc {
+      &-default {
+        background-color: #C2453A !important;
+      }
+
       &-black {
         background-color: #000000 !important;
       }
@@ -1129,6 +1137,576 @@
 
       &-white {
         background-color: #ffffff !important;
+      }
+    }
+
+    &-bc {
+      &-default {
+        border-color: #C2453A !important;
+      }
+
+      &-black {
+        border-color: #000000 !important;
+      }
+
+      &-navy {
+        border-color: #000080 !important;
+      }
+
+      &-darkblue {
+        border-color: #00008b !important;
+      }
+
+      &-mediumblue {
+        border-color: #0000cd !important;
+      }
+
+      &-blue {
+        border-color: #0000ff !important;
+      }
+
+      &-darkgreen {
+        border-color: #006400 !important;
+      }
+
+      &-green {
+        border-color: #008000 !important;
+      }
+
+      &-teal {
+        border-color: #008080 !important;
+      }
+
+      &-darkcyan {
+        border-color: #008b8b !important;
+      }
+
+      &-deepskyblue {
+        border-color: #00bfff !important;
+      }
+
+      &-darkturquoise {
+        border-color: #00ced1 !important;
+      }
+
+      &-mediumspringgreen {
+        border-color: #00fa9a !important;
+      }
+
+      &-lime {
+        border-color: #00ff00 !important;
+      }
+
+      &-springgreen {
+        border-color: #00ff7f !important;
+      }
+
+      &-aqua {
+        border-color: #00ffff !important;
+      }
+
+      &-cyan {
+        border-color: #00ffff !important;
+      }
+
+      &-midnightblue {
+        border-color: #191970 !important;
+      }
+
+      &-dodgerblue {
+        border-color: #1e90ff !important;
+      }
+
+      &-lightseagreen {
+        border-color: #20b2aa !important;
+      }
+
+      &-forestgreen {
+        border-color: #228b22 !important;
+      }
+
+      &-seagreen {
+        border-color: #2e8b57 !important;
+      }
+
+      &-darkslategray {
+        border-color: #2f4f4f !important;
+      }
+
+      &-limegreen {
+        border-color: #32cd32 !important;
+      }
+
+      &-mediumseagreen {
+        border-color: #3cb371 !important;
+      }
+
+      &-turquoise {
+        border-color: #40e0d0 !important;
+      }
+
+      &-royalblue {
+        border-color: #4169e1 !important;
+      }
+
+      &-steelblue {
+        border-color: #4682b4 !important;
+      }
+
+      &-darkslateblue {
+        border-color: #483d8b !important;
+      }
+
+      &-mediumturquoise {
+        border-color: #48d1cc !important;
+      }
+
+      &-indigo {
+        border-color: #4b0082 !important;
+      }
+
+      &-darkolivegreen {
+        border-color: #556b2f !important;
+      }
+
+      &-cadetblue {
+        border-color: #5f9ea0 !important;
+      }
+
+      &-cornflowerblue {
+        border-color: #6495ed !important;
+      }
+
+      &-mediumaquamarine {
+        border-color: #66cdaa !important;
+      }
+
+      &-dimgray {
+        border-color: #696969 !important;
+      }
+
+      &-dimgrey {
+        border-color: #696969 !important;
+      }
+
+      &-slateblue {
+        border-color: #6a5acd !important;
+      }
+
+      &-olivedrab {
+        border-color: #6b8e23 !important;
+      }
+
+      &-slategray {
+        border-color: #708090 !important;
+      }
+
+      &-lightslategray {
+        border-color: #778899 !important;
+      }
+
+      &-mediumslateblue {
+        border-color: #7b68ee !important;
+      }
+
+      &-lawngreen {
+        border-color: #7cfc00 !important;
+      }
+
+      &-chartreuse {
+        border-color: #7fff00 !important;
+      }
+
+      &-aquamarine {
+        border-color: #7fffd4 !important;
+      }
+
+      &-maroon {
+        border-color: #800000 !important;
+      }
+
+      &-purple {
+        border-color: #800080 !important;
+      }
+
+      &-olive {
+        border-color: #808000 !important;
+      }
+
+      &-gray {
+        border-color: #808080 !important;
+      }
+
+      &-skyblue {
+        border-color: #87ceeb !important;
+      }
+
+      &-lightskyblue {
+        border-color: #87cefa !important;
+      }
+
+      &-blueviolet {
+        border-color: #8a2be2 !important;
+      }
+
+      &-darkred {
+        border-color: #8b0000 !important;
+      }
+
+      &-darkmagenta {
+        border-color: #8b008b !important;
+      }
+
+      &-saddlebrown {
+        border-color: #8b4513 !important;
+      }
+
+      &-darkseagreen {
+        border-color: #8fbc8f !important;
+      }
+
+      &-lightgreen {
+        border-color: #90ee90 !important;
+      }
+
+      &-mediumpurple {
+        border-color: #9370db !important;
+      }
+
+      &-darkviolet {
+        border-color: #9400d3 !important;
+      }
+
+      &-palegreen {
+        border-color: #98fb98 !important;
+      }
+
+      &-darkorchid {
+        border-color: #9932cc !important;
+      }
+
+      &-yellowgreen {
+        border-color: #9acd32 !important;
+      }
+
+      &-sienna {
+        border-color: #a0522d !important;
+      }
+
+      &-brown {
+        border-color: #a52a2a !important;
+      }
+
+      &-darkgray {
+        border-color: #a9a9a9 !important;
+      }
+
+      &-lightblue {
+        border-color: #add8e6 !important;
+      }
+
+      &-greenyellow {
+        border-color: #adff2f !important;
+      }
+
+      &-paleturquoise {
+        border-color: #afeeee !important;
+      }
+
+      &-lightsteelblue {
+        border-color: #b0c4de !important;
+      }
+
+      &-powderblue {
+        border-color: #b0e0e6 !important;
+      }
+
+      &-firebrick {
+        border-color: #b22222 !important;
+      }
+
+      &-darkgoldenrod {
+        border-color: #b8860b !important;
+      }
+
+      &-mediumorchid {
+        border-color: #ba55d3 !important;
+      }
+
+      &-rosybrown {
+        border-color: #bc8f8f !important;
+      }
+
+      &-darkkhaki {
+        border-color: #bdb76b !important;
+      }
+
+      &-silver {
+        border-color: #c0c0c0 !important;
+      }
+
+      &-mediumvioletred {
+        border-color: #c71585 !important;
+      }
+
+      &-indianred {
+        border-color: #cd5c5c !important;
+      }
+
+      &-peru {
+        border-color: #cd853f !important;
+      }
+
+      &-chocolate {
+        border-color: #d2691e !important;
+      }
+
+      &-tan {
+        border-color: #d2b48c !important;
+      }
+
+      &-lightgray {
+        border-color: #d3d3d3 !important;
+      }
+
+      &-thistle {
+        border-color: #d8bfd8 !important;
+      }
+
+      &-orchid {
+        border-color: #da70d6 !important;
+      }
+
+      &-goldenrod {
+        border-color: #daa520 !important;
+      }
+
+      &-palevioletred {
+        border-color: #db7093 !important;
+      }
+
+      &-crimson {
+        border-color: #dc143c !important;
+      }
+
+      &-gainsboro {
+        border-color: #dcdcdc !important;
+      }
+
+      &-plum {
+        border-color: #dda0dd !important;
+      }
+
+      &-burlywood {
+        border-color: #deb887 !important;
+      }
+
+      &-lightcyan {
+        border-color: #e0ffff !important;
+      }
+
+      &-lavender {
+        border-color: #e6e6fa !important;
+      }
+
+      &-darksalmon {
+        border-color: #e9967a !important;
+      }
+
+      &-violet {
+        border-color: #ee82ee !important;
+      }
+
+      &-palegoldenrod {
+        border-color: #eee8aa !important;
+      }
+
+      &-lightcoral {
+        border-color: #f08080 !important;
+      }
+
+      &-khaki {
+        border-color: #f0e68c !important;
+      }
+
+      &-aliceblue {
+        border-color: #f0f8ff !important;
+      }
+
+      &-honeydew {
+        border-color: #f0fff0 !important;
+      }
+
+      &-azure {
+        border-color: #f0ffff !important;
+      }
+
+      &-sandybrown {
+        border-color: #f4a460 !important;
+      }
+
+      &-wheat {
+        border-color: #f5deb3 !important;
+      }
+
+      &-beige {
+        border-color: #f5f5dc !important;
+      }
+
+      &-whitesmoke {
+        border-color: #f5f5f5 !important;
+      }
+
+      &-mintcream {
+        border-color: #f5fffa !important;
+      }
+
+      &-ghostwhite {
+        border-color: #f8f8ff !important;
+      }
+
+      &-salmon {
+        border-color: #fa8072 !important;
+      }
+
+      &-antiquewhite {
+        border-color: #faebd7 !important;
+      }
+
+      &-linen {
+        border-color: #faf0e6 !important;
+      }
+
+      &-lightgoldenrodyellow {
+        border-color: #fafad2 !important;
+      }
+
+      &-oldlace {
+        border-color: #fdf5e6 !important;
+      }
+
+      &-red {
+        border-color: #ff0000 !important;
+      }
+
+      &-fuchsia {
+        border-color: #ff00ff !important;
+      }
+
+      &-magenta {
+        border-color: #ff00ff !important;
+      }
+
+      &-deeppink {
+        border-color: #ff1493 !important;
+      }
+
+      &-orangered {
+        border-color: #ff4500 !important;
+      }
+
+      &-tomato {
+        border-color: #ff6347 !important;
+      }
+
+      &-hotpink {
+        border-color: #ff69b4 !important;
+      }
+
+      &-coral {
+        border-color: #ff7f50 !important;
+      }
+
+      &-darkorange {
+        border-color: #ff8c00 !important;
+      }
+
+      &-lightsalmon {
+        border-color: #ffa07a !important;
+      }
+
+      &-orange {
+        border-color: #ffa500 !important;
+      }
+
+      &-lightpink {
+        border-color: #ffb6c1 !important;
+      }
+
+      &-pink {
+        border-color: #ffc0cb !important;
+      }
+
+      &-gold {
+        border-color: #ffd700 !important;
+      }
+
+      &-peachpuff {
+        border-color: #ffdab9 !important;
+      }
+
+      &-navajowhite {
+        border-color: #ffdead !important;
+      }
+
+      &-moccasin {
+        border-color: #ffe4b5 !important;
+      }
+
+      &-bisque {
+        border-color: #ffe4c4 !important;
+      }
+
+      &-mistyrose {
+        border-color: #ffe4e1 !important;
+      }
+
+      &-blanchedalmond {
+        border-color: #ffebcd !important;
+      }
+
+      &-papayawhip {
+        border-color: #ffefd5 !important;
+      }
+
+      &-lavenderblush {
+        border-color: #fff0f5 !important;
+      }
+
+      &-seashell {
+        border-color: #fff5ee !important;
+      }
+
+      &-cornsilk {
+        border-color: #fff8dc !important;
+      }
+
+      &-lemonchiffon {
+        border-color: #fffacd !important;
+      }
+
+      &-floralwhite {
+        border-color: #fffaf0 !important;
+      }
+
+      &-snow {
+        border-color: #fffafa !important;
+      }
+
+      &-yellow {
+        border-color: #ffff00 !important;
+      }
+
+      &-lightyellow {
+        border-color: #ffffe0 !important;
+      }
+
+      &-ivory {
+        border-color: #fffff0 !important;
+      }
+
+      &-white {
+        border-color: #ffffff !important;
       }
     }
   }

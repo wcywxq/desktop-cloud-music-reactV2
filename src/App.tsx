@@ -22,28 +22,16 @@ import { useMusicMessage } from "@/hooks";
 const styles: { [propName: string]: React.CSSProperties } = {
     Header: {
         height: "auto",
-        padding: "0",
-        lineHeight: "1.5",
-        background: "#001529",
+        padding: 0,
+        lineHeight: 1.5,
+        backgroundColor: "#001529",
         zIndex: 10
     },
-    Layout: {
-        background: "#fff"
-    },
-    Sider: {
-        height: "100%"
-    },
-    Content: {
-        padding: "0 40px",
-        background: "rgb(250, 250, 250)"
-    },
     Footer: {
-        position: 'fixed',
+        bottom: '0',
         padding: '10px 0',
         zIndex: 10,
         width: '100%',
-        bottom: '0',
-        backgroundColor: 'white',
         border: '1px solid #9C9C9C',
         boxShadow: '0px -2px 8px #9C9C9C'
     }
@@ -101,8 +89,8 @@ const App: React.FC = () => {
                     <Route path="/video-detail/:id"
                            component={Loadable({ loader: () => import('@/views/VideoDetail'), loading: Loading })}/>
                     <Route>
-                        <Layout style={styles.Layout} className='ref-content'>
-                            <Sider width={255} style={styles.Sider}>
+                        <Layout className='s-bgc-white'>
+                            <Sider width={255} style={{height: '100%'}}>
                                 <Menu
                                     onClick={e => console.log("click ", e)}
                                     defaultSelectedKeys={["1"]}
@@ -129,7 +117,7 @@ const App: React.FC = () => {
                                     })}
                                 </Menu>
                             </Sider>
-                            <Content style={styles.Content}>
+                            <Content style={{padding: '0 40px'}}>
                                 <Switch>
                                     {router.map((route, key) => {
                                         if (route.exact) {
@@ -142,7 +130,7 @@ const App: React.FC = () => {
                                 </Switch>
                             </Content>
                         </Layout>
-                        <Footer style={styles.Footer}>
+                        <Footer className='f-pf s-bgc-white' style={styles.Footer}>
                             <Bottom
                                 musicMsgState={musicMsgState}
                                 setListIndex={setListIndex}

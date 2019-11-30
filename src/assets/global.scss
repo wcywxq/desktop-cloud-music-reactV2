@@ -1,19 +1,25 @@
 @import './mixins/grid';
-@import './mixins/module.scss';
+@import './mixins/module';
 @import './mixins/unit';
 @import './mixins/function';
 @import './mixins/skin';
 
 /* 布局 */
 @include grid-head;
+@include grid-footer;
 
 /* 模块 */
 @include module-hot;
 @include module-tab;
+@include module-table;
+@include module-playControl;
+@include module-banner;
+@include module-sortable;
 
 /* 元件 */
 @include unit-tag;
 @include unit-icon;
+@include unit-btn;
 
 /* 功能 */
 @include func-textAlign;

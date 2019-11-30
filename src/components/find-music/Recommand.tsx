@@ -37,8 +37,8 @@ interface ArrElementTypes {
 
 // 推荐部分标题
 const RecommandWidgetTitle: React.FC<RecommandWidgetTitleProps> = (props) => (
-    <Link to={props.routerLink} style={{ color: "#333" }}>
-        <span style={{ fontSize: '16px', fontWeight: 'bold', marginRight: '5px' }}>{props.text}</span>
+    <Link to={props.routerLink} className='s-cl-black'>
+        <span className='f-fz16 f-fwb' style={{ marginRight: '5px' }}>{props.text}</span>
         <Icon type="right"/>
     </Link>
 );

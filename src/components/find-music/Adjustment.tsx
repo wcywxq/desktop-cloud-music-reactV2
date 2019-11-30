@@ -3,8 +3,6 @@ import { useState } from 'reinspect';
 import { Button, Modal, List, Typography, Icon, message } from 'antd';
 import Sortable from 'sortablejs';
 
-import './Adjustment.scss';
-
 interface IProps {
     getDataMethods: (arr: any) => void
 }
@@ -42,7 +40,7 @@ export const Adjustment: React.FC<IProps> = (props) => {
                             k: item.dataset.index,
                             v: item.innerText
                         };
-                    })
+                    });
                     setDataSource(newDataSource);
                 }
             });
@@ -81,9 +79,10 @@ export const Adjustment: React.FC<IProps> = (props) => {
     }
 
     return (
-        <div className="adjustment">
-            <p className="intro">现在可以根据个人喜好，自由调整首页栏目顺序啦～</p>
-            <Button className="btn" onClick={adjustHandleClick}>调整栏目顺序</Button>
+        <div className="m-sort f-tac">
+            <p className="f-fz12 f-cp s-cl-lightgray intro">现在可以根据个人喜好，自由调整首页栏目顺序啦～</p>
+            <Button className="u-btn u-btn-adjust f-fz12 s-cl-default s-bc-default"
+                    onClick={adjustHandleClick}>调整栏目顺序</Button>
             <Modal
                 title="调整栏目顺序"
                 forceRender={true}
@@ -93,9 +92,9 @@ export const Adjustment: React.FC<IProps> = (props) => {
                 okText="确定"
                 cancelText="取消"
                 width={400}
-                style={{ textAlign: 'center' }}
+                className="f-tac"
             >
-                <p className="sort-title">
+                <p className="f-fz12 s-cl-lightgray">
                     想调整首页栏目的顺序?按住右边的按钮拖动即可
                 </p>
                 <List
@@ -105,11 +104,10 @@ export const Adjustment: React.FC<IProps> = (props) => {
                         <List.Item
                             key={index}
                             data-index={index}
-                            className="sort-item"
-                            style={{ textAlign: 'left', backgroundColor: '#fff' }}
-                            extra={<Icon type="menu" className="sort-item-icon"/>}
+                            className="m-sort-item f-fz12 f-tal f-cp s-bgc-white"
+                            extra={<Icon type="menu" className="icon"/>}
                         >
-                            <Text className="sort-item-text">{item.v}</Text>
+                            <Text className="text">{item.v}</Text>
                         </List.Item>
                     )}
                 />

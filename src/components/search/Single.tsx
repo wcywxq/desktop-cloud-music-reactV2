@@ -57,7 +57,8 @@ export const Single: React.FC<IProps> = (props) => {
     // 表头和索引
     const columns: ColumnProps<SingleData>[] = [
         {
-            title: '序号', dataIndex: 'index', width: 80, className: 'f-fsi',
+            title: '序号',
+            dataIndex: 'index', width: 80, className: 'f-fsi',
             render: (text: any, record: SingleData) => (
                 <span>
                     {

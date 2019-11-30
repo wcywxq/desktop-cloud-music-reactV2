@@ -55,8 +55,8 @@ export const Top: React.FC = () => {
                         </span>
                     </Col>
                     <Col span={8}>
-                        <Icon className="u-icon u-icon-hd forward f-fz14" type="left" onClick={() => history.go(-1)} />
-                        <Icon className="u-icon u-icon-hd go f-fz14" type="right" onClick={() => history.go(1)} />
+                        <Icon className="u-icon u-icon-forward f-fz14" type="left" onClick={() => history.go(-1)} />
+                        <Icon className="u-icon u-icon-go f-fz14" type="right" onClick={() => history.go(1)} />
                     </Col>
                 </Row>
                 <Modal visible={visible} onCancel={() => setVisible(false)}>
@@ -81,16 +81,16 @@ export const Top: React.FC = () => {
                 </Popover>
             </div>
             <div className="f-js-end last">
-                <Icon className="u-icon u-icon-hd f-fz16 f-cp" type="setting" />
+                <Icon className="u-icon u-icon-other f-fz16 f-cp" type="setting" />
                 {" "}
                 <Badge count={90} offset={[-4, 4]}>
-                    <Icon className="u-icon u-icon-hd f-fz16 f-cp" type="mail" />
+                    <Icon className="u-icon u-icon-other f-fz16 f-cp" type="mail" />
                 </Badge>
                 {" "}
-                <Icon className="u-icon u-icon-hd f-fz16 f-cp" type="skin" />
+                <Icon className="u-icon u-icon-other f-fz16 f-cp" type="skin" />
                 {" "}
                 <Icon
-                    className="f-fz16 f-cp u-icon-hd"
+                    className="u-icon u-icon-other f-fz16 f-cp"
                     type="switcher"
                     onClick={() => {
                         let doc = document.documentElement as Element;

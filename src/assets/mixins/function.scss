@@ -9,50 +9,50 @@
 // position
 @mixin func-position() {
   .f-pr {
-    position: relative;
+    position: relative !important;
   }
 
   .f-pa {
-    position: absolute;
+    position: absolute !important;
   }
 
   .f-pf {
-    position: fixed;
+    position: fixed !important;
   }
 
   .f-ps {
-    position: sticky;
+    position: sticky !important;
   }
 }
 
 // display
 @mixin func-display() {
   .f-dn {
-    display: none;
+    display: none !important;
   }
 
   .f-df {
-    display: flex;
+    display: flex !important;
   }
 
   .f-dg {
-    display: grid;
+    display: grid !important;
   }
 
   .f-db {
-    display: block;
+    display: block !important;
   }
 
   .f-dib {
-    display: inline-block;
+    display: inline-block !important;
   }
 
   .f-dt {
-    display: table;
+    display: table !important;
   }
 
   .f-dtc {
-    display: table-cell;
+    display: table-cell !important;
   }
 }
 
@@ -208,12 +208,20 @@
   }
 }
 
+// font
 @mixin func-font {
   .f-fsi {
     font-style: italic;
   }
 
   .f-fwb {
-    font-weight: bold
+    font-weight: bold;
+  }
+}
+
+// border
+@mixin func-border() {
+  .f-bsn {
+    border-style: none !important;
   }
 }

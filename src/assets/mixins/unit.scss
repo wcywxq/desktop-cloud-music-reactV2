@@ -13,25 +13,55 @@
   .u-icon {
     cursor: pointer;
     border-radius: 50%;
-    &-hd {
+
+    &:hover {
+      animation: changeIcon .5s ease forwards;
+    }
+
+    @keyframes changeIcon {
+      100% {
+        background-color: #ccc;
+        color: #fff;
+      }
+    }
+
+    &-forward,
+    &-go {
+      padding: 5px;
+    }
+
+    &-forward {
+      margin-right: 10px;
+    }
+
+    &-other {
       padding: 8px;
+    }
+  }
+}
 
-      &.forward, &.go {
-        padding: 5px;
-      }
+@mixin unit-btn() {
+  .u-btn {
+    border-radius: 20px !important;
 
-      &-forward {
-        margin-right: 10px;
-      }
+    &-group {
+      width: 178px;
+      border-radius: 20px !important;
+      margin: 0 auto;
+      border: 1px solid #c1c1c1;
+    }
+
+    &-adjust {
+      width: 120px;
 
       &:hover {
-        animation: changeIcon .5s ease forwards;
+        animation: adjustChangeColor .5s ease .3s forwards;
       }
 
-      @keyframes changeIcon {
+      @keyframes adjustChangeColor {
         100% {
-          background-color: #ccc;
-          color: #fff;
+          background-color: #C2453A;
+          color: #ffffff;
         }
       }
     }

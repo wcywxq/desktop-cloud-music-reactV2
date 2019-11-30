@@ -3,8 +3,6 @@ import React, { MutableRefObject, useEffect, useRef } from "react"
 import { useState } from 'reinspect'
 import { Button, Col, Icon, Popover, Row, Slider, Table } from 'antd'
 
-import './Bottom.scss'
-
 import { formatDuration, IconFont } from '@/tools'
 // 删除
 import { MUSIC_PROJECT_DELETE } from "@/redux/constants"
@@ -61,16 +59,16 @@ export const Bottom: React.FC<IProps> = (props) => {
     // 表格设置
     const columns: ColumnProps<PlayListData>[] = [
         {
-            title: () => <span style={{ fontSize: '12px', color: '#d2d2d2' }}>序号</span>,
+            title: () => <span className="s-cl-lightgray">序号</span>,
             dataIndex: 'index',
-            width: 50,
-            className: 'fz'
+            width: 70,
+            className: 'f-fz12 f-cp'
         },
         {
-            title: () => <span style={{ fontSize: '12px', color: '#d2d2d2' }}>总{dataSource.length}首</span>,
+            title: () => <span className="s-cl-lightgray">总{dataSource.length}首</span>,
             dataIndex: 'name',
-            width: 180,
-            className: 'fz',
+            width: 200,
+            className: 'f-fz12 f-cp',
             render: (text: string) => {
                 return <span>{
                     text.length > 8 ? text.substring(0, 8) + '...' : text
@@ -79,13 +77,13 @@ export const Bottom: React.FC<IProps> = (props) => {
         },
         {
             title: () => (
-                <span style={{ fontSize: '12px', cursor: 'pointer' }}>
+                <span>
                     <Icon type="folder-add"/>{" "}收藏全部
                  </span>
             ),
             dataIndex: 'artist.name',
-            width: 110,
-            className: 'fz',
+            width: 100,
+            className: 'f-fz12 f-cp',
             render: (text: string) => {
                 return <span>{
                     text.length > 8 ? text.substring(0, 8) + '...' : text
@@ -94,15 +92,13 @@ export const Bottom: React.FC<IProps> = (props) => {
         },
         {
             title: () => (
-                <span style={{ fontSize: '12px', cursor: 'pointer' }}
-                      onClick={() => dispatch({ type: MUSIC_PROJECT_DELETE })}
-                >
+                <span onClick={() => dispatch({ type: MUSIC_PROJECT_DELETE })}>
                     <Icon type="delete"/>{" "}清空
                  </span>
             ),
             dataIndex: 'duration',
-            width: 110,
-            className: 'fz',
+            width: 80,
+            className: 'f-fz12 f-cp',
             render: (text: number) => {
                 return <span>{formatDuration(text)}</span>
             }
@@ -139,12 +135,12 @@ export const Bottom: React.FC<IProps> = (props) => {
 
     // 音乐播放列表
     const MusicPlayList = (
-        <div className='music-play-list'>
-            <div className='button-group'>
+        <div className='m-table-pl'>
+            <div className='u-btn-group'>
                 <Button
                     shape='round'
                     type={isPlayList ? 'danger' : 'default'}
-                    className='border-shape'
+                    className='f-bsn'
                     onClick={() => setIsPlayList(true)}
                 >
                     播放列表
@@ -152,7 +148,7 @@ export const Bottom: React.FC<IProps> = (props) => {
                 <Button
                     shape='round'
                     type={!isPlayList ? 'danger' : 'default'}
-                    className='border-shape'
+                    className='f-bsn'
                     onClick={() => setIsPlayList(false)}
                 >
                     历史记录
@@ -275,10 +271,10 @@ export const Bottom: React.FC<IProps> = (props) => {
 
     // 渲染
     return (
-        <div className='fixed-player'>
+        <div className='g-ft f-pr'>
             {
                 musicMsgState ?
-                    <audio ref={audioRef} src={musicMsgState.url[0]}/> :
+                    <audio ref={audioRef} src={musicMsgState.url[0]} style={{height: 0}}/> :
                     null
             }
             <Slider
@@ -287,12 +283,8 @@ export const Bottom: React.FC<IProps> = (props) => {
                 max={musicMsgState ? musicMsgState.duration : undefined}
                 tipFormatter={value => formatDuration(value)}
                 onChange={onSliderChange}
-                style={{
-                    position: "absolute",
-                    width: '100%',
-                    top: '-32px',
-                    left: 0
-                }}/>
+                className="f-pa"
+                style={{ width: '100%', top: '-32px', left: 0 }}/>
             <Row>
                 {
                     audio ? audio.src ?
@@ -301,6 +293,7 @@ export const Bottom: React.FC<IProps> = (props) => {
                                 <img
                                     src={musicMsgState ? musicMsgState.picUrl : ''}
                                     alt=''
+                                    className='f-cp'
                                     onClick={() => setVisible(!visible)}
                                 />
                                 <MusicDetailWidget visible={visible} setVisible={setVisible}/>
@@ -310,7 +303,7 @@ export const Bottom: React.FC<IProps> = (props) => {
                                     musicMsgState ?
                                         (
                                             <p>
-                                                <span className='music-name'>
+                                                <span>
                                                     {
                                                         musicMsgState.name.length >= 10 ?
                                                             musicMsgState.name.substring(0, 10) + '...' :
@@ -318,7 +311,7 @@ export const Bottom: React.FC<IProps> = (props) => {
                                                     }
                                                 </span>
                                                 {" "}-{" "}
-                                                <span className='music-value' style={{ color: 'rgb(128, 128, 128)' }}>
+                                                <span className='f-fz12 s-cl-gray'>
                                                     {
                                                         musicMsgState.artist.join(' / ').length >= 16 ?
                                                             musicMsgState.artist.join(' / ').substring(0, 30) + '...' :
@@ -329,7 +322,7 @@ export const Bottom: React.FC<IProps> = (props) => {
                                         ) : null
                                 }
                                 <p>
-                                    <span className='music-value' style={{ color: 'rgb(180, 180, 180)' }}>
+                                    <span className='f-fz12 s-cl-lightgray'>
                                         {
                                             musicMsgState ?
                                                 `${formatDuration(currentTime)} / ${formatDuration(musicMsgState.duration)}`
@@ -341,14 +334,14 @@ export const Bottom: React.FC<IProps> = (props) => {
                         </div>
                         : <Col span={8}/> : <Col span={8}/>
                 }
-                <Col span={8} className='music-control'>
+                <Col span={8} className='m-pcm f-dg f-jc-center f-ai-center'>
                     <Icon type='heart'
-                          className={like ? 'f-fz18 music-control-icon music-control-color' : 'f-fz18 music-control-icon'}
+                          className={like ? 'f-fz18 f-cp s-cl-default' : 'f-fz18 f-cp'}
                           theme={like ? "filled" : undefined}
                           onClick={() => setLike(!like)}
                     />
                     <Icon type="step-backward"
-                          className='f-fz24 music-control-icon music-control-color'
+                          className='f-fz24 f-cp s-cl-default'
                           onClick={() => {
                               if (musicMsgState) {
                                   setListIndex(musicMsgState["list.index"] - 1)
@@ -356,30 +349,30 @@ export const Bottom: React.FC<IProps> = (props) => {
                           }}
                     />
                     <Icon type={flag ? "pause-circle" : "play-circle"} theme="filled"
-                          className='f-fz40 music-control-icon music-control-color'
+                          className='f-fz40 f-cp s-cl-default'
                           onClick={handlePlayClick}
                     />
                     <Icon type="step-forward"
-                          className='f-fz24 music-control-icon music-control-color'
+                          className='f-fz24 f-cp s-cl-default'
                           onClick={() => {
                               if (musicMsgState) {
                                   setListIndex(musicMsgState["list.index"] + 1)
                               }
                           }}
                     />
-                    <IconFont type='icon-share' className='f-fz18 music-control-icon'/>
+                    <IconFont type='icon-share' className='f-fz18 f-cp'/>
                 </Col>
                 <Col span={4}/>
-                <Col span={4} className='music-list'>
-                    <IconFont type='icon-xindong' className='music-list-icon'/>
+                <Col span={4} className='m-pcr f-dg f-jc-end f-ai-center'>
+                    <IconFont type='icon-xindong' className='f-fz18 f-cp'/>
                     <Popover content={MusicPlayList} placement='top' trigger="click">
-                        <IconFont type='icon-bofangliebiao' className='music-list-icon'/>
+                        <IconFont type='icon-bofangliebiao' className='f-fz18 f-cp'/>
                     </Popover>
-                    <IconFont type='icon-geci' className='music-list-icon'/>
+                    <IconFont type='icon-geci' className='f-fz18 f-cp'/>
                     <Popover content={SoundControl} style={{ height: '100px' }}>
                         <IconFont
                             type={mute ? 'icon-jingyin' : 'icon-shengyin'}
-                            className='music-list-icon'
+                            className='f-fz18 f-cp'
                             onClick={() => setMute(!mute)}
                         />
                     </Popover>

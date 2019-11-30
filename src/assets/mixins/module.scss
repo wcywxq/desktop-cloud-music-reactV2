@@ -1,3 +1,5 @@
+@import './function.scss';
+
 // 热搜标签
 @mixin module-hot {
   .m-hot {
@@ -34,6 +36,107 @@
         .icon {
           cursor: pointer;
         }
+      }
+    }
+  }
+}
+
+@mixin module-playControl {
+  .m-pcm {
+    grid-template-columns: repeat(5, 12%);
+  }
+
+  .m-pcr {
+    grid-template-columns: repeat(4, 16%);
+    height: 40px;
+  }
+}
+
+// table表格
+@mixin module-table {
+  .m-table {
+    &-pl {
+      width: 450px;
+      height: 640px;
+      @include func-border;
+
+      // 播放列表切换控件
+      @include unit-btn;
+    }
+  }
+}
+
+// banner
+@mixin module-banner {
+  .m-banner {
+    margin-bottom: 20px;
+
+    .container {
+      margin: 0 50px;
+      border-radius: 10px;
+
+      .hover {
+        opacity: 0;
+      }
+    }
+
+    .slide {
+      position: relative;
+      width: 500px;
+
+      img {
+        width: 500px;
+        border-radius: 10px;
+      }
+
+      .label {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 2px 8px;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  .swiper-container {
+    /* 设置Swiper风格 */
+    --swiper-theme-color: #ffffff;
+    /* 单独设置按钮颜色 */
+    --swiper-navigation-color: rgb(103, 103, 103);
+    /* 设置按钮大小 */
+    --swiper-navigation-size: 20px;
+  }
+}
+
+// sortable
+@mixin module-sortable {
+  .m-sort {
+    margin: 64px auto 128px;
+
+    .intro {
+      margin-bottom: 8px;
+    }
+
+    &-item {
+      border-radius: 5px;
+
+      &:hover {
+        animation: sortItem .3s ease .3s forwards;
+      }
+
+      @keyframes sortItem {
+        100% {
+          background-color: rgb(235, 235, 235);
+        }
+      }
+
+      .icon {
+        padding-right: 10px;
+      }
+
+      .text {
+        padding-left: 10px;
       }
     }
   }

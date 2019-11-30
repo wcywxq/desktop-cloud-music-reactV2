@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Swiper from "swiper";
 
-import './Banner.scss'
-
 interface IProps {
     data: any[]
 }
@@ -76,43 +74,26 @@ export const Banner: React.FC<IProps> = (props) => {
     }, [data.length]);
 
     return (
-        <div style={{ marginBottom: '20px' }}>
-            <div className="swiper-container" style={{ margin: "0 50px", borderRadius: "10px" }}>
+        <div className='m-banner'>
+            <div className="swiper-container container">
                 <div className="swiper-wrapper">
                     {data.map((item, index) => {
                         return (
-                            <div
-                                key={index}
-                                className="swiper-slide"
-                                ref={sliderRef}
-                                style={{
-                                    position: 'relative',
-                                    width: '500px'
-                                }}
-                            >
-                                <img src={item.imgSrc} style={{ width: "500px", borderRadius: "10px" }} alt=''/>
-                                <span style={{
-                                    position: 'absolute',
-                                    bottom: 0,
-                                    right: 0,
-                                    padding: '2px 8px',
-                                    borderRadius: '5px',
-                                    fontSize: '12px',
-                                    color: '#fff',
-                                    backgroundColor: item.titleColor
-                                }}>{item.typeTitle}</span>
+                            <div key={index} className="swiper-slide slide" ref={sliderRef}>
+                                <img src={item.imgSrc} alt=''/>
+                                <span className={`f-fz12 s-cl-white s-bgc-${item.titleColor} label`}>
+                                    {item.typeTitle}
+                                </span>
                             </div>
                         )
                     })}
                 </div>
-
                 {/* 分页器 */}
                 <div className="swiper-pagination"/>
                 {/* 导航按钮 */}
                 <div className="swiper-button-prev hover"/>
                 <div className="swiper-button-next hover"/>
             </div>
-
         </div>
     )
 };

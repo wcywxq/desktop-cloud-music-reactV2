@@ -4,8 +4,6 @@ import { Row, Col, Icon } from 'antd';
 
 import { useVideoDetail } from '@/hooks';
 
-import './VideoDetail.scss';
-
 const VideoDetail: React.FC = () => {
     const { id } = useParams();
     const history = useHistory();
@@ -21,11 +19,11 @@ const VideoDetail: React.FC = () => {
     }, [id, setVid]);
 
     return (
-        <div className="video-detail">
+        <div style={{ margin: '10px 255px 0' }}>
             <Row>
                 <Col span={16}>
-                    <p className="video-detail-title">
-                        <Icon type="left" className="back-icon" onClick={() => history.go(-1)}/>视频详情
+                    <p className="f-fwb f-fz16">
+                        <Icon type="left" className="u-icon u-icon-forward f-fz14" onClick={() => history.go(-1)}/>视频详情
                     </p>
                     {
                         videoDetailState.movieUrlsData.length !== 0 ?
@@ -34,7 +32,7 @@ const VideoDetail: React.FC = () => {
                     }
                 </Col>
                 <Col span={8}>
-                    <p className="video-detail-title">
+                    <p className="f-fwb f-fz16">
                         相关推荐
                     </p>
                 </Col>
