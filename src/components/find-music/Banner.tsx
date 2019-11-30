@@ -7,7 +7,7 @@ interface IProps {
     data: any[]
 }
 
-export const Banner = (props: IProps) => {
+export const Banner: React.FC<IProps> = (props) => {
     const sliderRef = useRef(null);
     const { data } = props;
 
@@ -40,7 +40,7 @@ export const Banner = (props: IProps) => {
             // 如果需要前进后退按钮
             navigation: {
                 nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                prevEl: '.swiper-button-prev'
             },
 
             // 回调函数
@@ -90,7 +90,7 @@ export const Banner = (props: IProps) => {
                                     width: '500px'
                                 }}
                             >
-                                <img src={item.imgSrc} style={{ width: "500px", borderRadius: "10px" }} alt='' />
+                                <img src={item.imgSrc} style={{ width: "500px", borderRadius: "10px" }} alt=''/>
                                 <span style={{
                                     position: 'absolute',
                                     bottom: 0,
@@ -107,10 +107,10 @@ export const Banner = (props: IProps) => {
                 </div>
 
                 {/* 分页器 */}
-                <div className="swiper-pagination" />
+                <div className="swiper-pagination"/>
                 {/* 导航按钮 */}
-                <div className="swiper-button-prev hover" />
-                <div className="swiper-button-next hover" />
+                <div className="swiper-button-prev hover"/>
+                <div className="swiper-button-next hover"/>
             </div>
 
         </div>

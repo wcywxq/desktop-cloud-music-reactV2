@@ -3,7 +3,6 @@ import { useState } from 'reinspect'
 import { useHistory, Link } from 'react-router-dom'
 import { Input, Icon, Badge, Popover, Tag, Spin, Row, Col, Modal } from 'antd'
 
-import './Top.scss'
 import { useSearchHot } from "@/hooks";
 
 export const Top: React.FC = () => {
@@ -17,65 +16,60 @@ export const Top: React.FC = () => {
     const [isFull, setIsFull] = useState(false, '是否全屏');
 
     // 点击显示登陆模态窗
-    const [visible, setVisible] = useState(false, '登陆模态窗口')
+    const [visible, setVisible] = useState(false, '登陆模态窗口');
 
     // 热搜标签
     const suggestContent = (
-        <div style={{ width: '400px' }}>
-            <div style={{ marginBottom: '30px' }}>
-                <div className='control-panel-suggest-title'>
-                    热门搜索
-                </div>
+        <div className="m-hot">
+            <div className='f-fwb s-cl-black title'>
+                热门搜索
+            </div>
+            <div className='ct'>
                 {
                     state.isLoading ? <Spin /> :
                         state.data.map((item, index) => {
                             return (
-                                <Tag style={{
-                                    margin: '3px 8px 3px 0',
-                                    padding: '3px 10px',
-                                    borderRadius: '20px'
-                                }} key={index}>
+                                <Tag key={index} className="u-tag-hot">
                                     <Link to={`/search/${item.searchWord}/1`}>{item.searchWord}</Link>
                                 </Tag>
                             )
                         })
                 }
             </div>
-            <div>
-                <div className='control-panel-suggest-title'>
-                    搜索历史
-                </div>
+            <div className='f-fwb s-cl-black title'>
+                搜索历史
             </div>
         </div>
-    )
+    );
 
     return (
-        <div className="control-panel">
-            <aside>
+        <div className="g-hd f-dg f-ai-center s-bgc-whitesmoke">
+            <aside className="f-tar first">
                 <Row onClick={() => setVisible(true)}>
                     <Col span={16}>
-                        <img src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" alt="" />
-                        <span style={{ cursor: 'pointer' }}>
+                        <img src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" className="f-cp"
+                            alt="" />
+                        <span className="f-cp">
                             暮雨1微凉{" "}
                             <Icon type="caret-right" />
                         </span>
                     </Col>
                     <Col span={8}>
-                        <Icon className="forward" type="left" onClick={() => history.go(-1)} />
-                        <Icon className="go" type="right" onClick={() => history.go(1)} />
+                        <Icon className="u-icon u-icon-hd forward f-fz14" type="left" onClick={() => history.go(-1)} />
+                        <Icon className="u-icon u-icon-hd go f-fz14" type="right" onClick={() => history.go(1)} />
                     </Col>
                 </Row>
                 <Modal visible={visible} onCancel={() => setVisible(false)}>
                     modal
                 </Modal>
             </aside>
-            <aside>
+            <div className="f-js-end">
                 <Popover placement="bottom" content={suggestContent} trigger="click">
                     <Input
                         allowClear
                         placeholder="搜索"
-                        style={{ width: '200px' }}
-                        prefix={<Icon type="search" style={{ color: '#333' }} />}
+                        width={200}
+                        prefix={<Icon type="search" className="s-cl-darkgray" />}
                         onChange={(e) => console.log(e.target.value)}
                         onPressEnter={event => {
                             const target = event.target as HTMLInputElement;
@@ -85,18 +79,18 @@ export const Top: React.FC = () => {
                         }}
                     />
                 </Popover>
-            </aside>
-            <aside>
-                <Icon className="control-panel-icon" type="setting" />
+            </div>
+            <div className="f-js-end last">
+                <Icon className="u-icon u-icon-hd f-fz16 f-cp" type="setting" />
                 {" "}
                 <Badge count={90} offset={[-4, 4]}>
-                    <Icon className="control-panel-icon" type="mail" />
+                    <Icon className="u-icon u-icon-hd f-fz16 f-cp" type="mail" />
                 </Badge>
                 {" "}
-                <Icon className="control-panel-icon" type="skin" />
+                <Icon className="u-icon u-icon-hd f-fz16 f-cp" type="skin" />
                 {" "}
                 <Icon
-                    className="control-panel-icon"
+                    className="f-fz16 f-cp u-icon-hd"
                     type="switcher"
                     onClick={() => {
                         let doc = document.documentElement as Element;
@@ -108,9 +102,9 @@ export const Top: React.FC = () => {
                         setIsFull(!isFull);
                     }}
                 />
-            </aside>
+            </div>
         </div>
     )
-}
+};
 
 

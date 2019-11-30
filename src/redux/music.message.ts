@@ -35,7 +35,7 @@ export interface MusicMessageState {
 
 export const musicUrlReducer = (
     state: MusicMessageState,
-    action: MusicMessageAction,
+    action: MusicMessageAction
 ) => {
     switch (action.type) {
         case "MUSIC_MESSAGE_INIT":

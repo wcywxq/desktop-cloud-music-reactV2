@@ -6,10 +6,10 @@ interface IProps {
     setVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const MusicDetail = (props: IProps) => {
+const MusicDetail: React.FC<IProps> = (props) => {
     const { visible, setVisible } = props;
     return (
-        <div style={{position: 'relative'}}>
+        <div style={{ position: 'relative' }}>
             <Drawer
                 title="Basic Drawer"
                 placement="bottom"

@@ -67,14 +67,14 @@ const menuMessage = [
         menuItem: [
             { k: 5, routerLink: "", iconType: "icon-download-fill", text: "下载管理" },
             { k: 6, routerLink: "", iconType: "icon-yun", text: "我的音乐云盘" },
-            { k: 7, routerLink: "", iconType: "icon-shoucang", text: "我的收藏" },
+            { k: 7, routerLink: "", iconType: "icon-shoucang", text: "我的收藏" }
         ]
     },
     {
         key: "sub3",
         title: (
             <span>
-                <Icon type="setting" />
+                <Icon type="setting"/>
                 <span>创建的歌单</span>
             </span>
         ),
@@ -84,7 +84,7 @@ const menuMessage = [
     }
 ];
 
-const App = () => {
+const App: React.FC = () => {
     const { Header, Sider, Content, Footer } = Layout;
     const { SubMenu } = Menu;
 
@@ -95,10 +95,11 @@ const App = () => {
         <Router>
             <Layout>
                 <Header style={styles.Header}>
-                    <Top />
+                    <Top/>
                 </Header>
                 <Switch>
-                    <Route path="/video-detail/:id" component={Loadable({ loader: () => import('@/views/VideoDetail'), loading: Loading })} />
+                    <Route path="/video-detail/:id"
+                           component={Loadable({ loader: () => import('@/views/VideoDetail'), loading: Loading })}/>
                     <Route>
                         <Layout style={styles.Layout} className='ref-content'>
                             <Sider width={255} style={styles.Sider}>
@@ -116,7 +117,7 @@ const App = () => {
                                                         return (
                                                             <Menu.Item key={sub_item.k}>
                                                                 <Link to={sub_item.routerLink}>
-                                                                    <IconFont type={sub_item.iconType} />
+                                                                    <IconFont type={sub_item.iconType}/>
                                                                     {sub_item.text}
                                                                 </Link>
                                                             </Menu.Item>
@@ -132,9 +133,10 @@ const App = () => {
                                 <Switch>
                                     {router.map((route, key) => {
                                         if (route.exact) {
-                                            return <Route exact key={key} path={route.path} component={route.component} />
+                                            return <Route exact key={key} path={route.path}
+                                                          component={route.component}/>
                                         } else {
-                                            return <Route key={key} path={route.path} component={route.component} />
+                                            return <Route key={key} path={route.path} component={route.component}/>
                                         }
                                     })}
                                 </Switch>

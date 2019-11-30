@@ -1,0 +1,40 @@
+// 热搜标签
+@mixin module-hot {
+  .m-hot {
+    width: 400px;
+
+    .ct {
+      margin-bottom: 20px;
+    }
+
+    .title {
+      min-width: 177px;
+      min-height: 32px;
+      margin-bottom: 10px;
+      opacity: .35;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    @include unit-tag;
+  }
+}
+
+// 发现音乐子菜单内容
+@mixin module-tab {
+  .m-tab {
+
+    // 发现音乐
+    &-fmc {
+      .hd {
+        padding: 10px 0;
+        white-space: pre-wrap;
+      }
+
+      .ct {
+        .icon {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

@@ -1,20 +1,17 @@
 // MutableRefObject 泛型接口，接收一个参数，作为 useRef 的类型定义,参数可以为T类型，即任意类型
-import React, { useRef, MutableRefObject, useEffect } from "react"
+import React, { MutableRefObject, useEffect, useRef } from "react"
 import { useState } from 'reinspect'
-import { Row, Col, Button, Icon, Slider, Popover, Table } from 'antd'
+import { Button, Col, Icon, Popover, Row, Slider, Table } from 'antd'
 
 import './Bottom.scss'
 
-import { IconFont, formatDuration } from '@/tools'
-
+import { formatDuration, IconFont } from '@/tools'
 // 删除
 import { MUSIC_PROJECT_DELETE } from "@/redux/constants"
 import { MusicMessageState, MusicProjectState } from "@/redux"
 import { useMusicPlayList } from "@/hooks"
-
 // 类型
 import { ColumnProps } from "antd/lib/table"
-
 // 组件
 import MusicDetailWidget from "@/components/MusicDetailWidget";
 
@@ -34,14 +31,7 @@ interface IProps {
     setDuration: React.Dispatch<React.SetStateAction<number>>;
 }
 
-// 样式
-const styles: { [propsName: string]: React.CSSProperties } = {
-    Table: {
-        userSelect: 'none'
-    }
-};
-
-export const Bottom = (props: IProps) => {
+export const Bottom: React.FC<IProps> = (props) => {
     // 获取音乐信息, 包括url
     const { musicMsgState, setListIndex, setID, setDuration } = props;
 
@@ -63,7 +53,7 @@ export const Bottom = (props: IProps) => {
     const audio = audioRef.current as unknown as HTMLMediaElement;
 
     // 音量控制
-    const SoundControl = <Slider vertical defaultValue={30} style={{ height: '100px' }} />;
+    const SoundControl = <Slider vertical defaultValue={30} style={{ height: '100px' }}/>;
 
     // 获取添加到音乐播放列表的歌曲
     const { state, dispatch } = useMusicPlayList();
@@ -90,7 +80,7 @@ export const Bottom = (props: IProps) => {
         {
             title: () => (
                 <span style={{ fontSize: '12px', cursor: 'pointer' }}>
-                    <Icon type="folder-add" />{" "}收藏全部
+                    <Icon type="folder-add"/>{" "}收藏全部
                  </span>
             ),
             dataIndex: 'artist.name',
@@ -105,9 +95,9 @@ export const Bottom = (props: IProps) => {
         {
             title: () => (
                 <span style={{ fontSize: '12px', cursor: 'pointer' }}
-                    onClick={() => dispatch({ type: MUSIC_PROJECT_DELETE })}
+                      onClick={() => dispatch({ type: MUSIC_PROJECT_DELETE })}
                 >
-                    <Icon type="delete" />{" "}清空
+                    <Icon type="delete"/>{" "}清空
                  </span>
             ),
             dataIndex: 'duration',
@@ -133,7 +123,7 @@ export const Bottom = (props: IProps) => {
                 duration: item.duration
             }
         })
-    } else {
+    } else if (state) {
         dataSource = state.map((item: MusicProjectState, index: number) => {
             return {
                 index: index + 1,
@@ -143,6 +133,8 @@ export const Bottom = (props: IProps) => {
                 duration: item.duration
             }
         })
+    } else {
+        dataSource = []
     }
 
     // 音乐播放列表
@@ -173,7 +165,7 @@ export const Bottom = (props: IProps) => {
                     dataSource={dataSource}
                     pagination={{ total: dataSource.length, pageSize: 100 }}
                     scroll={{ y: 500 }}
-                    style={styles.Table}
+                    className='f-usn'
                     onRow={record => {
                         return {
                             onDoubleClick: () => {
@@ -182,13 +174,16 @@ export const Bottom = (props: IProps) => {
                             }
                         }
                     }}
-                // onChange={onHandleChange}
+                    // onChange={onHandleChange}
                 />
             </div>
         </div>
     );
 
-    // 点击暂停播放按钮
+    /**
+     * 点击暂停播放按钮
+     * @param {React.MouseEvent<HTMLElement, MouseEvent>} event
+     */
     function handlePlayClick(event: React.MouseEvent<HTMLElement, MouseEvent>) {
         // 若 audio 不为 null
         if (audio) {
@@ -207,7 +202,10 @@ export const Bottom = (props: IProps) => {
         }
     }
 
-    // 播放器控制条改变的回调函数
+    /**
+     * 播放器控制条改变的回调函数
+     * @param value
+     */
     function onSliderChange(value: any) {
         // 将进度条的值赋予给 audio 播放的当前时间
         audio.currentTime = value / 1000;
@@ -258,9 +256,8 @@ export const Bottom = (props: IProps) => {
     useEffect(() => {
         let data;
         if (sessionStorage.getItem('data') && sessionStorage.getItem('data') !== '[]') {
-            let sessionData: MusicProjectState[] = JSON.parse(sessionStorage.getItem('data') as string);
-            data = sessionData;
-        } else {
+            data = JSON.parse(sessionStorage.getItem('data') as string);
+        } else if (state) {
             data = state;
         }
 
@@ -279,7 +276,11 @@ export const Bottom = (props: IProps) => {
     // 渲染
     return (
         <div className='fixed-player'>
-            <audio ref={audioRef} src={musicMsgState ? musicMsgState.url[0] : ''} />
+            {
+                musicMsgState ?
+                    <audio ref={audioRef} src={musicMsgState.url[0]}/> :
+                    null
+            }
             <Slider
                 disabled={!audio}
                 value={currentTime}
@@ -290,8 +291,8 @@ export const Bottom = (props: IProps) => {
                     position: "absolute",
                     width: '100%',
                     top: '-32px',
-                    left: 0,
-                }} />
+                    left: 0
+                }}/>
             <Row>
                 {
                     audio ? audio.src ?
@@ -302,7 +303,7 @@ export const Bottom = (props: IProps) => {
                                     alt=''
                                     onClick={() => setVisible(!visible)}
                                 />
-                                <MusicDetailWidget visible={visible} setVisible={setVisible} />
+                                <MusicDetailWidget visible={visible} setVisible={setVisible}/>
                             </Col>
                             <Col span={7}>
                                 {
@@ -338,49 +339,43 @@ export const Bottom = (props: IProps) => {
                                 </p>
                             </Col>
                         </div>
-                        : <Col span={8} /> : <Col span={8} />
+                        : <Col span={8}/> : <Col span={8}/>
                 }
                 <Col span={8} className='music-control'>
                     <Icon type='heart'
-                        className={like ? 'music-control-icon music-control-color' : 'music-control-icon'}
-                        theme={like ? "filled" : undefined}
-                        style={{ fontSize: '18px' }}
-                        onClick={() => setLike(!like)}
+                          className={like ? 'f-fz18 music-control-icon music-control-color' : 'f-fz18 music-control-icon'}
+                          theme={like ? "filled" : undefined}
+                          onClick={() => setLike(!like)}
                     />
                     <Icon type="step-backward"
-                        className='music-control-icon music-control-color'
-                        style={{ fontSize: '24px' }}
-                        onClick={() => {
-                            if (musicMsgState) {
-                                setListIndex(musicMsgState["list.index"] - 1)
-                            }
-                        }}
+                          className='f-fz24 music-control-icon music-control-color'
+                          onClick={() => {
+                              if (musicMsgState) {
+                                  setListIndex(musicMsgState["list.index"] - 1)
+                              }
+                          }}
                     />
                     <Icon type={flag ? "pause-circle" : "play-circle"} theme="filled"
-                        className='music-control-icon music-control-color'
-                        style={{ fontSize: '40px' }}
-                        onClick={handlePlayClick}
+                          className='f-fz40 music-control-icon music-control-color'
+                          onClick={handlePlayClick}
                     />
                     <Icon type="step-forward"
-                        className='music-control-icon music-control-color'
-                        style={{ fontSize: '24px' }}
-                        onClick={() => {
-                            if (musicMsgState) {
-                                setListIndex(musicMsgState["list.index"] + 1)
-                            }
-                        }}
+                          className='f-fz24 music-control-icon music-control-color'
+                          onClick={() => {
+                              if (musicMsgState) {
+                                  setListIndex(musicMsgState["list.index"] + 1)
+                              }
+                          }}
                     />
-                    <IconFont type='icon-share'
-                        className='music-control-icon'
-                        style={{ fontSize: '18px' }} />
+                    <IconFont type='icon-share' className='f-fz18 music-control-icon'/>
                 </Col>
-                <Col span={4} />
+                <Col span={4}/>
                 <Col span={4} className='music-list'>
-                    <IconFont type='icon-xindong' className='music-list-icon' />
+                    <IconFont type='icon-xindong' className='music-list-icon'/>
                     <Popover content={MusicPlayList} placement='top' trigger="click">
-                        <IconFont type='icon-bofangliebiao' className='music-list-icon' />
+                        <IconFont type='icon-bofangliebiao' className='music-list-icon'/>
                     </Popover>
-                    <IconFont type='icon-geci' className='music-list-icon' />
+                    <IconFont type='icon-geci' className='music-list-icon'/>
                     <Popover content={SoundControl} style={{ height: '100px' }}>
                         <IconFont
                             type={mute ? 'icon-jingyin' : 'icon-shengyin'}

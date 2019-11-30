@@ -36,21 +36,21 @@ export const searchHotReducer = (
                 ...state,
                 isLoading: true,
                 isError: false
-            }
+            };
         case "SEARCH_HOT_SUCCESS":
             return {
                 ...state,
                 isLoading: false,
                 isError: false,
                 data: action.payLoad
-            }
+            };
         case "SEARCH_HOT_FAIL":
             return {
                 ...state,
                 isLoading: false,
                 isError: true
-            }
+            };
         default:
             throw new Error();
     }
-}
+};

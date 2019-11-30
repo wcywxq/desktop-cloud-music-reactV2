@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom'
 import { Icon, Table, Empty, Modal } from 'antd';
 
 import { IconFont, formatDuration } from '@/tools'
-import './Single.scss'
 
 // 类型
 import { ColumnProps, PaginationConfig } from 'antd/lib/table'
@@ -33,7 +32,7 @@ interface SingleData {
     duration: number;
 }
 
-export function Single(props: IProps) {
+export const Single: React.FC<IProps> = (props) => {
     // props 传递的数据
     const { isLoading, isError, data, count, setParams } = props;
 
@@ -58,13 +57,13 @@ export function Single(props: IProps) {
     // 表头和索引
     const columns: ColumnProps<SingleData>[] = [
         {
-            title: '序号', dataIndex: 'index', width: 80, className: 'm-s-single-order',
+            title: '序号', dataIndex: 'index', width: 80, className: 'f-fsi',
             render: (text: any, record: SingleData) => (
                 <span>
                     {
                         record.index === curIdx ?
-                            <IconFont type='icon-shengyin-red' style={{ cursor: 'pointer' }} /> :
-                            <span>{text}</span>
+                            <IconFont type='icon-shengyin-red' className='f-cp' /> :
+                            <span className='s-cl-darkgray'>{text}</span>
                     }
                 </span>
             )
@@ -73,13 +72,13 @@ export function Single(props: IProps) {
             title: '喜欢/下载', dataIndex: 'icon', width: 100,
             render: () => (
                 <span>
-                    <Icon type="heart" className="icon" />{" "}
-                    <Icon type="download" className="icon" />
+                    <Icon type="heart" className="icon"/>{" "}
+                    <Icon type="download" className="icon"/>
                 </span>
-            ),
+            )
         },
         { title: '音乐标题', dataIndex: 'name', width: 400 },
-        { title: '歌手', dataIndex: 'artists.name', },
+        { title: '歌手', dataIndex: 'artists.name' },
         { title: '专辑', dataIndex: 'album.name' },
         { title: '时长', dataIndex: 'duration', render: (text) => <span>{formatDuration(text)}</span> }
     ];
@@ -103,7 +102,10 @@ export function Single(props: IProps) {
         current: page
     };
 
-    // 点击分页按钮重新发起请求
+    /**
+     * 点击分页按钮重新发起请求
+     * @param {PaginationConfig} pagination
+     */
     function onHandleChange(pagination: PaginationConfig) {
         if (pagination.current) {
             setPage(pagination.current);
@@ -115,7 +117,10 @@ export function Single(props: IProps) {
         }
     }
 
-    // 双击之后的回调函数
+    /**
+     * 双击之后的回调函数
+     * @param {SingleData} record
+     */
     function onHandleDoubleClick(record: SingleData) {
         // 传递音乐 id，从而判断音乐是否可用
         setMid(record.key);
@@ -134,7 +139,7 @@ export function Single(props: IProps) {
         } else {
             Modal.confirm({
                 title: '音乐可用',
-                icon: <Icon type="check-circle" theme="twoTone" twoToneColor="#52c41a" />,
+                icon: <Icon type="check-circle" theme="twoTone" twoToneColor="#52c41a"/>,
                 content: (
                     <div>
                         <p>{canUseState.message === 'ok' ? '是否立即播放' : ''}</p>
@@ -163,10 +168,10 @@ export function Single(props: IProps) {
         <>
             {
                 isError ?
-                    <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={<span>请求失败</span>} />
+                    <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={<span>请求失败</span>}/>
                     :
                     <Table<SingleData>
-                        style={{ cursor: 'pointer' }}
+                        className="f-cp"
                         loading={isLoading}
                         columns={columns}
                         dataSource={dataSource}
@@ -183,4 +188,4 @@ export function Single(props: IProps) {
             }
         </>
     )
-}
+};

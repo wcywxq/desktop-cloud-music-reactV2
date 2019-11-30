@@ -1,0 +1,219 @@
+// 功能
+// font-size
+@mixin func-font($size) {
+  .f-fz#{$size} {
+    font-size: $size + px !important;
+  }
+}
+
+// position
+@mixin func-position() {
+  .f-pr {
+    position: relative;
+  }
+
+  .f-pa {
+    position: absolute;
+  }
+
+  .f-pf {
+    position: fixed;
+  }
+
+  .f-ps {
+    position: sticky;
+  }
+}
+
+// display
+@mixin func-display() {
+  .f-dn {
+    display: none;
+  }
+
+  .f-df {
+    display: flex;
+  }
+
+  .f-dg {
+    display: grid;
+  }
+
+  .f-db {
+    display: block;
+  }
+
+  .f-dib {
+    display: inline-block;
+  }
+
+  .f-dt {
+    display: table;
+  }
+
+  .f-dtc {
+    display: table-cell;
+  }
+}
+
+// just
+@mixin func-justFamily() {
+  .f-jc {
+    &-left {
+      justify-content: left;
+    }
+
+    &-center {
+      justify-content: center;
+    }
+
+    &-right {
+      justify-content: right;
+    }
+
+    &-sb {
+      justify-content: space-between;
+    }
+
+    &-sa {
+      justify-content: space-around;
+    }
+
+    &-se {
+      justify-content: space-evenly;
+    }
+
+    &-start {
+      justify-content: start;
+    }
+
+    &-end {
+      justify-content: end;
+    }
+
+    &-fs {
+      justify-content: flex-start;
+    }
+
+    &-fe {
+      justify-content: flex-end;
+    }
+  }
+
+  .f-js {
+    &-left {
+      justify-self: left;
+    }
+
+    &-center {
+      justify-self: center;
+    }
+
+    &-right {
+      justify-self: right;
+    }
+
+    &-start {
+      justify-self: start;
+    }
+
+    &-end {
+      justify-self: end;
+    }
+
+    &-fs {
+      justify-self: flex-start;
+    }
+
+    &-fe {
+      justify-self: flex-end;
+    }
+  }
+}
+
+// align
+@mixin func-alignFamily() {
+  .f-ai {
+    &-center {
+      align-items: center;
+    }
+
+    &-start {
+      align-items: start;
+    }
+
+    &-end {
+      align-items: end;
+    }
+
+    &-fs {
+      align-items: flex-start;
+    }
+
+    &-fe {
+      align-items: flex-end;
+    }
+
+    &-bl {
+      align-items: baseline;
+    }
+  }
+}
+
+// text-align
+@mixin func-textAlign() {
+  .f-tac {
+    text-align: center;
+  }
+
+  .f-tal {
+    text-align: left;
+  }
+
+  .f-tar {
+    text-align: right;
+  }
+}
+
+// over-flow
+@mixin func-overFlow() {
+  .f-oh {
+    overflow: hidden;
+  }
+
+  .f-os {
+    overflow: scroll;
+  }
+
+  .f-oxs {
+    overflow-x: scroll;
+  }
+
+  .f-oys {
+    overflow-y: scroll;
+  }
+}
+
+// user-select
+@mixin func-userSelect() {
+  .f-usn {
+    user-select: none;
+  }
+}
+
+// cursor 
+@mixin func-cursor {
+  .f-cp {
+    cursor: pointer;
+  }
+}
+
+@mixin func-font {
+  .f-fsi {
+    font-style: italic;
+  }
+
+  .f-fwb {
+    font-weight: bold
+  }
+}

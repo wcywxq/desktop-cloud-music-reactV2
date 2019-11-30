@@ -2,18 +2,62 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85c9a38d-7305-462b-8f7e-391c6d04d9a7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/wangxq02.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/fileColors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/global.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/mixins/function.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/mixins/grid.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/mixins/unit.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/VideoDetail.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Banner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Banner.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FixedPlayer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FixedPlayer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Search/Single.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/Single.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useCanUse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useCanUse.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useMusicMessage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useMusicMessage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MusicDetailWidget.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MusicDetailWidget.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/controls/Bottom.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/controls/Bottom.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/controls/Top.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/controls/Top.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/controls/Top.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/find-music/Adjustment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/find-music/Adjustment.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/find-music/Banner.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/find-music/Banner.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/find-music/Recommand.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/find-music/Recommand.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/find-music/content/Djprogram.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/find-music/content/Djprogram.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/find-music/content/ExclusiveBroadcast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/find-music/content/ExclusiveBroadcast.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/find-music/content/Mv.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/find-music/content/Mv.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/find-music/content/NewSong.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/find-music/content/NewSong.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/find-music/content/SongList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/find-music/content/SongList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/search/Album.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/search/Album.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/search/Lyric.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/search/Lyric.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/search/Playlist.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/search/Playlist.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/search/Radio.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/search/Radio.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/search/Singer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/search/Singer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/search/Single.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/search/Single.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/search/Single.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/search/User.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/search/User.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/search/Video.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/search/Video.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useRecommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useRecommand.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hooks/useSearchMusic.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useSearchMusic.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/search.music.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/search.music.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useVideoDetail.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useVideoDetail.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/music.message.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/music.message.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/recommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/recommand.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/search.hot.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/search.hot.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/video.detail.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/video.detail.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routers/Loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/Loading.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routers/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tools/ArrayObjectSort.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/tools/ArrayObjectSort.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tools/IconFontSetting.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/tools/IconFontSetting.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tools/RemoveDuplicates.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/tools/RemoveDuplicates.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tools/format.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/tools/format.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/FindMusic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/FindMusic.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Penpal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Penpal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/PersonalFm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/PersonalFm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/SearchMusic.scss" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/SearchMusic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/SearchMusic.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Settings.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/VideoDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/VideoDetail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Videos.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Videos.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,21 +76,39 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="ProjectId" id="1Sro0QiP70mO3h8HAmWWk9P2swC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.detected.package.stylelint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.path.for.package.stylelint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
+    <property name="node.js.selected.package.stylelint" value="" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.CSS" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assets/mixins" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -61,7 +123,7 @@
     </option>
   </component>
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>$USER_HOME$/.subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -76,6 +138,8 @@
       <workItem from="1573003378010" duration="22870000" />
       <workItem from="1574058541890" duration="29731000" />
       <workItem from="1574218893187" duration="50582000" />
+      <workItem from="1574955671290" duration="12319000" />
+      <workItem from="1575039030140" duration="19354000" />
     </task>
     <servers />
   </component>

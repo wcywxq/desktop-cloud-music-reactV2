@@ -41,7 +41,7 @@ export const useSearchMusic = (initialParams: SearchParams) => {
                                 payLoad: result.data.result.artists,
                                 count: result.data.result.artistCount,
                                 dataType: 'artists'
-                            })
+                            });
                             break;
                         case '10': // 专辑
                             dispatch({
@@ -49,7 +49,7 @@ export const useSearchMusic = (initialParams: SearchParams) => {
                                 payLoad: result.data.result.albums,
                                 count: result.data.result.albumCount,
                                 dataType: 'albums'
-                            })
+                            });
                             break;
                         case '1014': // 视频
                             dispatch({
@@ -57,7 +57,7 @@ export const useSearchMusic = (initialParams: SearchParams) => {
                                 payLoad: result.data.result.videos,
                                 count: result.data.result.videoCount,
                                 dataType: 'videos'
-                            })
+                            });
                             break;
                         case '1000': // 歌单
                             dispatch({
@@ -65,7 +65,7 @@ export const useSearchMusic = (initialParams: SearchParams) => {
                                 payLoad: result.data.result.playlists,
                                 count: result.data.result.playlistCount,
                                 dataType: 'playlists'
-                            })
+                            });
                             break;
                         case '1006': // 歌词
                             dispatch({
@@ -73,7 +73,7 @@ export const useSearchMusic = (initialParams: SearchParams) => {
                                 payLoad: result.data.result.songs,
                                 count: result.data.result.songCount,
                                 dataType: 'lyrics'
-                            })
+                            });
                             break;
                         case '1009': // 电台
                             dispatch({
@@ -81,7 +81,7 @@ export const useSearchMusic = (initialParams: SearchParams) => {
                                 payLoad: result.data.result.djRadios,
                                 count: result.data.result.djRadiosCount,
                                 dataType: 'djRadios'
-                            })
+                            });
                             break;
                         case '1002': // 用户
                             dispatch({
@@ -89,7 +89,7 @@ export const useSearchMusic = (initialParams: SearchParams) => {
                                 payLoad: result.data.result.userprofiles,
                                 count: result.data.result.userprofileCount,
                                 dataType: 'userprofiles'
-                            })
+                            });
                             break;
                         default: // 默认为单曲
                             dispatch({
@@ -97,7 +97,7 @@ export const useSearchMusic = (initialParams: SearchParams) => {
                                 payLoad: result.data.result.songs,
                                 count: result.data.result.songCount,
                                 dataType: 'songs'
-                            })
+                            });
                             break;
                     }
                 }

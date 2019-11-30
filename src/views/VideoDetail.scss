@@ -1,0 +1,27 @@
+.video-detail {
+  margin: 10px 255px 0;
+
+  &-title {
+    font-weight: bold;
+    font-size: 16px;
+
+    .back-icon {
+      margin-right: 10px;
+      padding: 4px;
+      cursor: pointer;
+      font-size: 14px;
+
+      &:hover {
+        animation: changeBackIcon .5s ease forwards;
+        border-radius: 50%;
+      }
+
+      @keyframes changeBackIcon {
+        100% {
+          background-color: #ccc;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

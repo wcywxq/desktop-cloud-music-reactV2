@@ -1,0 +1,26 @@
+@import './unit';
+
+@mixin grid-head {
+  .g-hd {
+    padding: 10px 0;
+    grid-template-columns: 255px 5fr 1fr;
+
+    .first {
+      padding-right: 10px;
+
+      img {
+        margin-right: 10px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #fff;
+      }
+    }
+
+    .last {
+      padding-right: 40px;
+    }
+
+    @include unit-icon;
+  }
+}

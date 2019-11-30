@@ -1,0 +1,1135 @@
+@mixin skin-color {
+  .s {
+    &-cl {
+      &-black {
+        color: #000000 !important;
+      }
+
+      &-navy {
+        color: #000080 !important;
+      }
+
+      &-darkblue {
+        color: #00008b !important;
+      }
+
+      &-mediumblue {
+        color: #0000cd !important;
+      }
+
+      &-blue {
+        color: #0000ff !important;
+      }
+
+      &-darkgreen {
+        color: #006400 !important;
+      }
+
+      &-green {
+        color: #008000 !important;
+      }
+
+      &-teal {
+        color: #008080 !important;
+      }
+
+      &-darkcyan {
+        color: #008b8b !important;
+      }
+
+      &-deepskyblue {
+        color: #00bfff !important;
+      }
+
+      &-darkturquoise {
+        color: #00ced1 !important;
+      }
+
+      &-mediumspringgreen {
+        color: #00fa9a !important;
+      }
+
+      &-lime {
+        color: #00ff00 !important;
+      }
+
+      &-springgreen {
+        color: #00ff7f !important;
+      }
+
+      &-aqua {
+        color: #00ffff !important;
+      }
+
+      &-cyan {
+        color: #00ffff !important;
+      }
+
+      &-midnightblue {
+        color: #191970 !important;
+      }
+
+      &-dodgerblue {
+        color: #1e90ff !important;
+      }
+
+      &-lightseagreen {
+        color: #20b2aa !important;
+      }
+
+      &-forestgreen {
+        color: #228b22 !important;
+      }
+
+      &-seagreen {
+        color: #2e8b57 !important;
+      }
+
+      &-darkslategray {
+        color: #2f4f4f !important;
+      }
+
+      &-limegreen {
+        color: #32cd32 !important;
+      }
+
+      &-mediumseagreen {
+        color: #3cb371 !important;
+      }
+
+      &-turquoise {
+        color: #40e0d0 !important;
+      }
+
+      &-royalblue {
+        color: #4169e1 !important;
+      }
+
+      &-steelblue {
+        color: #4682b4 !important;
+      }
+
+      &-darkslateblue {
+        color: #483d8b !important;
+      }
+
+      &-mediumturquoise {
+        color: #48d1cc !important;
+      }
+
+      &-indigo {
+        color: #4b0082 !important;
+      }
+
+      &-darkolivegreen {
+        color: #556b2f !important;
+      }
+
+      &-cadetblue {
+        color: #5f9ea0 !important;
+      }
+
+      &-cornflowerblue {
+        color: #6495ed !important;
+      }
+
+      &-mediumaquamarine {
+        color: #66cdaa !important;
+      }
+
+      &-dimgray {
+        color: #696969 !important;
+      }
+
+      &-dimgrey {
+        color: #696969 !important;
+      }
+
+      &-slateblue {
+        color: #6a5acd !important;
+      }
+
+      &-olivedrab {
+        color: #6b8e23 !important;
+      }
+
+      &-slategray {
+        color: #708090 !important;
+      }
+
+      &-lightslategray {
+        color: #778899 !important;
+      }
+
+      &-mediumslateblue {
+        color: #7b68ee !important;
+      }
+
+      &-lawngreen {
+        color: #7cfc00 !important;
+      }
+
+      &-chartreuse {
+        color: #7fff00 !important;
+      }
+
+      &-aquamarine {
+        color: #7fffd4 !important;
+      }
+
+      &-maroon {
+        color: #800000 !important;
+      }
+
+      &-purple {
+        color: #800080 !important;
+      }
+
+      &-olive {
+        color: #808000 !important;
+      }
+
+      &-gray {
+        color: #808080 !important;
+      }
+
+      &-skyblue {
+        color: #87ceeb !important;
+      }
+
+      &-lightskyblue {
+        color: #87cefa !important;
+      }
+
+      &-blueviolet {
+        color: #8a2be2 !important;
+      }
+
+      &-darkred {
+        color: #8b0000 !important;
+      }
+
+      &-darkmagenta {
+        color: #8b008b !important;
+      }
+
+      &-saddlebrown {
+        color: #8b4513 !important;
+      }
+
+      &-darkseagreen {
+        color: #8fbc8f !important;
+      }
+
+      &-lightgreen {
+        color: #90ee90 !important;
+      }
+
+      &-mediumpurple {
+        color: #9370db !important;
+      }
+
+      &-darkviolet {
+        color: #9400d3 !important;
+      }
+
+      &-palegreen {
+        color: #98fb98 !important;
+      }
+
+      &-darkorchid {
+        color: #9932cc !important;
+      }
+
+      &-yellowgreen {
+        color: #9acd32 !important;
+      }
+
+      &-sienna {
+        color: #a0522d !important;
+      }
+
+      &-brown {
+        color: #a52a2a !important;
+      }
+
+      &-darkgray {
+        color: #a9a9a9 !important;
+      }
+
+      &-lightblue {
+        color: #add8e6 !important;
+      }
+
+      &-greenyellow {
+        color: #adff2f !important;
+      }
+
+      &-paleturquoise {
+        color: #afeeee !important;
+      }
+
+      &-lightsteelblue {
+        color: #b0c4de !important;
+      }
+
+      &-powderblue {
+        color: #b0e0e6 !important;
+      }
+
+      &-firebrick {
+        color: #b22222 !important;
+      }
+
+      &-darkgoldenrod {
+        color: #b8860b !important;
+      }
+
+      &-mediumorchid {
+        color: #ba55d3 !important;
+      }
+
+      &-rosybrown {
+        color: #bc8f8f !important;
+      }
+
+      &-darkkhaki {
+        color: #bdb76b !important;
+      }
+
+      &-silver {
+        color: #c0c0c0 !important;
+      }
+
+      &-mediumvioletred {
+        color: #c71585 !important;
+      }
+
+      &-indianred {
+        color: #cd5c5c !important;
+      }
+
+      &-peru {
+        color: #cd853f !important;
+      }
+
+      &-chocolate {
+        color: #d2691e !important;
+      }
+
+      &-tan {
+        color: #d2b48c !important;
+      }
+
+      &-lightgray {
+        color: #d3d3d3 !important;
+      }
+
+      &-thistle {
+        color: #d8bfd8 !important;
+      }
+
+      &-orchid {
+        color: #da70d6 !important;
+      }
+
+      &-goldenrod {
+        color: #daa520 !important;
+      }
+
+      &-palevioletred {
+        color: #db7093 !important;
+      }
+
+      &-crimson {
+        color: #dc143c !important;
+      }
+
+      &-gainsboro {
+        color: #dcdcdc !important;
+      }
+
+      &-plum {
+        color: #dda0dd !important;
+      }
+
+      &-burlywood {
+        color: #deb887 !important;
+      }
+
+      &-lightcyan {
+        color: #e0ffff !important;
+      }
+
+      &-lavender {
+        color: #e6e6fa !important;
+      }
+
+      &-darksalmon {
+        color: #e9967a !important;
+      }
+
+      &-violet {
+        color: #ee82ee !important;
+      }
+
+      &-palegoldenrod {
+        color: #eee8aa !important;
+      }
+
+      &-lightcoral {
+        color: #f08080 !important;
+      }
+
+      &-khaki {
+        color: #f0e68c !important;
+      }
+
+      &-aliceblue {
+        color: #f0f8ff !important;
+      }
+
+      &-honeydew {
+        color: #f0fff0 !important;
+      }
+
+      &-azure {
+        color: #f0ffff !important;
+      }
+
+      &-sandybrown {
+        color: #f4a460 !important;
+      }
+
+      &-wheat {
+        color: #f5deb3 !important;
+      }
+
+      &-beige {
+        color: #f5f5dc !important;
+      }
+
+      &-whitesmoke {
+        color: #f5f5f5 !important;
+      }
+
+      &-mintcream {
+        color: #f5fffa !important;
+      }
+
+      &-ghostwhite {
+        color: #f8f8ff !important;
+      }
+
+      &-salmon {
+        color: #fa8072 !important;
+      }
+
+      &-antiquewhite {
+        color: #faebd7 !important;
+      }
+
+      &-linen {
+        color: #faf0e6 !important;
+      }
+
+      &-lightgoldenrodyellow {
+        color: #fafad2 !important;
+      }
+
+      &-oldlace {
+        color: #fdf5e6 !important;
+      }
+
+      &-red {
+        color: #ff0000 !important;
+      }
+
+      &-fuchsia {
+        color: #ff00ff !important;
+      }
+
+      &-magenta {
+        color: #ff00ff !important;
+      }
+
+      &-deeppink {
+        color: #ff1493 !important;
+      }
+
+      &-orangered {
+        color: #ff4500 !important;
+      }
+
+      &-tomato {
+        color: #ff6347 !important;
+      }
+
+      &-hotpink {
+        color: #ff69b4 !important;
+      }
+
+      &-coral {
+        color: #ff7f50 !important;
+      }
+
+      &-darkorange {
+        color: #ff8c00 !important;
+      }
+
+      &-lightsalmon {
+        color: #ffa07a !important;
+      }
+
+      &-orange {
+        color: #ffa500 !important;
+      }
+
+      &-lightpink {
+        color: #ffb6c1 !important;
+      }
+
+      &-pink {
+        color: #ffc0cb !important;
+      }
+
+      &-gold {
+        color: #ffd700 !important;
+      }
+
+      &-peachpuff {
+        color: #ffdab9 !important;
+      }
+
+      &-navajowhite {
+        color: #ffdead !important;
+      }
+
+      &-moccasin {
+        color: #ffe4b5 !important;
+      }
+
+      &-bisque {
+        color: #ffe4c4 !important;
+      }
+
+      &-mistyrose {
+        color: #ffe4e1 !important;
+      }
+
+      &-blanchedalmond {
+        color: #ffebcd !important;
+      }
+
+      &-papayawhip {
+        color: #ffefd5 !important;
+      }
+
+      &-lavenderblush {
+        color: #fff0f5 !important;
+      }
+
+      &-seashell {
+        color: #fff5ee !important;
+      }
+
+      &-cornsilk {
+        color: #fff8dc !important;
+      }
+
+      &-lemonchiffon {
+        color: #fffacd !important;
+      }
+
+      &-floralwhite {
+        color: #fffaf0 !important;
+      }
+
+      &-snow {
+        color: #fffafa !important;
+      }
+
+      &-yellow {
+        color: #ffff00 !important;
+      }
+
+      &-lightyellow {
+        color: #ffffe0 !important;
+      }
+
+      &-ivory {
+        color: #fffff0 !important;
+      }
+
+      &-white {
+        color: #ffffff !important;
+      }
+    }
+
+    &-bgc {
+      &-black {
+        background-color: #000000 !important;
+      }
+
+      &-navy {
+        background-color: #000080 !important;
+      }
+
+      &-darkblue {
+        background-color: #00008b !important;
+      }
+
+      &-mediumblue {
+        background-color: #0000cd !important;
+      }
+
+      &-blue {
+        background-color: #0000ff !important;
+      }
+
+      &-darkgreen {
+        background-color: #006400 !important;
+      }
+
+      &-green {
+        background-color: #008000 !important;
+      }
+
+      &-teal {
+        background-color: #008080 !important;
+      }
+
+      &-darkcyan {
+        background-color: #008b8b !important;
+      }
+
+      &-deepskyblue {
+        background-color: #00bfff !important;
+      }
+
+      &-darkturquoise {
+        background-color: #00ced1 !important;
+      }
+
+      &-mediumspringgreen {
+        background-color: #00fa9a !important;
+      }
+
+      &-lime {
+        background-color: #00ff00 !important;
+      }
+
+      &-springgreen {
+        background-color: #00ff7f !important;
+      }
+
+      &-aqua {
+        background-color: #00ffff !important;
+      }
+
+      &-cyan {
+        background-color: #00ffff !important;
+      }
+
+      &-midnightblue {
+        background-color: #191970 !important;
+      }
+
+      &-dodgerblue {
+        background-color: #1e90ff !important;
+      }
+
+      &-lightseagreen {
+        background-color: #20b2aa !important;
+      }
+
+      &-forestgreen {
+        background-color: #228b22 !important;
+      }
+
+      &-seagreen {
+        background-color: #2e8b57 !important;
+      }
+
+      &-darkslategray {
+        background-color: #2f4f4f !important;
+      }
+
+      &-limegreen {
+        background-color: #32cd32 !important;
+      }
+
+      &-mediumseagreen {
+        background-color: #3cb371 !important;
+      }
+
+      &-turquoise {
+        background-color: #40e0d0 !important;
+      }
+
+      &-royalblue {
+        background-color: #4169e1 !important;
+      }
+
+      &-steelblue {
+        background-color: #4682b4 !important;
+      }
+
+      &-darkslateblue {
+        background-color: #483d8b !important;
+      }
+
+      &-mediumturquoise {
+        background-color: #48d1cc !important;
+      }
+
+      &-indigo {
+        background-color: #4b0082 !important;
+      }
+
+      &-darkolivegreen {
+        background-color: #556b2f !important;
+      }
+
+      &-cadetblue {
+        background-color: #5f9ea0 !important;
+      }
+
+      &-cornflowerblue {
+        background-color: #6495ed !important;
+      }
+
+      &-mediumaquamarine {
+        background-color: #66cdaa !important;
+      }
+
+      &-dimgray {
+        background-color: #696969 !important;
+      }
+
+      &-dimgrey {
+        background-color: #696969 !important;
+      }
+
+      &-slateblue {
+        background-color: #6a5acd !important;
+      }
+
+      &-olivedrab {
+        background-color: #6b8e23 !important;
+      }
+
+      &-slategray {
+        background-color: #708090 !important;
+      }
+
+      &-lightslategray {
+        background-color: #778899 !important;
+      }
+
+      &-mediumslateblue {
+        background-color: #7b68ee !important;
+      }
+
+      &-lawngreen {
+        background-color: #7cfc00 !important;
+      }
+
+      &-chartreuse {
+        background-color: #7fff00 !important;
+      }
+
+      &-aquamarine {
+        background-color: #7fffd4 !important;
+      }
+
+      &-maroon {
+        background-color: #800000 !important;
+      }
+
+      &-purple {
+        background-color: #800080 !important;
+      }
+
+      &-olive {
+        background-color: #808000 !important;
+      }
+
+      &-gray {
+        background-color: #808080 !important;
+      }
+
+      &-skyblue {
+        background-color: #87ceeb !important;
+      }
+
+      &-lightskyblue {
+        background-color: #87cefa !important;
+      }
+
+      &-blueviolet {
+        background-color: #8a2be2 !important;
+      }
+
+      &-darkred {
+        background-color: #8b0000 !important;
+      }
+
+      &-darkmagenta {
+        background-color: #8b008b !important;
+      }
+
+      &-saddlebrown {
+        background-color: #8b4513 !important;
+      }
+
+      &-darkseagreen {
+        background-color: #8fbc8f !important;
+      }
+
+      &-lightgreen {
+        background-color: #90ee90 !important;
+      }
+
+      &-mediumpurple {
+        background-color: #9370db !important;
+      }
+
+      &-darkviolet {
+        background-color: #9400d3 !important;
+      }
+
+      &-palegreen {
+        background-color: #98fb98 !important;
+      }
+
+      &-darkorchid {
+        background-color: #9932cc !important;
+      }
+
+      &-yellowgreen {
+        background-color: #9acd32 !important;
+      }
+
+      &-sienna {
+        background-color: #a0522d !important;
+      }
+
+      &-brown {
+        background-color: #a52a2a !important;
+      }
+
+      &-darkgray {
+        background-color: #a9a9a9 !important;
+      }
+
+      &-lightblue {
+        background-color: #add8e6 !important;
+      }
+
+      &-greenyellow {
+        background-color: #adff2f !important;
+      }
+
+      &-paleturquoise {
+        background-color: #afeeee !important;
+      }
+
+      &-lightsteelblue {
+        background-color: #b0c4de !important;
+      }
+
+      &-powderblue {
+        background-color: #b0e0e6 !important;
+      }
+
+      &-firebrick {
+        background-color: #b22222 !important;
+      }
+
+      &-darkgoldenrod {
+        background-color: #b8860b !important;
+      }
+
+      &-mediumorchid {
+        background-color: #ba55d3 !important;
+      }
+
+      &-rosybrown {
+        background-color: #bc8f8f !important;
+      }
+
+      &-darkkhaki {
+        background-color: #bdb76b !important;
+      }
+
+      &-silver {
+        background-color: #c0c0c0 !important;
+      }
+
+      &-mediumvioletred {
+        background-color: #c71585 !important;
+      }
+
+      &-indianred {
+        background-color: #cd5c5c !important;
+      }
+
+      &-peru {
+        background-color: #cd853f !important;
+      }
+
+      &-chocolate {
+        background-color: #d2691e !important;
+      }
+
+      &-tan {
+        background-color: #d2b48c !important;
+      }
+
+      &-lightgray {
+        background-color: #d3d3d3 !important;
+      }
+
+      &-thistle {
+        background-color: #d8bfd8 !important;
+      }
+
+      &-orchid {
+        background-color: #da70d6 !important;
+      }
+
+      &-goldenrod {
+        background-color: #daa520 !important;
+      }
+
+      &-palevioletred {
+        background-color: #db7093 !important;
+      }
+
+      &-crimson {
+        background-color: #dc143c !important;
+      }
+
+      &-gainsboro {
+        background-color: #dcdcdc !important;
+      }
+
+      &-plum {
+        background-color: #dda0dd !important;
+      }
+
+      &-burlywood {
+        background-color: #deb887 !important;
+      }
+
+      &-lightcyan {
+        background-color: #e0ffff !important;
+      }
+
+      &-lavender {
+        background-color: #e6e6fa !important;
+      }
+
+      &-darksalmon {
+        background-color: #e9967a !important;
+      }
+
+      &-violet {
+        background-color: #ee82ee !important;
+      }
+
+      &-palegoldenrod {
+        background-color: #eee8aa !important;
+      }
+
+      &-lightcoral {
+        background-color: #f08080 !important;
+      }
+
+      &-khaki {
+        background-color: #f0e68c !important;
+      }
+
+      &-aliceblue {
+        background-color: #f0f8ff !important;
+      }
+
+      &-honeydew {
+        background-color: #f0fff0 !important;
+      }
+
+      &-azure {
+        background-color: #f0ffff !important;
+      }
+
+      &-sandybrown {
+        background-color: #f4a460 !important;
+      }
+
+      &-wheat {
+        background-color: #f5deb3 !important;
+      }
+
+      &-beige {
+        background-color: #f5f5dc !important;
+      }
+
+      &-whitesmoke {
+        background-color: #f5f5f5 !important;
+      }
+
+      &-mintcream {
+        background-color: #f5fffa !important;
+      }
+
+      &-ghostwhite {
+        background-color: #f8f8ff !important;
+      }
+
+      &-salmon {
+        background-color: #fa8072 !important;
+      }
+
+      &-antiquewhite {
+        background-color: #faebd7 !important;
+      }
+
+      &-linen {
+        background-color: #faf0e6 !important;
+      }
+
+      &-lightgoldenrodyellow {
+        background-color: #fafad2 !important;
+      }
+
+      &-oldlace {
+        background-color: #fdf5e6 !important;
+      }
+
+      &-red {
+        background-color: #ff0000 !important;
+      }
+
+      &-fuchsia {
+        background-color: #ff00ff !important;
+      }
+
+      &-magenta {
+        background-color: #ff00ff !important;
+      }
+
+      &-deeppink {
+        background-color: #ff1493 !important;
+      }
+
+      &-orangered {
+        background-color: #ff4500 !important;
+      }
+
+      &-tomato {
+        background-color: #ff6347 !important;
+      }
+
+      &-hotpink {
+        background-color: #ff69b4 !important;
+      }
+
+      &-coral {
+        background-color: #ff7f50 !important;
+      }
+
+      &-darkorange {
+        background-color: #ff8c00 !important;
+      }
+
+      &-lightsalmon {
+        background-color: #ffa07a !important;
+      }
+
+      &-orange {
+        background-color: #ffa500 !important;
+      }
+
+      &-lightpink {
+        background-color: #ffb6c1 !important;
+      }
+
+      &-pink {
+        background-color: #ffc0cb !important;
+      }
+
+      &-gold {
+        background-color: #ffd700 !important;
+      }
+
+      &-peachpuff {
+        background-color: #ffdab9 !important;
+      }
+
+      &-navajowhite {
+        background-color: #ffdead !important;
+      }
+
+      &-moccasin {
+        background-color: #ffe4b5 !important;
+      }
+
+      &-bisque {
+        background-color: #ffe4c4 !important;
+      }
+
+      &-mistyrose {
+        background-color: #ffe4e1 !important;
+      }
+
+      &-blanchedalmond {
+        background-color: #ffebcd !important;
+      }
+
+      &-papayawhip {
+        background-color: #ffefd5 !important;
+      }
+
+      &-lavenderblush {
+        background-color: #fff0f5 !important;
+      }
+
+      &-seashell {
+        background-color: #fff5ee !important;
+      }
+
+      &-cornsilk {
+        background-color: #fff8dc !important;
+      }
+
+      &-lemonchiffon {
+        background-color: #fffacd !important;
+      }
+
+      &-floralwhite {
+        background-color: #fffaf0 !important;
+      }
+
+      &-snow {
+        background-color: #fffafa !important;
+      }
+
+      &-yellow {
+        background-color: #ffff00 !important;
+      }
+
+      &-lightyellow {
+        background-color: #ffffe0 !important;
+      }
+
+      &-ivory {
+        background-color: #fffff0 !important;
+      }
+
+      &-white {
+        background-color: #ffffff !important;
+      }
+    }
+  }
+}

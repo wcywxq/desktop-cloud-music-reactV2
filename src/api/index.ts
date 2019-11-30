@@ -15,19 +15,19 @@ axios.interceptors.request.use(
     return config;
   },
   (error: AxiosError) => Promise.reject(error)
-)
+);
 
 // http response 拦截，捕获异常
 axios.interceptors.response.use(
   (response: AxiosResponse) => response,
   (error: AxiosError) => Promise.reject(error.response)
-)
+);
 
 /**
  * get 方法
- * @param {url}
- * @param {data}
  * @returns {Promise}
+ * @param url
+ * @param params
  */
 export const get = async (url: string, params = {}): Promise<any> => {
   try {
@@ -36,7 +36,7 @@ export const get = async (url: string, params = {}): Promise<any> => {
   } catch (error) {
     return Promise.reject(error);
   }
-}
+};
 
 // types
 export interface SearchParams {
@@ -50,16 +50,14 @@ export interface SearchParams {
 export const fetchApi = {
   /**
    * banner
-   * @param [type] 0: pc 1: android 2: iphone 3: ipad
    * @example /banner?type=0
+   * @param params
    */
   banner: (params = { type: 0 }) => get('banner', params),
   /**
    * 搜索
-   * @param [keywords] 
-   * @param [limit] 可选
-   * @param [offset] 可选
    * @example /search?keywords=海阔天空
+   * @param params
    */
   search: (params: SearchParams) => get('search', params),
   /**
@@ -69,34 +67,33 @@ export const fetchApi = {
   hot: () => get('search/hot/detail'),
   /**
    * 搜索多重匹配
-   * @param [keywords]
    * @example /search/multimatch?keywords=海阔天空
+   * @param params
    */
   multiMatch: (params: { keywords: string }) => get('search/multimatch', params),
   /**
    * 获取音乐 url
-   * @param [id] 音乐id
    * @example /song/url?id=347230
+   * @param params
    */
   getMusicUrl: (params: { id: number | number[] }) => get('song/url', params),
   /**
    * 音乐是否可用
-   * @param [id] 歌曲id
-   * @param [br] 码率，可选
    * @example /check/music?id=347230
+   * @param params
    */
   check: (params: { id: number | number[], br?: number }) => get('check/music', params),
-  /** 
+  /**
    * 获取歌曲详情，音乐背景图片
-   * @param [ids] 音乐id
    * @example /song/detail?ids=347230,347231
+   * @param params
    */
   getMusicDetail: (params: { ids: number | number[] }) => get('song/detail', params),
   // 个性推荐部分
-  /** 
+  /**
    * 推荐歌单
-   * @param [limit] 取出数量
    * @example /personalized?limit=10
+   * @param params
    */
   recommendSongList: (params: { limit: number }) => get('personalized', params),
   /**
@@ -105,7 +102,7 @@ export const fetchApi = {
    */
   exclusiveBroadcast: () => get('personalized/privatecontent'),
   /**
-   * 推荐新音乐 
+   * 推荐新音乐
    * @example /personalized/newsong
    */
   newSong: () => get('personalized/newsong'),
@@ -121,8 +118,14 @@ export const fetchApi = {
   djprogram: () => get('personalized/djprogram'),
   /**
    * 获取视频详情
-   * @param id
    * @example /video/detail?id=89ADDE33C0AAE8EC14B99F6750DB954D
+   * @param params
    */
-  videoDetail: (params: { id: string | number }) => get('video/detail', params)
+  videoDetail: (params: { id: string | number }) => get('video/detail', params),
+  /**
+   * 获取视频播放地址
+   * @example /video/url?id=89ADDE33C0AAE8EC14B99F6750DB954D
+   * @param params
+   */
+  videoMovieUrls: (params: { id: string | number }) => get('video/url', params)
 };
