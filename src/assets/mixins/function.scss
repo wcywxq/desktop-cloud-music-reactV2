@@ -158,6 +158,28 @@
       align-items: baseline;
     }
   }
+
+  .f-as {
+    &-center {
+      align-self: center;
+    }
+
+    &-bl {
+      align-self: baseline;
+    }
+
+    &-auto {
+      align-self: auto;
+    }
+
+    &-fs {
+      align-self: flex-start;
+    }
+
+    &-fe {
+      align-self: flex-end;
+    }
+  }
 }
 
 // text-align

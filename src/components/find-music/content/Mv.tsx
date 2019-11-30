@@ -3,11 +3,11 @@ import { Icon } from 'antd';
 
 // 推荐 Mv
 export const Mv: React.FC<{ data: any[] }> = (props) => (
-    <div className="recommandMv">
+    <div className="f-dg recommandMv">
         {props.data.map((item: any, index: number) => {
             return (
-                <div className="recommandMv-item" key={index}>
-                    <span className="amount">
+                <div className="f-pr f-cp recommandMv-item" key={index}>
+                    <span className="f-pa f-fz12 f-fwb s-cl-white amount">
                       <Icon type="caret-right"/>{" "}
                       {
                         item.playCount.toString().length > 4 ?
@@ -15,10 +15,10 @@ export const Mv: React.FC<{ data: any[] }> = (props) => (
                             item.playCount.toString()
                       }
                     </span>
-                    <span className="top">{item.copywriter}</span>
+                    <span className="f-os f-fz12 s-cl-white top">{item.copywriter}</span>
                     <img src={item.picUrl} alt="" className="img"/>
-                    <p className="name">{item.name}</p>
-                    <p className="artist-name">{item.artistName}</p>
+                    <p className="f-fz12 f-fwb s-cl-black name">{item.name}</p>
+                    <p className="f-fz12 s-cl-lightgray artist-name">{item.artistName}</p>
                 </div>
             )
         })}
