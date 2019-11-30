@@ -1,6 +1,6 @@
 // 功能
 // font-size
-@mixin func-font($size) {
+@mixin func-fontSize($size) {
   .f-fz#{$size} {
     font-size: $size + px !important;
   }

@@ -31,8 +31,8 @@
 @include func-alignFamily;
 
 // 遍历所有传入的值，生成相应的class
-@each $size in (10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40) {
-  @include func-font($size);
+@each $item in (10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40) {
+  @include func-fontSize($item);
 }
 
 /* 皮肤 */
