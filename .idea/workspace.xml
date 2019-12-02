@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="85c9a38d-7305-462b-8f7e-391c6d04d9a7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/mixins/function.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/mixins/function.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/find-music/Recommand.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/find-music/Recommand.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/find-music/content/Djprogram.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/find-music/content/Djprogram.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/find-music/content/ExclusiveBroadcast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/find-music/content/ExclusiveBroadcast.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/find-music/content/Mv.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/find-music/content/Mv.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/find-music/content/NewSong.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/find-music/content/NewSong.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/find-music/content/SongList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/find-music/content/SongList.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -111,7 +104,7 @@
       <workItem from="1574058541890" duration="29731000" />
       <workItem from="1574218893187" duration="50582000" />
       <workItem from="1574955671290" duration="12319000" />
-      <workItem from="1575039030140" duration="32530000" />
+      <workItem from="1575039030140" duration="32804000" />
     </task>
     <servers />
   </component>

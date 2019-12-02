@@ -11,9 +11,7 @@ import {
     Djprogram
 } from '@/components/find-music/content';
 
-import { compare } from '@/tools'
-
-import './Recommand.scss'
+import { compare } from '@/tools';
 
 interface RecommandWidgetTitleProps {
     text: string,
@@ -39,7 +37,7 @@ interface ArrElementTypes {
 const RecommandWidgetTitle: React.FC<RecommandWidgetTitleProps> = (props) => (
     <Link to={props.routerLink} className='s-cl-black'>
         <span className='f-fz16 f-fwb' style={{ marginRight: '5px' }}>{props.text}</span>
-        <Icon type="right"/>
+        <Icon type="right" />
     </Link>
 );
 
@@ -60,28 +58,28 @@ export const Recommand = (props: IProps) => {
         let initialArr = [
             {
                 keywords: 0,
-                titleELement: <RecommandWidgetTitle text='推荐歌单' routerLink='/'/>,
-                contentElement: <SongList data={props.recommendSongList}/>
+                titleELement: <RecommandWidgetTitle text='推荐歌单' routerLink='/' />,
+                contentElement: <SongList data={props.recommendSongList} />
             },
             {
                 keywords: 1,
-                titleELement: <RecommandWidgetTitle text='独家放送' routerLink='/'/>,
-                contentElement: <ExclusiveBroadcast data={props.exclusiveBroadcast}/>
+                titleELement: <RecommandWidgetTitle text='独家放送' routerLink='/' />,
+                contentElement: <ExclusiveBroadcast data={props.exclusiveBroadcast} />
             },
             {
                 keywords: 2,
-                titleELement: <RecommandWidgetTitle text='最新音乐' routerLink='/'/>,
-                contentElement: <NewSong data={props.newSong}/>
+                titleELement: <RecommandWidgetTitle text='最新音乐' routerLink='/' />,
+                contentElement: <NewSong data={props.newSong} />
             },
             {
                 keywords: 3,
-                titleELement: <RecommandWidgetTitle text='推荐MV' routerLink='/'/>,
-                contentElement: <Mv data={props.recommendMv}/>
+                titleELement: <RecommandWidgetTitle text='推荐MV' routerLink='/' />,
+                contentElement: <Mv data={props.recommendMv} />
             },
             {
                 keywords: 4,
-                titleELement: <RecommandWidgetTitle text='主播电台' routerLink='/'/>,
-                contentElement: <Djprogram data={props.djprogram}/>
+                titleELement: <RecommandWidgetTitle text='主播电台' routerLink='/' />,
+                contentElement: <Djprogram data={props.djprogram} />
             }
         ];
 

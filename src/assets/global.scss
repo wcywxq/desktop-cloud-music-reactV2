@@ -15,6 +15,7 @@
 @include module-playControl;
 @include module-banner;
 @include module-sortable;
+@include module-recommend;
 
 /* 元件 */
 @include unit-tag;
@@ -36,10 +37,25 @@
 // align item
 @include func-alignFamily;
 
+// flex-direction
+@include func-flex-direction;
+
 // 遍历所有传入的值，生成相应的class
 @each $item in (10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40) {
   @include func-fontSize($item);
 }
+
+// grid settings
+// 推荐歌单
+@include func-grid-settings(sl, 5, 20%, 0, 0);
+// 独家放送
+@include func-grid-settings(eb, 4, 25%, 0, 0);
+// 最新音乐
+@include func-grid-settings(ns, 2, 50%, 0, 15);
+// 推荐 Mv
+@include func-grid-settings(mv, 4, 25%, 0, 0);
+// 推荐电台
+@include func-grid-settings(dj, 3, 33.333%, 10, 10);
 
 /* 皮肤 */
 @include skin-color;
