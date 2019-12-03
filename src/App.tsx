@@ -13,7 +13,8 @@ import { Loading } from "@/routers/Loading";
 import { IconFont } from '@/tools/IconFontSetting';
 
 // 头部控制组件，播放器悬浮组件
-import { Top, Bottom } from '@/components/controls';
+import { Control } from '@/components/control';
+import { Audio } from '@/components/audio';
 
 // 获取音乐信息
 import { useMusicMessage } from "@/hooks";
@@ -62,7 +63,7 @@ const menuMessage = [
         key: "sub3",
         title: (
             <span>
-                <Icon type="setting"/>
+                <Icon type="setting" />
                 <span>创建的歌单</span>
             </span>
         ),
@@ -83,14 +84,14 @@ const App: React.FC = () => {
         <Router>
             <Layout>
                 <Header style={styles.Header}>
-                    <Top/>
+                    <Control />
                 </Header>
                 <Switch>
                     <Route path="/video-detail/:id"
-                           component={Loadable({ loader: () => import('@/views/VideoDetail'), loading: Loading })}/>
+                        component={Loadable({ loader: () => import('@/views/VideoDetail'), loading: Loading })} />
                     <Route>
                         <Layout className='s-bgc-white'>
-                            <Sider width={255} style={{height: '100%'}}>
+                            <Sider width={255} style={{ height: '100%' }}>
                                 <Menu
                                     onClick={e => console.log("click ", e)}
                                     defaultSelectedKeys={["1"]}
@@ -105,7 +106,7 @@ const App: React.FC = () => {
                                                         return (
                                                             <Menu.Item key={sub_item.k}>
                                                                 <Link to={sub_item.routerLink}>
-                                                                    <IconFont type={sub_item.iconType}/>
+                                                                    <IconFont type={sub_item.iconType} />
                                                                     {sub_item.text}
                                                                 </Link>
                                                             </Menu.Item>
@@ -117,21 +118,21 @@ const App: React.FC = () => {
                                     })}
                                 </Menu>
                             </Sider>
-                            <Content style={{padding: '0 40px'}}>
+                            <Content style={{ padding: '0 40px' }}>
                                 <Switch>
                                     {router.map((route, key) => {
                                         if (route.exact) {
                                             return <Route exact key={key} path={route.path}
-                                                          component={route.component}/>
+                                                component={route.component} />
                                         } else {
-                                            return <Route key={key} path={route.path} component={route.component}/>
+                                            return <Route key={key} path={route.path} component={route.component} />
                                         }
                                     })}
                                 </Switch>
                             </Content>
                         </Layout>
                         <Footer className='f-pf s-bgc-white' style={styles.Footer}>
-                            <Bottom
+                            <Audio
                                 musicMsgState={musicMsgState}
                                 setListIndex={setListIndex}
                                 setID={setID}

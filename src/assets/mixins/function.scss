@@ -237,7 +237,7 @@
 // cursor 
 @mixin func-cursor {
   .f-cp {
-    cursor: pointer;
+    cursor: pointer !important;
   }
 }
 

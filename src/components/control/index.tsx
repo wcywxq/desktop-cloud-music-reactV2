@@ -5,7 +5,7 @@ import { Input, Icon, Badge, Popover, Tag, Spin, Row, Col, Modal } from 'antd'
 
 import { useSearchHot } from "@/hooks";
 
-export const Top: React.FC = () => {
+export const Control: React.FC = () => {
     // react-router 提供的 HOOKS
     const history = useHistory();
 

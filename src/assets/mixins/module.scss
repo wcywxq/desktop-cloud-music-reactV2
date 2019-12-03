@@ -454,3 +454,65 @@
     }
   }
 }
+
+// video 控件
+@mixin module-video {
+  .m-video {
+    width: 600px;
+    height: 350px;
+    border-radius: 10px;
+
+    video {
+      object-fit: container;
+      border-radius: 10px;
+    }
+
+    .progress {
+
+      // 内容
+      &-content {
+        padding: 0 10px;
+        width: 100%;
+        height: 40px;
+        line-height: 30px;
+        bottom: 0;
+        left: 0;
+
+        .item {
+
+          &:first-child,
+          &:nth-child(2) {
+            &:after {
+              content: "";
+              position: absolute;
+              top: 50%;
+              right: 0;
+              transform: translateY(-50%);
+              width: 1px;
+              height: 50%;
+              background-color: gray;
+            }
+          }
+        }
+
+        .scale {
+          transform: rotate(90deg);
+        }
+      }
+
+      // 进度条
+      &-bar {
+        width: 98%;
+        bottom: -14px;
+        left: 0;
+      }
+
+      /**
+      * antd css changed
+      */
+      .ant-slider-track {
+        background-color: #C2453A;
+      }
+    }
+  }
+}

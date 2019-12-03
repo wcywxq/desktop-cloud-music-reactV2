@@ -16,6 +16,7 @@
 @include module-banner;
 @include module-sortable;
 @include module-recommend;
+@include module-video;
 
 /* 元件 */
 @include unit-tag;
@@ -56,6 +57,8 @@
 @include func-grid-settings(mv, 4, 25%, 0, 0);
 // 推荐电台
 @include func-grid-settings(dj, 3, 33.333%, 10, 10);
+
+@include func-grid-settings(pg, 3, 33.333%, 0, 0);
 
 /* 皮肤 */
 @include skin-color;

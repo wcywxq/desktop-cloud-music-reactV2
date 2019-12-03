@@ -9,8 +9,8 @@ export interface VideoDetailInitAction {
 }
 
 export interface VideoDetailSuccessAction {
-    type: VIDEO_DETAIL_SUCCESS,
-    dataSource: any[]
+    type: VIDEO_DETAIL_SUCCESS
+    dataSource: any
     movieUrlsData: any[]
 }
 
@@ -23,7 +23,7 @@ export type VideoDetailAction = VideoDetailInitAction | VideoDetailSuccessAction
 interface VideoDetailState {
     isLoading: boolean,
     isError: boolean,
-    dataSource: any[],
+    dataSource: any,
     movieUrlsData: any[]
 }
 

@@ -5,6 +5,10 @@
         color: #C2453A !important;
       }
 
+      &-tansparent {
+        color: transparent !important;
+      }
+
       &-black {
         color: #000000 !important;
       }
@@ -575,6 +579,10 @@
         background-color: #C2453A !important;
       }
 
+      &-tansparent {
+        color: transparent !important;
+      }
+
       &-black {
         background-color: #000000 !important;
       }
@@ -1143,6 +1151,10 @@
     &-bc {
       &-default {
         border-color: #C2453A !important;
+      }
+
+      &-tansparent {
+        color: transparent !important;
       }
 
       &-black {

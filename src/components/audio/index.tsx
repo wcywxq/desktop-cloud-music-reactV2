@@ -29,7 +29,7 @@ interface IProps {
     setDuration: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export const Bottom: React.FC<IProps> = (props) => {
+export const Audio: React.FC<IProps> = (props) => {
     // 获取音乐信息, 包括url
     const { musicMsgState, setListIndex, setID, setDuration } = props;
 
@@ -51,7 +51,7 @@ export const Bottom: React.FC<IProps> = (props) => {
     const audio = audioRef.current as unknown as HTMLMediaElement;
 
     // 音量控制
-    const SoundControl = <Slider vertical defaultValue={30} style={{ height: '100px' }}/>;
+    const SoundControl = <Slider vertical defaultValue={30} style={{ height: '100px' }} />;
 
     // 获取添加到音乐播放列表的歌曲
     const { state, dispatch } = useMusicPlayList();
@@ -78,7 +78,7 @@ export const Bottom: React.FC<IProps> = (props) => {
         {
             title: () => (
                 <span>
-                    <Icon type="folder-add"/>{" "}收藏全部
+                    <Icon type="folder-add" />{" "}收藏全部
                  </span>
             ),
             dataIndex: 'artist.name',
@@ -93,7 +93,7 @@ export const Bottom: React.FC<IProps> = (props) => {
         {
             title: () => (
                 <span onClick={() => dispatch({ type: MUSIC_PROJECT_DELETE })}>
-                    <Icon type="delete"/>{" "}清空
+                    <Icon type="delete" />{" "}清空
                  </span>
             ),
             dataIndex: 'duration',
@@ -170,7 +170,7 @@ export const Bottom: React.FC<IProps> = (props) => {
                             }
                         }
                     }}
-                    // onChange={onHandleChange}
+                // onChange={onHandleChange}
                 />
             </div>
         </div>
@@ -274,7 +274,7 @@ export const Bottom: React.FC<IProps> = (props) => {
         <div className='g-ft f-pr'>
             {
                 musicMsgState ?
-                    <audio ref={audioRef} src={musicMsgState.url[0]} style={{height: 0}}/> :
+                    <audio ref={audioRef} src={musicMsgState.url[0]} style={{ height: 0 }} /> :
                     null
             }
             <Slider
@@ -284,7 +284,7 @@ export const Bottom: React.FC<IProps> = (props) => {
                 tipFormatter={value => formatDuration(value)}
                 onChange={onSliderChange}
                 className="f-pa"
-                style={{ width: '100%', top: '-32px', left: 0 }}/>
+                style={{ width: '100%', top: '-32px', left: 0 }} />
             <Row>
                 {
                     audio ? audio.src ?
@@ -296,7 +296,7 @@ export const Bottom: React.FC<IProps> = (props) => {
                                     className='f-cp'
                                     onClick={() => setVisible(!visible)}
                                 />
-                                <MusicDetailWidget visible={visible} setVisible={setVisible}/>
+                                <MusicDetailWidget visible={visible} setVisible={setVisible} />
                             </Col>
                             <Col span={7}>
                                 {
@@ -332,43 +332,43 @@ export const Bottom: React.FC<IProps> = (props) => {
                                 </p>
                             </Col>
                         </div>
-                        : <Col span={8}/> : <Col span={8}/>
+                        : <Col span={8} /> : <Col span={8} />
                 }
                 <Col span={8} className='m-pcm f-dg f-jc-center f-ai-center'>
                     <Icon type='heart'
-                          className={like ? 'f-fz18 f-cp s-cl-default' : 'f-fz18 f-cp'}
-                          theme={like ? "filled" : undefined}
-                          onClick={() => setLike(!like)}
+                        className={like ? 'f-fz18 f-cp s-cl-default' : 'f-fz18 f-cp'}
+                        theme={like ? "filled" : undefined}
+                        onClick={() => setLike(!like)}
                     />
                     <Icon type="step-backward"
-                          className='f-fz24 f-cp s-cl-default'
-                          onClick={() => {
-                              if (musicMsgState) {
-                                  setListIndex(musicMsgState["list.index"] - 1)
-                              }
-                          }}
+                        className='f-fz24 f-cp s-cl-default'
+                        onClick={() => {
+                            if (musicMsgState) {
+                                setListIndex(musicMsgState["list.index"] - 1)
+                            }
+                        }}
                     />
                     <Icon type={flag ? "pause-circle" : "play-circle"} theme="filled"
-                          className='f-fz40 f-cp s-cl-default'
-                          onClick={handlePlayClick}
+                        className='f-fz40 f-cp s-cl-default'
+                        onClick={handlePlayClick}
                     />
                     <Icon type="step-forward"
-                          className='f-fz24 f-cp s-cl-default'
-                          onClick={() => {
-                              if (musicMsgState) {
-                                  setListIndex(musicMsgState["list.index"] + 1)
-                              }
-                          }}
+                        className='f-fz24 f-cp s-cl-default'
+                        onClick={() => {
+                            if (musicMsgState) {
+                                setListIndex(musicMsgState["list.index"] + 1)
+                            }
+                        }}
                     />
-                    <IconFont type='icon-share' className='f-fz18 f-cp'/>
+                    <IconFont type='icon-share' className='f-fz18 f-cp' />
                 </Col>
-                <Col span={4}/>
+                <Col span={4} />
                 <Col span={4} className='m-pcr f-dg f-jc-end f-ai-center'>
-                    <IconFont type='icon-xindong' className='f-fz18 f-cp'/>
+                    <IconFont type='icon-xindong' className='f-fz18 f-cp' />
                     <Popover content={MusicPlayList} placement='top' trigger="click">
-                        <IconFont type='icon-bofangliebiao' className='f-fz18 f-cp'/>
+                        <IconFont type='icon-bofangliebiao' className='f-fz18 f-cp' />
                     </Popover>
-                    <IconFont type='icon-geci' className='f-fz18 f-cp'/>
+                    <IconFont type='icon-geci' className='f-fz18 f-cp' />
                     <Popover content={SoundControl} style={{ height: '100px' }}>
                         <IconFont
                             type={mute ? 'icon-jingyin' : 'icon-shengyin'}
