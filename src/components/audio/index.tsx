@@ -1,5 +1,4 @@
-// MutableRefObject 泛型接口，接收一个参数，作为 useRef 的类型定义,参数可以为T类型，即任意类型
-import React, { MutableRefObject, useEffect, useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import { useState } from 'reinspect'
 import { Button, Col, Icon, Popover, Row, Slider, Table } from 'antd'
 
@@ -47,8 +46,8 @@ export const Audio: React.FC<IProps> = (props) => {
     const [currentTime, setCurrentTime] = useState<any>(0, '当前时间');
 
     // 播放控制部分
-    const audioRef: MutableRefObject<any> = useRef();
-    const audio = audioRef.current as unknown as HTMLMediaElement;
+    const audioRef = useRef<any>();
+    const audio = audioRef.current as unknown as HTMLAudioElement;
 
     // 音量控制
     const SoundControl = <Slider vertical defaultValue={30} style={{ height: '100px' }} />;
@@ -183,7 +182,6 @@ export const Audio: React.FC<IProps> = (props) => {
     function handlePlayClick(event: React.MouseEvent<HTMLElement, MouseEvent>) {
         // 若 audio 不为 null
         if (audio) {
-            // setFlag(!flag)
             // 若有src源文件
             if (audio.src) {
                 // 播放暂停控制
@@ -213,38 +211,26 @@ export const Audio: React.FC<IProps> = (props) => {
     useEffect(() => {
         if (audio) {
             // 元数据已加载
-            audio.addEventListener(
-                'loadedmetadata',
-                () => {
-                    setFlag(true);
-                    audio.play()
-                }
-            );
+            audio.addEventListener('loadedmetadata', () => {
+                setFlag(true);
+                audio.play();
+            });
             // 监听播放时间
-            audio.addEventListener(
-                'timeupdate',
-                () => {
-                    setCurrentTime(audio.currentTime * 1000)
-                }
-            );
+            audio.addEventListener('timeupdate', () => {
+                setCurrentTime(audio.currentTime * 1000)
+            });
             // 播放结束
-            audio.addEventListener(
-                'ended',
-                () => {
-                    setFlag(false);
-                    audio.pause();
-                    // 循环播放单曲
-                    setCurrentTime(0);
-                    setFlag(true);
-                    setTimeout(() => audio.play(), 300)
-                }
-            );
-            audio.addEventListener(
-                'abort',
-                () => {
-                    // console.log(audio.currentSrc)
-                }
-            )
+            audio.addEventListener('ended', () => {
+                setFlag(false);
+                audio.pause();
+                // 循环播放单曲
+                setCurrentTime(0);
+                setFlag(true);
+                setTimeout(() => audio.play(), 300)
+            });
+            audio.addEventListener('abort', () => {
+                // console.log(audio.currentSrc)
+            })
         }
     }, [audio]);
 

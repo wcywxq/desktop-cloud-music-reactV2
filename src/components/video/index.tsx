@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useState } from 'reinspect';
 import { Slider, Row, Col, Tag, Icon, Tooltip, Radio, Spin } from 'antd';
 import { RadioChangeEvent } from 'antd/lib/radio';
@@ -16,20 +16,80 @@ export const Video: React.FC<IProps> = (props) => {
   const { isLoading, isError, dataSource, movieUrlsData } = props;
 
   const [value, setValue] = useState("超 清", "清晰度");
+  const [flag, setFlag] = useState(false, '控制视频播放暂停');
+  const [currentTime, setCurrentTime] = useState<any>(0, '视频播放当前事件');
+  const videoRef = useRef<any>(null);
+  const video = videoRef.current as unknown as HTMLVideoElement;
+
+  /**
+   * 处理播放暂停的回调
+   * @param event 
+   */
+  function handlePlayClick(event: React.MouseEvent<HTMLElement, MouseEvent>) {
+    const video = videoRef.current as unknown as HTMLVideoElement;
+    if (video) {
+      if (video.src) {
+        if (video.paused) {
+          setFlag(true);
+          video.play();
+        } else {
+          setFlag(false);
+          video.pause();
+        }
+      }
+    }
+  }
+
+  /**
+   * 进度条控制回调函数
+   * @param value 
+   */
+  function onSliderChange(value: any) {
+    // const video = videoRef.current as unknown as HTMLVideoElement;
+    video.currentTime = value / 1000;
+    setCurrentTime(value);
+  }
+
+  // 初始化立即播放
+  useEffect(() => {
+    const video = videoRef.current as unknown as HTMLVideoElement;
+    if (video) {
+      // 元数据已加载
+      video.addEventListener('loadedmetadata', () => {
+        setFlag(true);
+        video.play();
+      })
+    }
+  })
+
+  // 监听 video 事件
+  useEffect(() => {
+    if (video) {
+      // 监听播放事件
+      video.addEventListener('timeupdate', () => {
+        setCurrentTime(video.currentTime * 1000);
+      })
+    }
+  }, [video])
 
   return (
-    <div className="m-video f-pr s-bgc-black">
+    <div
+      className="m-video f-pr f-cp s-bgc-black"
+      onClick={handlePlayClick}
+    >
       {isLoading ? <Spin className="s-cl-white" /> :
         <>
           {
             movieUrlsData.length !== 0 ?
-              <video src={movieUrlsData[0].url} width={'100%'} height={'100%'} /> :
+              <video ref={videoRef} src={movieUrlsData[0].url} width={'100%'} height={'100%'} /> :
               null
           }
           <Row className="f-pa f-fz12 progress-content">
             <Col span={6}>
               <Tag color="geekblue" className="f-cp">
-                <span className="s-cl-gray">00:03</span>
+                <span className="s-cl-gray">
+                  {formatDuration(currentTime)}
+                </span>
                 <span className="s-cl-darkgray">{" "}/{" "}</span>
                 <span className="s-cl-darkgray">{
                   formatDuration(dataSource.durationms)
@@ -93,7 +153,15 @@ export const Video: React.FC<IProps> = (props) => {
               </span>
             </Col>
           </Row>
-          <Slider defaultValue={30} className="f-pa progress-bar" />
+          <Slider
+            className="f-pa progress-bar"
+            value={currentTime}
+            max={dataSource.durationms}
+            tipFormatter={value => formatDuration(value)}
+            onChange={onSliderChange}
+          />
+          {/* 暂停播放控制 */}
+          {flag ? null : <Icon type="play-circle" theme="filled" className="f-pa f-fz40 s-cl-default paused" />}
         </>
       }
     </div>
