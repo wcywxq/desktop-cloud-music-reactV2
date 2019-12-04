@@ -1,0 +1,15 @@
+version: '2'
+services:
+  # 服务名称
+  nginx:
+    # 镜像版本
+    image: nginx:latest
+    container_name: wxq-nginx
+    # 映射容器 80 端口到本地 80 端口
+    ports:
+     - "80:80"
+    # 映射本地文件到容器
+    volumes:
+     - ./build:/usr/share/nginx/html
+    # 覆盖容器启动后默认执行的命令
+    command: /bin/bash -c "nginx -g 'daemon off;'"
