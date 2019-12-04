@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import {  Row, Col, Icon } from 'antd';
+import { Row, Col, Icon } from 'antd';
 
 import { useVideoDetail } from '@/hooks';
-import { Video } from '@/components/video';
+import { Video, Explain } from '@/components/video';
 
 const VideoDetail: React.FC = () => {
     const { id } = useParams();
@@ -27,7 +27,10 @@ const VideoDetail: React.FC = () => {
                     <p className="f-fz16 f-fwb">
                         <Icon type="left" className="u-icon u-icon-forward f-fz14" onClick={() => history.go(-1)} />视频详情
                     </p>
+                    {/* 视频 */}
                     <Video {...videoDetailState} />
+                    {/* 说明内容 */}
+                    <Explain />
                 </Col>
                 <Col span={8}>
                     <p className="f-fz16 f-fwb">

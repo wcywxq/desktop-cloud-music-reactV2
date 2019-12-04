@@ -7,7 +7,7 @@ export const Video: React.FC = () => {
             title: 'Name',
             dataIndex: 'name',
             key: 'name',
-            render: (text: React.ReactNode) => <a>{text}</a>
+            render: (text: React.ReactNode) => <Tag>{text}</Tag>
         },
         {
             title: 'Age',
@@ -44,9 +44,9 @@ export const Video: React.FC = () => {
             key: 'action',
             render: (_text: any, record: { name: React.ReactNode; }) => (
                 <span>
-          <a>Invite {record.name}</a>
+          <Tag>Invite {record.name}</Tag>
           <Divider type="vertical"/>
-          <a>Delete</a>
+          <Tag>Delete</Tag>
         </span>
             )
         }
