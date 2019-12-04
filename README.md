@@ -20,10 +20,20 @@
 
 * `docker`
 
-  1. 下载项目：`git clone https://github.com/conjuringwxq/cloud-music-typescript.git`
+  1. 下载项目：`git clone https://github.com/Binaryify/NeteaseCloudMusicApi.git`
+   
+  2. 下载项目：`git clone https://github.com/conjuringwxq/cloud-music-typescript.git`
 
-  2. 安装 `docker`
+  3. 安装 `docker`
 
-  3. 运行 `yarn build`
+  4. 运行服务端： 
+   
+    * `cd NeteaseCloudMusicApi && docker build -t node-server .`
 
-  4. 运行 `docker-compose up -d`
+    * `docker run -d -p 3000:3000 node-server`
+  
+  5. 运行客户端
+
+    * `cd cloud-music-typescript && yarn && yarn build`
+   
+    * `docker-compose up -d`
