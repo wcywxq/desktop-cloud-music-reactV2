@@ -75,13 +75,13 @@ export const Video: React.FC<IProps> = (props) => {
   return (
     <div
       className="m-video f-pr f-cp s-bgc-black"
-      onClick={handlePlayClick}
+      // onClick={handlePlayClick}
     >
       {isLoading ? <Spin className="s-cl-white" /> :
         <>
           {
             movieUrlsData.length !== 0 ?
-              <video ref={videoRef} src={movieUrlsData[0].url} width={'100%'} height={'100%'} /> :
+              <video ref={videoRef} src={movieUrlsData[0].url} width={'100%'} height={'100%'}  onClick={handlePlayClick}  /> :
               null
           }
           <Row className="f-pa f-fz12 progress-content">
