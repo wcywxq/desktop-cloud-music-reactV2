@@ -24,6 +24,6 @@
 
   2. 安装 `docker`
 
-  3. 运行 `docker build -t [name]`
+  3. 运行 `yarn build`
 
-  4. 运行 `docker run -d -p [port]:[port] [name]`
+  4. 运行 `docker-compose up -d`
