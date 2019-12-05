@@ -43,13 +43,13 @@ export const Explain: React.FC<IProps> = (props) => {
       <Row className="end">
         <Col span={21} className="btn-box">
           <Button className="u-btn u-btn-comment f-fz12">
-            <Icon type="like" className="f-fz16 icon" /> 赞（{dataSource.praisedCount}）
+            <Icon type="like" className="f-fz16 icon" />赞({dataSource.praisedCount})
             </Button>
           <Button className="u-btn u-btn-comment f-fz12">
-            <Icon type="folder-add" className="f-fz16 icon" /> 收藏（{dataSource.subscribeCount}）
+            <Icon type="folder-add" className="f-fz16 icon" />收藏({dataSource.subscribeCount})
             </Button>
           <Button className="u-btn u-btn-comment f-fz12">
-            <Icon type="share-alt" className="f-fz16 icon" /> 分享（{dataSource.shareCount}）
+            <Icon type="share-alt" className="f-fz16 icon" />分享({dataSource.shareCount})
           </Button>
         </Col>
         <Col span={3} className="btn-box">
