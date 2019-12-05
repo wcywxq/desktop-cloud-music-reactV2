@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Comment, Icon, Button, Tooltip, Avatar, List, Skeleton } from 'antd';
+import { Comment, Icon, Tooltip, Avatar, List, Skeleton } from 'antd';
 import moment from 'moment';
 
 interface IProps {
