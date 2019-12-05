@@ -41,6 +41,7 @@
   }
 }
 
+// 播放控制
 @mixin module-playControl {
   .m-pcm {
     grid-template-columns: repeat(5, 12%);
@@ -519,6 +520,53 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+    }
+  }
+}
+
+// video 说明控件
+@mixin module-explain {
+  .m-explain {
+
+    .start,
+    .middle,
+    .end {
+      margin-bottom: 20px;
+    }
+
+    .start {
+      margin-top: 20px;
+
+      .img-box {
+        img {
+          margin-right: 10px;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
+      }
+
+      .attention {
+        &-box {
+          text-align: right;
+        }
+
+        &-btn {
+          margin-right: 20px;
+          width: 80px;
+          border-radius: 20px;
+
+          span {
+            margin-left: 4px;
+          }
+        }
+      }
+    }
+
+    .middle {
+      .publish-time {
+        margin-right: 20px;
+      }
     }
   }
 }

@@ -30,7 +30,7 @@ const VideoDetail: React.FC = () => {
                     {/* 视频 */}
                     <Video {...videoDetailState} />
                     {/* 说明内容 */}
-                    <Explain />
+                    <Explain {...videoDetailState} />
                 </Col>
                 <Col span={8}>
                     <p className="f-fz16 f-fwb">

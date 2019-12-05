@@ -1,3 +1,15 @@
+import moment from 'moment';
+
+/**
+ * 格式化时间戳
+ * @param timestamp 时间戳
+ * @param format 格式 'YYYY MM DD'
+ * @returns {string}
+ */
+export function format(timestamp: number, format: string): string {
+    return moment(timestamp).format(format)
+}
+
 /**
  * 时间格式化
  * @param {number | [number, number]} duration
@@ -43,3 +55,4 @@ export function getWeekDay(): string | undefined {
  * @returns {number}
  */
 export const getDay = (): number => new Date().getDate();
+

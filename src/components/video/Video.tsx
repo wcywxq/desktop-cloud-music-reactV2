@@ -7,7 +7,6 @@ import { formatDuration, IconFont } from '@/tools';
 
 interface IProps {
   isLoading: boolean
-  isError: boolean
   dataSource: any
   movieUrlsData: any[]
 }
