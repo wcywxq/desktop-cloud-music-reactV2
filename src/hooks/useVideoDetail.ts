@@ -13,10 +13,13 @@ export const useVideoDetail = () => {
         isLoading: false,
         isError: false,
         dataSource: [],
-        movieUrlsData: []
+        movieUrlsData: [],
+        hotComments: [],
+        comments: [],
+        related: [],
     }, '视频详情的reducer');
 
-    const { videoDetail, videoMovieUrls } = fetchApi;
+    const { videoDetail, videoMovieUrls, videoComments, videoRelated } = fetchApi;
 
     useEffect(() => {
         let didCancel = false;
@@ -26,11 +29,20 @@ export const useVideoDetail = () => {
             try {
                 const result_detail = await videoDetail({ id: vid });
                 const result_movieUrls = await videoMovieUrls({ id: vid });
-                if (!didCancel && result_detail.data.code === 200 && result_movieUrls.data.code === 200) {
+                const result_comments = await videoComments({ id: vid });
+                const result_related = await videoRelated({ id: vid });
+                if (!didCancel
+                    && result_detail.data.code === 200
+                    && result_movieUrls.data.code === 200
+                    && result_comments.data.code === 200
+                    && result_related.data.code === 200) {
                     dispatch({
                         type: VIDEO_DETAIL_SUCCESS,
                         dataSource: result_detail.data.data,
-                        movieUrlsData: result_movieUrls.data.urls
+                        movieUrlsData: result_movieUrls.data.urls,
+                        hotComments: result_comments.data.hotComments,
+                        comments: result_comments.data.comments,
+                        related: result_related.data.data
                     });
                 }
             } catch (error) {
@@ -47,7 +59,7 @@ export const useVideoDetail = () => {
         return () => {
             didCancel = true;
         };
-    }, [vid, videoDetail, videoMovieUrls]);
+    }, [vid, videoComments, videoDetail, videoMovieUrls, videoRelated]);
 
     return { videoDetailState, setVid }
 };

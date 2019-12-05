@@ -46,6 +46,13 @@ export interface SearchParams {
   offset?: number | undefined
 }
 
+export interface VideoCommentParams {
+  id: string | number
+  limit?: number
+  offset?: number
+  before?: number
+}
+
 // fetch
 export const fetchApi = {
   /**
@@ -127,5 +134,17 @@ export const fetchApi = {
    * @example /video/url?id=89ADDE33C0AAE8EC14B99F6750DB954D
    * @param params
    */
-  videoMovieUrls: (params: { id: string | number }) => get('video/url', params)
+  videoMovieUrls: (params: { id: string | number }) => get('video/url', params),
+  /**
+   * 获取视频评论
+   * @example /comment/video?id=89ADDE33C0AAE8EC14B99F6750DB954D
+   * @param params
+   */
+  videoComments: (params: VideoCommentParams) => get('comment/video', params),
+  /**
+   * 获取相关视频
+   * @example /related/allvideo?id=89ADDE33C0AAE8EC14B99F6750DB954D
+   * @param params
+   */
+  videoRelated: (params: { id: string | number }) => get('related/allvideo', params)
 };

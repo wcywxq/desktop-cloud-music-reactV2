@@ -3,7 +3,8 @@ import { useParams, useHistory } from 'react-router-dom';
 import { Row, Col, Icon } from 'antd';
 
 import { useVideoDetail } from '@/hooks';
-import { Video, Explain } from '@/components/video';
+import { Video, Explain, Related } from '@/components/video';
+import { TextField, CommentList } from '@/components/comment';
 
 const VideoDetail: React.FC = () => {
     const { id } = useParams();
@@ -31,11 +32,21 @@ const VideoDetail: React.FC = () => {
                     <Video {...videoDetailState} />
                     {/* 说明内容 */}
                     <Explain {...videoDetailState} />
+                    {/* 评论文本域 */}
+                    <TextField {...videoDetailState} />
+                    {/* 精彩评论 */}
+                    {
+                        videoDetailState.hotComments.length === 0 ? null :
+                            <CommentList title="最新评论" isLoading={videoDetailState.isLoading} data={videoDetailState.hotComments} />
+                    }
+                    {/* 最新评论 */}
+                    <CommentList title="最新评论" isLoading={videoDetailState.isLoading} data={videoDetailState.comments} />
                 </Col>
                 <Col span={8}>
                     <p className="f-fz16 f-fwb">
                         相关推荐
                     </p>
+                    <Related {...videoDetailState} />
                 </Col>
             </Row>
         </div>

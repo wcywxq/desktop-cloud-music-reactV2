@@ -74,13 +74,13 @@ export const Video: React.FC<IProps> = (props) => {
   return (
     <div
       className="m-video f-pr f-cp s-bgc-black"
-      // onClick={handlePlayClick}
+    // onClick={handlePlayClick}
     >
       {isLoading ? <Spin className="s-cl-white" /> :
         <>
           {
             movieUrlsData.length !== 0 ?
-              <video ref={videoRef} src={movieUrlsData[0].url} width={'100%'} height={'100%'}  onClick={handlePlayClick}  /> :
+              <video ref={videoRef} src={movieUrlsData[0].url} width={'100%'} height={'100%'} onClick={handlePlayClick} /> :
               null
           }
           <Row className="f-pa f-fz12 progress-content">
@@ -98,16 +98,7 @@ export const Video: React.FC<IProps> = (props) => {
             <Col span={12} />
             <Col span={6} className="f-dg f-gs-pg f-tac s-cl-white">
               <span className="f-pr f-cp item">
-                <Tooltip
-                  title={
-                    <Slider
-                      vertical
-                      defaultValue={30}
-                      max={100}
-                      style={{ height: '100px' }}
-                    />
-                  }
-                >
+                <Tooltip title={<Slider vertical defaultValue={30} max={100} style={{ height: '100px' }} />} >
                   <IconFont type='icon-shengyin-white' />
                 </Tooltip>
               </span>

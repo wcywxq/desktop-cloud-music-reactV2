@@ -12,6 +12,9 @@ export interface VideoDetailSuccessAction {
     type: VIDEO_DETAIL_SUCCESS
     dataSource: any
     movieUrlsData: any[]
+    hotComments: any[]
+    comments: any[]
+    related: any[]
 }
 
 export interface VideoDetailFailAction {
@@ -21,10 +24,13 @@ export interface VideoDetailFailAction {
 export type VideoDetailAction = VideoDetailInitAction | VideoDetailSuccessAction | VideoDetailFailAction
 
 interface VideoDetailState {
-    isLoading: boolean,
-    isError: boolean,
-    dataSource: any,
+    isLoading: boolean
+    isError: boolean
+    dataSource: any
     movieUrlsData: any[]
+    hotComments: any[]
+    comments: any[]
+    related: any[]
 }
 
 export const videoDetailReducer = (
@@ -44,7 +50,10 @@ export const videoDetailReducer = (
                 isLoading: false,
                 isError: false,
                 dataSource: action.dataSource,
-                movieUrlsData: action.movieUrlsData
+                movieUrlsData: action.movieUrlsData,
+                hotComments: action.hotComments,
+                comments: action.comments,
+                related: action.related,
             };
         case VIDEO_DETAIL_FAIL:
             return {
