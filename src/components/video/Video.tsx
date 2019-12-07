@@ -77,10 +77,10 @@ export const Video: React.FC<IProps> = (props) => {
 
   return (
     <div
-      className="m-video f-pr f-cp s-bgc-black"
+      className="m-video f-pr f-cp f-df f-jc-center f-ai-center s-bgc-black"
     // onClick={handlePlayClick}
     >
-      {isLoading ? <Spin className="s-cl-white" /> :
+      {isLoading ? <Spin /> :
         <>
           {
             movieUrlsData.length !== 0 ?
