@@ -77,9 +77,7 @@ export const Video: React.FC<IProps> = (props) => {
   return (
     <div
       className="m-video f-pr f-cp f-df f-jc-center f-ai-center s-bgc-black"
-    // onClick={handlePlayClick}
     >
-      <div className="canvas-imgBox"></div>
       {isLoading ? <Spin /> :
         <>
           {

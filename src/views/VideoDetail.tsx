@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useState } from 'reinspect';
 import { useParams, useHistory } from 'react-router-dom';
-import { Row, Col, Icon, Pagination, ConfigProvider } from 'antd';
+import { Row, Col, Icon, Pagination, ConfigProvider, Switch } from 'antd';
 import moment from 'moment';
 import zhCN from 'antd/es/locale/zh_CN';
 import 'moment/locale/zh-cn';
 
 import { useVideoDetail, useCommentsDetail } from '@/hooks';
-import { Video, Explain, Related } from '@/components/video';
+import { Video, Explain, Related, PluginPlayer } from '@/components/video';
 import { TextField, CommentList } from '@/components/comment';
 
 moment.locale('zh-cn');
@@ -20,6 +20,8 @@ const VideoDetail: React.FC = () => {
     const { commentState, setParams } = useCommentsDetail()
 
     const [current, setCurrent] = useState(1, "分页器当前页码");
+    // 切换视频组件
+    const [checked, setChecked] = useState(false, "切换视频组件");
 
     /**
      * 初始化，将页面id传递，同时将的分页器的默认值修改为第1页
@@ -36,11 +38,16 @@ const VideoDetail: React.FC = () => {
         <div style={{ margin: '10px 255px 0' }}>
             <Row>
                 <Col span={16}>
-                    <p className="f-fz16 f-fwb">
-                        <Icon type="left" className="u-icon u-icon-forward f-fz14" onClick={() => history.go(-1)} />视频详情
+                    <p className="f-fz16 f-fwb f-df f-ai-center">
+                        <Icon type="left" className="u-icon u-icon-forward f-fz14" onClick={() => history.go(-1)} />视频详情{" "}
+                        <Switch defaultChecked size="small" style={{ marginLeft: '10px' }} checked={checked} onChange={val => { setChecked(val) }} />
                     </p>
                     {/* 视频 */}
-                    <Video {...detailState} />
+                    {
+                        checked ?
+                            <PluginPlayer {...detailState} /> :
+                            <Video {...detailState} />
+                    }
                     {/* 说明内容 */}
                     <Explain {...detailState} />
                     {/* 评论文本域 */}
