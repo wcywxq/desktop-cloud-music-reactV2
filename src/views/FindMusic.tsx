@@ -34,11 +34,15 @@ const FindMusic: React.FC = () => {
                     >
                         <TabPane tab="个性推荐" key="1">
                             {/* 轮播图 */}
-                            <Banner data={state.bannerUrl}/>
+                            <Banner data={state.bannerUrl} />
                             {/* 推荐内容 */}
-                            <Recommand {...recommandState.variety} sortElement={sortElement}/>
+                            <Recommand
+                                isLoading={recommandState.isLoading}
+                                {...recommandState.variety}
+                                sortElement={sortElement}
+                            />
                             {/* 调整排版控件 */}
-                            <Adjustment getDataMethods={getDataMethods}/>
+                            <Adjustment getDataMethods={getDataMethods} />
                         </TabPane>
                         <TabPane tab="歌单" key="2">
                             Content of Tab Pane 2

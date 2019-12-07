@@ -39,7 +39,7 @@ export const RecommandReducer = (
         case RECOMMAND_INIT:
             return {
                 ...state,
-                isLaoding: true,
+                isLoading: true,
                 isError: false
             };
         case RECOMMAND_SUCCESS:
@@ -59,7 +59,7 @@ export const RecommandReducer = (
         case RECOMMAND_FAIL:
             return {
                 ...state,
-                isLaoding: false,
+                isLoading: false,
                 isError: true
             };
         default:

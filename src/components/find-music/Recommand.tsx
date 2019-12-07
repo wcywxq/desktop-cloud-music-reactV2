@@ -19,12 +19,13 @@ interface RecommandWidgetTitleProps {
 }
 
 interface IProps {
-    recommendSongList: any[];
-    exclusiveBroadcast: any[];
-    newSong: any[];
-    recommendMv: any[];
-    djprogram: any[];
-    sortElement: { k: number, v: string }[];
+    isLoading: boolean
+    recommendSongList: any[]
+    exclusiveBroadcast: any[]
+    newSong: any[]
+    recommendMv: any[]
+    djprogram: any[]
+    sortElement: { k: number, v: string }[]
 }
 
 interface ArrElementTypes {
@@ -59,27 +60,27 @@ export const Recommand = (props: IProps) => {
             {
                 keywords: 0,
                 titleELement: <RecommandWidgetTitle text='推荐歌单' routerLink='/' />,
-                contentElement: <SongList data={props.recommendSongList} />
+                contentElement: <SongList data={props.recommendSongList} isLoading={props.isLoading} />
             },
             {
                 keywords: 1,
                 titleELement: <RecommandWidgetTitle text='独家放送' routerLink='/' />,
-                contentElement: <ExclusiveBroadcast data={props.exclusiveBroadcast} />
+                contentElement: <ExclusiveBroadcast data={props.exclusiveBroadcast} isLoading={props.isLoading} />
             },
             {
                 keywords: 2,
                 titleELement: <RecommandWidgetTitle text='最新音乐' routerLink='/' />,
-                contentElement: <NewSong data={props.newSong} />
+                contentElement: <NewSong data={props.newSong} isLoading={props.isLoading} />
             },
             {
                 keywords: 3,
                 titleELement: <RecommandWidgetTitle text='推荐MV' routerLink='/' />,
-                contentElement: <Mv data={props.recommendMv} />
+                contentElement: <Mv data={props.recommendMv} isLoading={props.isLoading} />
             },
             {
                 keywords: 4,
                 titleELement: <RecommandWidgetTitle text='主播电台' routerLink='/' />,
-                contentElement: <Djprogram data={props.djprogram} />
+                contentElement: <Djprogram data={props.djprogram} isLoading={props.isLoading} />
             }
         ];
 
