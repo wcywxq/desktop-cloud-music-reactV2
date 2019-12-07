@@ -37,3 +37,11 @@
     * `cd cloud-music-typescript && yarn && yarn build`
    
     * `docker-compose up -d`
+
+### 更新依赖
+
+安装：`npm install -g npm-check-updates`
+
+执行：`ncu` 查看 `package.json`
+
+更新：`ncu -u`
