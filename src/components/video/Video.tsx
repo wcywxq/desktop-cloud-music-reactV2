@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useState } from 'reinspect';
-import { Slider, Row, Col, Tag, Icon, Tooltip, Radio, Spin } from 'antd';
+import { Slider, Row, Col, Icon, Tooltip, Radio, Spin } from 'antd';
 import { RadioChangeEvent } from 'antd/lib/radio';
 
 import { formatDuration, IconFont } from '@/tools';
@@ -88,16 +88,14 @@ export const Video: React.FC<IProps> = (props) => {
               null
           }
           <Row className="f-pa f-fz12 progress-content">
-            <Col span={6}>
-              <Tag color="geekblue" className="f-cp">
-                <span className="s-cl-gray">
-                  {formatDuration(currentTime)}
-                </span>
-                <span className="s-cl-darkgray">{" "}/{" "}</span>
-                <span className="s-cl-darkgray">{
-                  formatDuration(dataSource.durationms)
-                }</span>
-              </Tag>
+            <Col span={6} className="s-cl-white">
+              <span className="f-cp">
+                {formatDuration(currentTime)}
+              </span>
+              <span className="f-cp">{" "}/{" "}</span>
+              <span className="f-cp">{
+                formatDuration(dataSource.durationms)
+              }</span>
             </Col>
             <Col span={12} />
             <Col span={6} className="f-dg f-gs-pg f-tac s-cl-white">
