@@ -19,19 +19,16 @@ export const Related: React.FC<IProps> = props => {
       {related.map((item, index) => {
         return (
           <Skeleton loading={isLoading}
+            key={index}
             active
             avatar={{ size: "large" }}
             title={false}
             paragraph={{ rows: 3 }}
           >
             <Row
-              key={index}
               className="f-cp"
               style={{ marginBottom: '15px' }}
-              onClick={() => {
-                history.push(`/video-detail/${item.vid}`);
-                // window.location.reload(); // 重载页面
-              }}
+              onClick={() => { history.push(`/video-detail/${item.vid.toLowerCase()}`) }}
             >
               <Col span={12}>
                 <div className="f-pr" style={{ width: '140px', height: '80px' }}>

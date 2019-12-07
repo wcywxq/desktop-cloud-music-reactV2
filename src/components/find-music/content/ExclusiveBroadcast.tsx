@@ -14,7 +14,7 @@ export const ExclusiveBroadcast: React.FC<{ data: any[], isLoading: boolean }> =
                         <div
                             className="f-pr item"
                             key={index}
-                            onClick={() => history.push(`/video-detail/${item.videoId}`)}
+                            onClick={() => history.push(`/video-detail/${item.videoId.toLowerCase()}`)}
                         >
                             <img src={item.sPicUrl} alt="" className="img" />
                             <Icon type="play-circle" theme="filled" className="f-pa f-fz20 icon" />

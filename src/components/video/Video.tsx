@@ -67,7 +67,6 @@ export const Video: React.FC<IProps> = (props) => {
   // 监听 video 事件
   useEffect(() => {
     if (video) {
-      console.log(video)
       // 监听播放事件
       video.addEventListener('timeupdate', () => {
         setCurrentTime(video.currentTime * 1000);
@@ -80,11 +79,19 @@ export const Video: React.FC<IProps> = (props) => {
       className="m-video f-pr f-cp f-df f-jc-center f-ai-center s-bgc-black"
     // onClick={handlePlayClick}
     >
+      <div className="canvas-imgBox"></div>
       {isLoading ? <Spin /> :
         <>
           {
             movieUrlsData.length !== 0 ?
-              <video ref={videoRef} src={movieUrlsData[0].url} width={'100%'} height={'100%'} onClick={handlePlayClick} /> :
+              <video
+                ref={videoRef}
+                poster={dataSource.coverUrl}
+                src={movieUrlsData[0].url}
+                width={'100%'}
+                height={'100%'}
+                onClick={handlePlayClick}
+              /> :
               null
           }
           <Row className="f-pa f-fz12 progress-content">
