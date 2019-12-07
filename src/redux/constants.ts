@@ -82,11 +82,22 @@ export type RECOMMAND_FAIL = typeof RECOMMAND_FAIL
  * 视频详情
  */
 // init
-export const VIDEO_DETAIL_INIT = 'VIDEO_DETAIL_INIT';
-export type VIDEO_DETAIL_INIT = typeof VIDEO_DETAIL_INIT
-// success
+export const VIDEO_INIT = 'VIDEO_INIT';
+export type VIDEO_INIT = typeof VIDEO_INIT
+
+// detail success
 export const VIDEO_DETAIL_SUCCESS = 'VIDEO_DETAIL_SUCCESS';
 export type VIDEO_DETAIL_SUCCESS = typeof VIDEO_DETAIL_SUCCESS
+// url success
+export const VIDEO_URL_SUCCESS = 'VIDEO_URL_SUCCESS';
+// related success
+export const VIDEO_RELATED_SUCCESS = 'VIDEO_RELATED_SUCCESS';
+export type VIDEO_RELATED_SUCCESS = typeof VIDEO_RELATED_SUCCESS
+export type VIDEO_URL_SUCCESS = typeof VIDEO_URL_SUCCESS
+// comments success
+export const VIDEO_COMMENTS_SUCCESS = 'VIDEO_COMMENTS_SUCCESS';
+export type VIDEO_COMMENTS_SUCCESS = typeof VIDEO_COMMENTS_SUCCESS
+
 // fail
-export const VIDEO_DETAIL_FAIL = 'VIDEO_DETAIL_FAIL';
-export type VIDEO_DETAIL_FAIL = typeof VIDEO_DETAIL_FAIL
+export const VIDEO_FAIL = 'VIDEO_FAIL';
+export type VIDEO_FAIL = typeof VIDEO_FAIL

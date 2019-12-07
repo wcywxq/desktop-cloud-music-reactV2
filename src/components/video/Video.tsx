@@ -44,7 +44,6 @@ export const Video: React.FC<IProps> = (props) => {
    * @param value 
    */
   function onSliderChange(value: any) {
-    // const video = videoRef.current as unknown as HTMLVideoElement;
     video.currentTime = value / 1000;
     setCurrentTime(value);
   }
@@ -53,6 +52,10 @@ export const Video: React.FC<IProps> = (props) => {
   useEffect(() => {
     const video = videoRef.current as unknown as HTMLVideoElement;
     if (video) {
+      // 客户端开始请求数据，直接将播放时间设置为0 
+      video.addEventListener('loadstart', () => {
+        setCurrentTime(0);
+      })
       // 元数据已加载
       video.addEventListener('loadedmetadata', () => {
         setFlag(true);
@@ -64,6 +67,7 @@ export const Video: React.FC<IProps> = (props) => {
   // 监听 video 事件
   useEffect(() => {
     if (video) {
+      console.log(video)
       // 监听播放事件
       video.addEventListener('timeupdate', () => {
         setCurrentTime(video.currentTime * 1000);
@@ -151,7 +155,15 @@ export const Video: React.FC<IProps> = (props) => {
             onChange={onSliderChange}
           />
           {/* 暂停播放控制 */}
-          {flag ? null : <Icon type="play-circle" theme="filled" className="f-pa f-fz40 s-cl-default paused" />}
+          {
+            flag ? null :
+              <Icon
+                type="play-circle"
+                theme="filled"
+                className="f-pa f-fz40 s-cl-default paused"
+                onClick={handlePlayClick}
+              />
+          }
         </>
       }
     </div>

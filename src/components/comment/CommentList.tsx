@@ -5,12 +5,13 @@ import moment from 'moment';
 
 interface IProps {
   title: string
-  isLoading: boolean
+  isLoading: boolean,
   data: any[]
+  total: number
 }
 
 export const CommentList: React.FC<IProps> = (props) => {
-  const { title, isLoading, data } = props;
+  const { title, isLoading, data, total } = props;
 
   /**
    * 获取点赞具体评论的数量
@@ -41,48 +42,50 @@ export const CommentList: React.FC<IProps> = (props) => {
   }
 
   return (
-    <List
-      loading={isLoading}
-      header={
-        <div>
-          <span className="f-fz14 f-fwb s-cl-black">{title}</span>{" "}
-          <span className="f-fz12 s-cl-gray">（{data.length}）</span>
-        </div>
-      }
-      itemLayout="horizontal"
-      dataSource={data}
-      renderItem={item => (
-        <Skeleton loading={isLoading} active avatar>
-          <Comment
-            actions={actionsHandle(item)}
-            author={<Link to={`${item.user.userId}`} className="s-cl-steelblue">{item.user.nickname}</Link>}
-            avatar={<Avatar src={item.user.avatarUrl} alt={item.user.nickname} />}
-            content={<p className="f-fz12 f-fwb">{item.content}</p>}
-            children={
-              item.beReplied.length === 0 ? null :
-                <div className="f-fz12 f-fwb s-bgc-white s-cl-black" style={{ padding: '8px', borderRadius: '5px' }}>
-                  <List
-                    dataSource={item.beReplied}
-                    renderItem={(subItem: any) => (
-                      <>
-                        <Link to={`/${subItem.user.userId}`} className="s-cl-steelblue">
-                          <span className="f-fz12">@{subItem.user.nickname}：</span>
-                        </Link>
-                        <span className="f-fz12 f-fwb s-cl-darkgray">{subItem.content}</span>
-                      </>
-                    )}
-                  />
-                </div>
-            }
-            datetime={
-              <Tooltip title={moment(item.time).format('YYYY-MM-DD HH:mm:ss')} >
-                <span>{moment(item.time).fromNow()}</span>
-              </Tooltip >
-            }
-          />
-        </Skeleton>
-      )}
-      style={{ marginBottom: '20px' }}
-    />
+    <div>
+      <List
+        loading={isLoading}
+        header={
+          <div>
+            <span className="f-fz14 f-fwb s-cl-black">{title}</span>{" "}
+            <span className="f-fz12 s-cl-gray">（{total}）</span>
+          </div>
+        }
+        itemLayout="horizontal"
+        dataSource={data}
+        renderItem={item => (
+          <Skeleton loading={isLoading} active avatar>
+            <Comment
+              actions={actionsHandle(item)}
+              author={<Link to={`${item.user.userId}`} className="s-cl-steelblue">{item.user.nickname}</Link>}
+              avatar={<Avatar src={item.user.avatarUrl} alt={item.user.nickname} />}
+              content={<p className="f-fz12 f-fwb">{item.content}</p>}
+              children={
+                item.beReplied.length === 0 ? null :
+                  <div className="f-fz12 f-fwb s-bgc-floralwhite s-cl-black" style={{ padding: '8px', borderRadius: '5px' }}>
+                    <List
+                      dataSource={item.beReplied}
+                      renderItem={(subItem: any) => (
+                        <>
+                          <Link to={`/${subItem.user.userId}`} className="s-cl-steelblue">
+                            <span className="f-fz12">@{subItem.user.nickname}：</span>
+                          </Link>
+                          <span className="f-fz12 f-fwb s-cl-darkgray">{subItem.content}</span>
+                        </>
+                      )}
+                    />
+                  </div>
+              }
+              datetime={
+                <Tooltip title={moment(item.time).format('YYYY-MM-DD HH:mm:ss')} >
+                  <span>{moment(item.time).fromNow()}</span>
+                </Tooltip >
+              }
+            />
+          </Skeleton>
+        )}
+        style={{ marginBottom: '20px' }}
+      />
+    </div>
   );
 }

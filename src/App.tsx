@@ -82,7 +82,7 @@ const App: React.FC = () => {
 
     return (
         <Router>
-            <Layout>
+            <Layout className="s-bgc-white">
                 <Header style={styles.Header}>
                     <Control />
                 </Header>

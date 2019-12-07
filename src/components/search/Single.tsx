@@ -73,8 +73,8 @@ export const Single: React.FC<IProps> = (props) => {
             title: '喜欢/下载', dataIndex: 'icon', width: 100,
             render: () => (
                 <span>
-                    <Icon type="heart" className="icon"/>{" "}
-                    <Icon type="download" className="icon"/>
+                    <Icon type="heart" className="icon" />{" "}
+                    <Icon type="download" className="icon" />
                 </span>
             )
         },
@@ -110,11 +110,7 @@ export const Single: React.FC<IProps> = (props) => {
     function onHandleChange(pagination: PaginationConfig) {
         if (pagination.current) {
             setPage(pagination.current);
-            setParams({
-                keywords,
-                limit: 100,
-                offset: (pagination.current - 1) * 100
-            });
+            setParams({ keywords, limit: 100, offset: (pagination.current - 1) * 100 });
         }
     }
 
@@ -140,7 +136,7 @@ export const Single: React.FC<IProps> = (props) => {
         } else {
             Modal.confirm({
                 title: '音乐可用',
-                icon: <Icon type="check-circle" theme="twoTone" twoToneColor="#52c41a"/>,
+                icon: <Icon type="check-circle" theme="twoTone" twoToneColor="#52c41a" />,
                 content: (
                     <div>
                         <p>{canUseState.message === 'ok' ? '是否立即播放' : ''}</p>
@@ -169,7 +165,7 @@ export const Single: React.FC<IProps> = (props) => {
         <>
             {
                 isError ?
-                    <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={<span>请求失败</span>}/>
+                    <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={<span>请求失败</span>} />
                     :
                     <Table<SingleData>
                         className="f-cp"
