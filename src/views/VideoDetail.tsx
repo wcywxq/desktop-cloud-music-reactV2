@@ -64,12 +64,15 @@ const VideoDetail: React.FC = () => {
                                 /> : null
                     }
                     {/* 最新评论 */}
-                    <CommentList
-                        title="最新评论"
-                        isLoading={commentState.isLoading}
-                        data={commentState.comments.comments}
-                        total={commentState.comments.total}
-                    />
+                    {
+                        commentState.comments.comments.length === 0 ? null :
+                            <CommentList
+                                title="最新评论"
+                                isLoading={commentState.isLoading}
+                                data={commentState.comments.comments}
+                                total={commentState.comments.total}
+                            />
+                    }
                     {/* 加上国际化 */}
                     <ConfigProvider locale={zhCN}>
                         <Pagination

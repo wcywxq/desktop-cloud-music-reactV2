@@ -1,9 +1,10 @@
 import * as React from 'react'
 import { useState } from 'reinspect'
 import { useHistory, Link } from 'react-router-dom'
-import { Input, Icon, Badge, Popover, Tag, Spin, Row, Col, Modal } from 'antd'
+import { Input, Icon, Badge, Popover, Tag, Spin, Row, Col, Avatar } from 'antd'
 
 import { useSearchHot } from "@/hooks";
+import { Login, Register } from '@/components/auth';
 
 export const Control: React.FC = () => {
     // react-router 提供的 HOOKS
@@ -45,10 +46,9 @@ export const Control: React.FC = () => {
     return (
         <div className="g-hd f-dg f-ai-center s-bgc-whitesmoke">
             <aside className="f-tar first">
-                <Row onClick={() => setVisible(true)}>
-                    <Col span={16}>
-                        <img src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" className="f-cp"
-                            alt="" />
+                <Row>
+                    <Col span={16} onClick={() => setVisible(true)}>
+                        <Avatar className="f-cp img" icon={<Icon type="user" />} />
                         <span className="f-cp">
                             暮雨1微凉{" "}
                             <Icon type="caret-right" />
@@ -59,9 +59,8 @@ export const Control: React.FC = () => {
                         <Icon className="u-icon u-icon-go f-fz14" type="right" onClick={() => history.go(1)} />
                     </Col>
                 </Row>
-                <Modal visible={visible} onCancel={() => setVisible(false)}>
-                    modal
-                </Modal>
+                {/* 登陆 */}
+                <Login visible={visible} setVisible={setVisible} />
             </aside>
             <div className="f-js-end">
                 <Popover placement="bottom" content={suggestContent} trigger="click">

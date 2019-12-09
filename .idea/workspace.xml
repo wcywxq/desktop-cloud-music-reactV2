@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="85c9a38d-7305-462b-8f7e-391c6d04d9a7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/mixins/grid.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/mixins/grid.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/control/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/control/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/VideoDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/VideoDetail.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +26,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBowerSettings">
+    <node-interpreter value="project" />
+    <bower-package value="" />
+    <bower.json value="" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -50,7 +58,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.CSS" />
+    <property name="settings.editor.selected.configurable" value="copyright.filetypes.JSX Harmony" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
@@ -105,6 +113,8 @@
       <workItem from="1574218893187" duration="50582000" />
       <workItem from="1574955671290" duration="12319000" />
       <workItem from="1575039030140" duration="32804000" />
+      <workItem from="1575863392578" duration="147000" />
+      <workItem from="1575863555200" duration="3680000" />
     </task>
     <servers />
   </component>
