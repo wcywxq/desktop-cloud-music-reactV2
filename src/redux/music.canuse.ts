@@ -6,7 +6,7 @@ export interface MusicCanuseAction {
     message: string;
 }
 
-interface MusicCanuseState {
+export interface MusicCanuseState {
     success: boolean;
     message: string;
 }

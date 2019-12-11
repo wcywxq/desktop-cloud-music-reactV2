@@ -8,7 +8,7 @@ import { IconFont, formatDuration } from '@/tools'
 // 类型
 import { ColumnProps, PaginationConfig } from 'antd/lib/table'
 import { MusicProjectState } from "@/redux"
-import { SearchParams } from '@/api'
+import { SearchParams } from '@/api/types'
 
 // 添加音乐到播放列表的 reducer
 import { useMusicPlayList, useMusicMessage, useCanUse } from "@/hooks"

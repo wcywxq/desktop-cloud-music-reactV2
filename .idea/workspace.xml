@@ -2,10 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85c9a38d-7305-462b-8f7e-391c6d04d9a7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/api/setAuthToken.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/personal-message/Editor.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/personal-message/Panel.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/personal-message/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useLogin.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useLogout.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mock/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/login.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/logout.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/wangxq02.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/wangxq02.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/mixins/grid.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/mixins/grid.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/start.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/start.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/control/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/control/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/search/Single.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/search/Single.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useSearchMusic.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useSearchMusic.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/music.canuse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/music.canuse.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routers/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routers/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tools/IconFontSetting.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/tools/IconFontSetting.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Settings.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Settings.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/VideoDetail.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/VideoDetail.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -114,7 +139,7 @@
       <workItem from="1574955671290" duration="12319000" />
       <workItem from="1575039030140" duration="32804000" />
       <workItem from="1575863392578" duration="147000" />
-      <workItem from="1575863555200" duration="3680000" />
+      <workItem from="1575863555200" duration="48347000" />
     </task>
     <servers />
   </component>

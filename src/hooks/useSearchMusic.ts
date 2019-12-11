@@ -4,7 +4,8 @@ import { useState, useReducer } from 'reinspect'
 import { searchMusicReducer } from '@/redux'
 import { SEARCH_MUSIC_INIT, SEARCH_MUSIC_SUCCESS, SEARCH_MUSIC_FAIL } from '@/redux/constants'
 
-import { fetchApi, SearchParams } from '@/api'
+import { fetchApi } from '@/api'
+import { SearchParams } from '@/api/types'
 
 // 第三个参数控制 devtools
 export const useSearchMusic = (initialParams: SearchParams) => {

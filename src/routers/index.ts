@@ -28,6 +28,10 @@ const router: Array<RouterArray> = [
     {
         path: "/search/:keywords/:type",
         component: Loadable({ loader: () => import('@/views/SearchMusic'), loading: Loading })
+    },
+    {
+        path: "/setting",
+        component: Loadable({ loader: () => import('@/views/Settings'), loading: Loading })
     }
 ];
 

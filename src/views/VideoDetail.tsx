@@ -1,16 +1,11 @@
 import React, { useEffect } from 'react';
 import { useState } from 'reinspect';
 import { useParams, useHistory } from 'react-router-dom';
-import { Row, Col, Icon, Pagination, ConfigProvider, Switch } from 'antd';
-import moment from 'moment';
-import zhCN from 'antd/es/locale/zh_CN';
-import 'moment/locale/zh-cn';
+import { Row, Col, Icon, Pagination, Switch } from 'antd';
 
 import { useVideoDetail, useCommentsDetail } from '@/hooks';
 import { Video, Explain, Related, PluginPlayer } from '@/components/video';
 import { TextField, CommentList } from '@/components/comment';
-
-moment.locale('zh-cn');
 
 const VideoDetail: React.FC = () => {
     const { id } = useParams();
@@ -39,8 +34,12 @@ const VideoDetail: React.FC = () => {
             <Row>
                 <Col span={16}>
                     <p className="f-fz16 f-fwb f-df f-ai-center">
-                        <Icon type="left" className="u-icon u-icon-forward f-fz14" onClick={() => history.go(-1)} />视频详情{" "}
-                        <Switch defaultChecked size="small" style={{ marginLeft: '10px' }} checked={checked} onChange={val => { setChecked(val) }} />
+                        <Icon type="left" className="u-icon u-icon-forward f-fz14"
+                              onClick={() => history.go(-1)}/>视频详情{" "}
+                        <Switch defaultChecked size="small" style={{ marginLeft: '10px' }} checked={checked}
+                                onChange={val => {
+                                    setChecked(val)
+                                }}/>
                     </p>
                     {/* 视频 */}
                     {
@@ -73,26 +72,24 @@ const VideoDetail: React.FC = () => {
                                 total={commentState.comments.total}
                             />
                     }
-                    {/* 加上国际化 */}
-                    <ConfigProvider locale={zhCN}>
-                        <Pagination
-                            className="f-fz12 f-tac"
-                            size="small"
-                            hideOnSinglePage
-                            showQuickJumper
-                            total={commentState.comments.total}
-                            showTotal={total => <span>共 {total} 条</span>}
-                            pageSize={20}
-                            current={current}
-                            style={{ marginBottom: '30px' }}
-                            onChange={page => {
-                                setCurrent(page);
-                                if (id) {
-                                    setParams({ id, limit: 20, offset: (page - 1) * 20 });
-                                }
-                            }}
-                        />
-                    </ConfigProvider>
+                    {/* 分页 */}
+                    <Pagination
+                        className="f-fz12 f-tac"
+                        size="small"
+                        hideOnSinglePage
+                        showQuickJumper
+                        total={commentState.comments.total}
+                        showTotal={total => <span>共 {total} 条</span>}
+                        pageSize={20}
+                        current={current}
+                        style={{ marginBottom: '30px' }}
+                        onChange={page => {
+                            setCurrent(page);
+                            if (id) {
+                                setParams({ id, limit: 20, offset: (page - 1) * 20 });
+                            }
+                        }}
+                    />
                 </Col>
                 <Col span={8}>
                     <p className="f-fz16 f-fwb">
