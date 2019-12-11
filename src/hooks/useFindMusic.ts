@@ -1,11 +1,62 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 import { useReducer } from 'reinspect'
 
-import { RECOMMAND_INIT, RECOMMAND_SUCCESS, RECOMMAND_FAIL } from '@/redux/constants'
-import { RecommandReducer } from '@/redux'
-
 import { fetchApi } from '@/api'
+import { bannerReducer, RecommandReducer } from '@/redux'
+import {
+    BANNER_FAIL,
+    BANNER_INIT,
+    BANNER_SUCCESS,
+    RECOMMAND_INIT,
+    RECOMMAND_SUCCESS,
+    RECOMMAND_FAIL
+} from '@/redux/constants'
 
+// banner 轮播
+export const useBanner = () => {
+    const [state, dispatch] = useReducer(bannerReducer, {
+        isLoading: false,
+        isError: false,
+        bannerUrl: []
+    }, 'banner首页轮播');
+
+    useEffect(() => {
+        let didCancel = false;
+
+        const fetchData = async () => {
+            dispatch({ type: BANNER_INIT });
+            try {
+                const result = await fetchApi.banner();
+                if (!didCancel && result.data.code === 200) {
+                    dispatch({
+                        type: BANNER_SUCCESS,
+                        bannerUrl: result.data.banners.map((item: any) => {
+                            return {
+                                imgSrc: item.imageUrl,
+                                typeTitle: item.typeTitle,
+                                titleColor: item.titleColor
+                            }
+                        })
+                    })
+                }
+            } catch (err) {
+                if (!didCancel) {
+                    dispatch({ type: BANNER_FAIL })
+                }
+            }
+        };
+
+        fetchData();
+
+        return () => {
+            didCancel = true;
+        }
+    }, []);
+
+    return { state }
+};
+
+// 推荐内容
 export const useRecommand = () => {
     const [recommandState, dispatch] = useReducer(RecommandReducer, {
         isLoading: false,

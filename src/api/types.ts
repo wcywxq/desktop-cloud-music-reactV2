@@ -12,6 +12,16 @@ export interface LoginEmailParams extends LoginParams {
     email: string;
 }
 
+// 更新用户信息
+export class UpdateUserSettingParams {
+    gender?: string | number;
+    signature?: string;
+    city?: number;
+    nickname?: string;
+    birthday?: number;
+    province?: number
+}
+
 // 分页
 export class PaginationParams {
     limit?: number | undefined;

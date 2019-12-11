@@ -1,12 +1,21 @@
 import { useEffect } from 'react';
+import { useReducer, useState } from 'reinspect';
 
+import {
+    LOGIN_EMAIL_SUCCESS,
+    LOGIN_FAIL,
+    LOGIN_INIT,
+    LOGIN_PHONE_SUCCESS,
+    LOGOUT_FAIL,
+    LOGOUT_INIT,
+    LOGOUT_SUCCESS
+} from '@/redux/constants';
+import { loginReducer, logoutReducer } from '@/redux';
 import { fetchApi } from '@/api';
 import { setAuthToken } from '@/api/setAuthToken';
 import { LoginPhoneParams, LoginEmailParams } from '@/api/types';
-import { LOGIN_EMAIL_SUCCESS, LOGIN_FAIL, LOGIN_INIT, LOGIN_PHONE_SUCCESS } from '@/redux/constants';
-import { loginReducer } from '@/redux';
-import { useReducer, useState } from 'reinspect';
 
+// 登陆
 export const useLogin = () => {
     const [phoneParams, setPhoneParams] = useState<LoginPhoneParams>(
         { phone: '', password: '', countrycode: 86 },
@@ -59,3 +68,38 @@ export const useLogin = () => {
 
     return { loginState, setPhoneParams, setEmailParams }
 };
+
+// 登出
+export const useLogout = () => {
+    const [logoutState, dispatch] = useReducer(logoutReducer,{
+        isLoading: false,
+        isError: false,
+    }, '退出登陆的reducer');
+
+    useEffect(() => {
+        let didCancel = false;
+
+        const fetchData = async () => {
+            dispatch({ type: LOGOUT_INIT });
+            try {
+                const res = await fetchApi.logout();
+                if(!didCancel && res.data.code === 200) {
+                    dispatch({ type: LOGOUT_SUCCESS });
+                }
+            } catch (err) {
+                if (!didCancel) {
+                    dispatch({ type: LOGOUT_FAIL })
+                }
+            }
+        };
+
+        fetchData();
+
+        return () => {
+            didCancel = true;
+        }
+    }, []);
+
+    return { logoutState }
+};
+

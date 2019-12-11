@@ -20,6 +20,7 @@ export interface initialParamsType {
     before?: number
 }
 
+// 视频详情
 export const useVideoDetail = () => {
     const [vid, setVid] = useState('', 'video的id');
 
@@ -74,6 +75,7 @@ export const useVideoDetail = () => {
     return { detailState, setVid }
 };
 
+// 评论详情
 export const useCommentsDetail = () => {
     const [params, setParams] = useState<initialParamsType>({ id: '', limit: 20, offset: 0 }, "初始化参数");
 
@@ -115,7 +117,7 @@ export const useCommentsDetail = () => {
         return () => {
             didCancel = true;
         };
-    }, [params, videoComments])
+    }, [params, videoComments]);
 
     return { commentState, setParams }
-}
+};

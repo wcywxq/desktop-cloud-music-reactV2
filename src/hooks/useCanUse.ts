@@ -5,6 +5,7 @@ import { MUSIC_CAN_USE } from '@/redux/constants'
 import { musicCanuseReducer } from '@/redux'
 import { fetchApi } from '@/api'
 
+// 是否可播放
 export const useCanUse = () => {
     const [mid, setMid] = useState(33894312, '音乐id');
     const [canUseState, dispatch] = useReducer(musicCanuseReducer, {

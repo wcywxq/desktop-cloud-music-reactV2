@@ -1,13 +1,54 @@
 import { useEffect } from 'react'
 import { useState, useReducer } from 'reinspect'
 
-import { searchMusicReducer } from '@/redux'
-import { SEARCH_MUSIC_INIT, SEARCH_MUSIC_SUCCESS, SEARCH_MUSIC_FAIL } from '@/redux/constants'
-
-import { fetchApi } from '@/api'
+import { searchHotReducer, searchMusicReducer } from '@/redux'
+import {
+    SEARCH_HOT_FAIL,
+    SEARCH_HOT_INIT,
+    SEARCH_HOT_SUCCESS,
+    SEARCH_MUSIC_INIT,
+    SEARCH_MUSIC_SUCCESS,
+    SEARCH_MUSIC_FAIL
+} from '@/redux/constants'
+import { fetchApi } from "@/api";
 import { SearchParams } from '@/api/types'
 
-// 第三个参数控制 devtools
+// 热搜
+export const useSearchHot = (initialData: any) => {
+    const [state, dispatch] = useReducer(searchHotReducer, {
+        isError: false,
+        isLoading: false,
+        data: initialData
+    }, '热搜的reducer');
+
+    useEffect(() => {
+        let didCancel = false;
+        const fetchData = async () => {
+            dispatch({ type: SEARCH_HOT_INIT });
+            try {
+                const result = await fetchApi.hot();
+                if (!didCancel && result.data.code === 200) {
+                    dispatch({
+                        type: SEARCH_HOT_SUCCESS,
+                        payLoad: result.data.data
+                    })
+                }
+            } catch (error) {
+                if (!didCancel) {
+                    dispatch({ type: SEARCH_HOT_FAIL })
+                }
+            }
+        };
+        fetchData();
+        return () => {
+            didCancel = true
+        }
+    }, []);
+
+    return { state }
+};
+
+// 音乐搜索列表
 export const useSearchMusic = (initialParams: SearchParams) => {
     const [params, setParams] = useState(initialParams, '搜索音乐请求参数');
 

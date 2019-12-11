@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import { setAuthToken } from './setAuthToken';
-import { LoginPhoneParams, LoginEmailParams, SearchParams, VideoCommentParams } from './types';
+import { LoginPhoneParams, LoginEmailParams, UpdateUserSettingParams, SearchParams, VideoCommentParams } from './types';
 
 // baseUrl
 axios.defaults.baseURL = 'http://localhost:5000/';
@@ -64,6 +64,21 @@ export const post = async (url: string, data = {}): Promise<any> => {
     }
 };
 
+/**
+ * put 方法
+ * @param {string} url
+ * @param {{}} data
+ * @returns {Promise<any>}
+ */
+export const put = async (url: string, data = {}): Promise<any> => {
+    try {
+        const response = await axios.post(url, { ...data });
+        return Promise.resolve(response);
+    } catch (error) {
+        return Promise.reject(error);
+    }
+};
+
 // fetch
 export const fetchApi = {
     /**
@@ -85,6 +100,12 @@ export const fetchApi = {
      * @returns {Promise<any>}
      */
     logout: () => post('logout'),
+    /**
+     * 更新用户信息
+     * @param {UpdateUserSettingParams} data
+     * @returns {Promise<any>}
+     */
+    updateUserSetting: (data: UpdateUserSettingParams) => put('user/update', data),
     /**
      * banner
      * @example /banner?type=0
