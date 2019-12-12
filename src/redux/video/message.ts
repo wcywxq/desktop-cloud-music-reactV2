@@ -52,7 +52,7 @@ interface CommentsStateType {
     }
 }
 
-export const videoDetailReducer = (state: DetailStateType, action: DetailActionType) => {
+const videoDetailReducer = (state: DetailStateType, action: DetailActionType) => {
     switch (action.type) {
         case VIDEO_INIT:
             return { ...state, isLoading: true, isError: false };
@@ -69,7 +69,7 @@ export const videoDetailReducer = (state: DetailStateType, action: DetailActionT
     }
 };
 
-export const videoCommentsReducer = (state: CommentsStateType, action: CommentsActionType) => {
+const videoCommentsReducer = (state: CommentsStateType, action: CommentsActionType) => {
     switch (action.type) {
         case VIDEO_INIT:
             return { ...state, isLoading: true, isError: false };
@@ -81,3 +81,5 @@ export const videoCommentsReducer = (state: CommentsStateType, action: CommentsA
             throw new Error();
     }
 };
+
+export { videoDetailReducer, videoCommentsReducer }

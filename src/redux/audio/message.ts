@@ -21,7 +21,7 @@ interface FailAction {
 
 type ActionType = InitAction | SuccessAction | FailAction
 
-interface StateType {
+export interface MessageStateType {
     isLoading: boolean,
     isError: boolean,
     url: string[],
@@ -33,7 +33,7 @@ interface StateType {
     "list.index": number
 }
 
-export const musicUrlReducer = (state: StateType, action: ActionType) => {
+const musicUrlReducer = (state: MessageStateType, action: ActionType) => {
     switch (action.type) {
         case "MUSIC_MESSAGE_INIT":
             return {
@@ -63,3 +63,5 @@ export const musicUrlReducer = (state: StateType, action: ActionType) => {
             throw new Error()
     }
 };
+
+export { musicUrlReducer }

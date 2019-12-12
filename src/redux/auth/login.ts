@@ -23,7 +23,7 @@ interface StateType {
     isError: boolean;
 }
 
-export const loginReducer = (state: StateType, action: ActionType) => {
+const loginReducer = (state: StateType, action: ActionType) => {
     switch (action.type) {
         case LOGIN_INIT:
             return {
@@ -53,3 +53,5 @@ export const loginReducer = (state: StateType, action: ActionType) => {
             throw new Error();
     }
 };
+
+export { loginReducer }

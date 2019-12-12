@@ -20,7 +20,7 @@ interface StateType {
     bannerUrl: any[]
 }
 
-export const bannerReducer = (state: StateType, action: ActionType) => {
+const bannerReducer = (state: StateType, action: ActionType) => {
     switch (action.type) {
         case "BANNER_INIT":
             return {
@@ -43,3 +43,5 @@ export const bannerReducer = (state: StateType, action: ActionType) => {
             }
     }
 };
+
+export { bannerReducer }

@@ -11,7 +11,7 @@ interface StateType {
     message: string;
 }
 
-export const musicCanuseReducer = (state: StateType, action: ActionType) => {
+const musicCanuseReducer = (state: StateType, action: ActionType) => {
     switch (action.type) {
         case "MUSIC_CAN_USE":
             return {
@@ -23,3 +23,5 @@ export const musicCanuseReducer = (state: StateType, action: ActionType) => {
             throw new Error();
     }
 };
+
+export { musicCanuseReducer }  

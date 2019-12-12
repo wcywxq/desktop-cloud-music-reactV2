@@ -7,7 +7,7 @@ import { IconFont, formatDuration } from '@/tools'
 
 // 类型
 import { ColumnProps, PaginationConfig } from 'antd/lib/table'
-import { MusicProjectState } from "@/redux"
+import { ProjectStateType } from "@/redux"
 import { SearchParams } from '@/api/types'
 
 // 添加音乐到播放列表的 reducer
@@ -151,10 +151,10 @@ export const Single: React.FC<IProps> = (props) => {
                     setDuration(record.duration); // 传递持续时长
                     setCurIdx(record.index); // 传递当前索引
                     if (sessionStorage.getItem('data') && sessionStorage.getItem('data') !== '[]') {
-                        let sessionData: MusicProjectState[] = JSON.parse(sessionStorage.getItem('data') as string);
+                        let sessionData: ProjectStateType[] = JSON.parse(sessionStorage.getItem('data') as string);
                         setListIndex(sessionData.length); // 传递音乐播放列表索引
                     } else {
-                        setListIndex((state as MusicProjectState[]).length); // 传递音乐播放列表索引
+                        setListIndex((state as ProjectStateType[]).length); // 传递音乐播放列表索引
                     }
                 }
             });

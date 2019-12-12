@@ -5,7 +5,7 @@ import { Button, Col, Icon, Popover, Row, Slider, Table } from 'antd'
 import { formatDuration, IconFont } from '@/tools'
 // 删除
 import { MUSIC_PROJECT_DELETE } from "@/redux/constants"
-import { MusicMessageState, MusicProjectState } from "@/redux"
+import { MessageStateType, ProjectStateType } from "@/redux"
 import { useMusicPlayList } from "@/hooks"
 // 类型
 import { ColumnProps } from "antd/lib/table"
@@ -22,7 +22,7 @@ interface PlayListData {
 }
 
 interface IProps {
-    musicMsgState: MusicMessageState;
+    musicMsgState: MessageStateType;
     setListIndex: React.Dispatch<React.SetStateAction<number>>;
     setID: React.Dispatch<React.SetStateAction<number>>;
     setDuration: React.Dispatch<React.SetStateAction<number>>;
@@ -109,7 +109,7 @@ export const Audio: React.FC<IProps> = (props) => {
 
     if (sessionStorage.getItem('data') && sessionStorage.getItem('data') !== '[]') {
         let sessionData = JSON.parse(sessionStorage.getItem('data') as string);
-        dataSource = sessionData.map((item: MusicProjectState, index: number) => {
+        dataSource = sessionData.map((item: ProjectStateType, index: number) => {
             return {
                 index: index + 1,
                 key: item.key,
@@ -119,7 +119,7 @@ export const Audio: React.FC<IProps> = (props) => {
             }
         })
     } else if (state) {
-        dataSource = state.map((item: MusicProjectState, index: number) => {
+        dataSource = state.map((item: ProjectStateType, index: number) => {
             return {
                 index: index + 1,
                 key: item.key,

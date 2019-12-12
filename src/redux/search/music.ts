@@ -37,7 +37,7 @@ interface StateType {
 }
 
 // reducer
-export const searchMusicReducer = (state: StateType, action: ActionType) => {
+const searchMusicReducer = (state: StateType, action: ActionType) => {
     switch (action.type) {
         case SEARCH_MUSIC_INIT:
             return {
@@ -66,3 +66,5 @@ export const searchMusicReducer = (state: StateType, action: ActionType) => {
             throw new Error();
     }
 };
+
+export { searchMusicReducer }

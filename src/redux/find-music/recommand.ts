@@ -31,7 +31,7 @@ interface StateType {
     }
 }
 
-export const RecommandReducer = (state: StateType, action: ActionType) => {
+const RecommandReducer = (state: StateType, action: ActionType) => {
     switch (action.type) {
         case RECOMMAND_INIT:
             return {
@@ -63,3 +63,5 @@ export const RecommandReducer = (state: StateType, action: ActionType) => {
             throw new Error();
     }
 };
+
+export { RecommandReducer }

@@ -23,14 +23,14 @@ interface DeleteAction {
 type ActionType = AddAction | FilterAction | DeleteAction
 
 // 初始化数据类型
-interface StateType {
+export interface ProjectStateType {
     key: number;
     musicName: string;
     "artist.name": string;
     duration: number;
 }
 
-export const musicPlayListReducer = (state: StateType[], action: ActionType) => {
+const musicPlayListReducer = (state: ProjectStateType[], action: ActionType) => {
     switch (action.type) {
         // 增
         case MUSIC_PROJECT_ADD:
@@ -68,3 +68,5 @@ export const musicPlayListReducer = (state: StateType[], action: ActionType) => 
             throw new Error();
     }
 };
+
+export { musicPlayListReducer }

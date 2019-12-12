@@ -19,7 +19,7 @@ interface StateType {
     isError: boolean;
 }
 
-export const logoutReducer = (state: StateType, action: ActionType) => {
+const logoutReducer = (state: StateType, action: ActionType) => {
     switch (action.type) {
         case LOGOUT_INIT:
             return {
@@ -43,3 +43,5 @@ export const logoutReducer = (state: StateType, action: ActionType) => {
             throw new Error();
     }
 };
+
+export { logoutReducer }

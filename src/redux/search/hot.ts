@@ -22,7 +22,7 @@ interface StateType {
     data: any[]
 }
 
-export const searchHotReducer = (state: StateType, action: ActionType) => {
+const searchHotReducer = (state: StateType, action: ActionType) => {
     switch (action.type) {
         case "SEARCH_HOT_INIT":
             return {
@@ -47,3 +47,5 @@ export const searchHotReducer = (state: StateType, action: ActionType) => {
             throw new Error();
     }
 };
+
+export { searchHotReducer }
