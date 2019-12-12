@@ -35,13 +35,13 @@ const loginReducer = (state: StateType, action: ActionType) => {
             return {
                 ...state,
                 isLoading: false,
-                isError: false,
+                isError: false
             };
         case LOGIN_EMAIL_SUCCESS:
             return {
                 ...state,
                 isLoading: false,
-                isError: false,
+                isError: false
             };
         case LOGIN_FAIL:
             return {

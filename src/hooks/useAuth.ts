@@ -13,7 +13,7 @@ import {
 import { loginReducer, logoutReducer } from '@/redux';
 import { fetchApi } from '@/api';
 import { setAuthToken } from '@/api/setAuthToken';
-import { LoginPhoneParams, LoginEmailParams } from '@/api/types';
+import { LoginEmailParams, LoginPhoneParams } from '@/api/types';
 
 // 登陆
 export const useLogin = () => {
@@ -26,7 +26,10 @@ export const useLogin = () => {
         '邮箱登陆参数'
     );
 
-    const [loginState, dispatch] = useReducer(loginReducer, { isLoading: false, isError: false }, '登陆信息');
+    const [loginState, dispatch] = useReducer(loginReducer, {
+        isLoading: false,
+        isError: false
+    }, '登陆信息');
 
     useEffect(() => {
         let didCancel = false;
@@ -49,7 +52,7 @@ export const useLogin = () => {
                     if (!didCancel && resEmail.data.code === 200) {
                         // 登陆成功后设置 token 请求头
                         setAuthToken(resEmail.data.token);
-                        dispatch({ type: LOGIN_EMAIL_SUCCESS });
+                        dispatch({ type: LOGIN_EMAIL_SUCCESS })
                     }
                 }
             } catch (err) {
@@ -71,9 +74,9 @@ export const useLogin = () => {
 
 // 登出
 export const useLogout = () => {
-    const [logoutState, dispatch] = useReducer(logoutReducer,{
+    const [logoutState, dispatch] = useReducer(logoutReducer, {
         isLoading: false,
-        isError: false,
+        isError: false
     }, '退出登陆的reducer');
 
     useEffect(() => {
@@ -83,7 +86,7 @@ export const useLogout = () => {
             dispatch({ type: LOGOUT_INIT });
             try {
                 const res = await fetchApi.logout();
-                if(!didCancel && res.data.code === 200) {
+                if (!didCancel && res.data.code === 200) {
                     dispatch({ type: LOGOUT_SUCCESS });
                 }
             } catch (err) {

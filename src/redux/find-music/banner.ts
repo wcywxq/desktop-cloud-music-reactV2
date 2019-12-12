@@ -14,6 +14,7 @@ interface FailAction {
 }
 
 type ActionType = InitAction | SuccessAction | FailAction
+
 interface StateType {
     isLoading: boolean,
     isError: boolean,

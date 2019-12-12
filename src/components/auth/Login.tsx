@@ -31,10 +31,10 @@ const WrappedLoginForm: React.FC<UserComponentProps> = (props) => {
         e.preventDefault();
         validateFields((err, values) => {
             if (!err) {
-                console.log(values);
                 const { phoneNumber, password } = values;
                 // 调登陆接口
                 setPhoneParams({ phone: phoneNumber, password });
+                // 关闭模态窗
                 setVisible(false);
             }
         })

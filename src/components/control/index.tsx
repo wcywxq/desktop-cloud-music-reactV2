@@ -3,20 +3,19 @@ import { useState } from 'reinspect'
 import { useHistory, Link } from 'react-router-dom'
 import { Input, Icon, Badge, Popover, Tag, Spin, Row, Col, Avatar } from 'antd'
 
-import { useSearchHot } from "@/hooks";
+import { useLogin, useSearchHot } from "@/hooks";
 import { Login, Register } from '@/components/auth';
 import { Panel } from '@/components/personal-message';
 
 export const Control: React.FC = () => {
     // react-router 提供的 HOOKS
     const history = useHistory();
-
+    // 调用一次login接口
+    useLogin();
     // 获取热搜列表
     const { state } = useSearchHot([]);
-
     // 控制是否全屏
     const [isFull, setIsFull] = useState(false, '是否全屏');
-
     // 点击显示登陆模态窗
     const [visible, setVisible] = useState(false, '登陆模态窗口');
 
@@ -50,12 +49,12 @@ export const Control: React.FC = () => {
                 <Row>
                     <Col span={16} onClick={() => setVisible(true)}>
                         {
-                            localStorage.getItem("token") ?
+                            localStorage.getItem("userInfo") ?
                                 <Avatar className="f-cp img" src={JSON.parse(localStorage.getItem("userInfo") as any).avatarUrl}/>
                                 : <Avatar className="f-cp img" icon={<Icon type="user"/>}/>
                         }
                         <span className="f-cp">
-                            {localStorage.getItem("token") ? JSON.parse(localStorage.getItem("userInfo") as any).nickname : "未登陆"}{" "}
+                            {localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo") as any).nickname : "未登陆"}{" "}
                             <Icon type="caret-right"/>
                         </span>
                     </Col>
@@ -65,7 +64,7 @@ export const Control: React.FC = () => {
                     </Col>
                 </Row>
                 {/* 登陆 */}
-                {localStorage.getItem("token") ?
+                {localStorage.getItem("userInfo") ?
                     <Panel visible={visible} setVisible={setVisible} /> :
                     <Login visible={visible} setVisible={setVisible}/>
                 }

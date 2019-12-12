@@ -2,7 +2,6 @@ import * as React from "react";
 import { Modal, Row, Col, Button, Icon, List } from 'antd';
 import { useHistory } from 'react-router-dom';
 
-import { useLogout } from '@/hooks';
 import { IconFont } from '@/tools';
 
 interface IProps {
@@ -49,6 +48,14 @@ export const Panel: React.FC<IProps> = (props) => {
             text: '退出登陆'
         }
     ];
+
+    function LogoutHandleClick(text: any) {
+        if(text === '退出登陆') {
+            window.localStorage.removeItem("token");
+            window.localStorage.removeItem("userInfo");
+            setVisible(false);
+        }
+    }
 
     return (
         <div>
@@ -102,11 +109,15 @@ export const Panel: React.FC<IProps> = (props) => {
                             }}
                         >
                             <Row>
-                                <Col span={2}><span>{item.icon}</span></Col>
-                                <Col span={22}><span>{item.text}</span></Col>
+                                <Col span={2}>
+                                    <span>{item.icon}</span>
+                                </Col>
+                                <Col span={22} onClick={() => LogoutHandleClick(item.text)}>
+                                    <span>
+                                        {item.text}
+                                    </span>
+                                </Col>
                             </Row>
-
-
                         </List.Item>
                     }
                 />
