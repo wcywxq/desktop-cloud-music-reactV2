@@ -1,29 +1,29 @@
-import { LOGIN_EMAIL_SUCCESS, LOGIN_FAIL, LOGIN_INIT, LOGIN_PHONE_SUCCESS } from './constants';
+import { LOGIN_EMAIL_SUCCESS, LOGIN_FAIL, LOGIN_INIT, LOGIN_PHONE_SUCCESS } from '../constants';
 
-export interface LoginInitAction {
+interface InitAction {
     type: LOGIN_INIT
 }
 
-export interface LoginPhoneSuccessAction {
+interface PhoneSuccessAction {
     type: LOGIN_PHONE_SUCCESS;
 }
 
-export interface LoginEmailSuccessAction {
+interface EmailSuccessAction {
     type: LOGIN_EMAIL_SUCCESS;
 }
 
-export interface LoginFailAction {
+interface FailAction {
     type: LOGIN_FAIL
 }
 
-export type LoginAction = LoginInitAction | LoginPhoneSuccessAction | LoginEmailSuccessAction | LoginFailAction
+type ActionType = InitAction | PhoneSuccessAction | EmailSuccessAction | FailAction
 
-export interface LoginState {
+interface StateType {
     isLoading: boolean;
     isError: boolean;
 }
 
-export const loginReducer = (state: LoginState, action: LoginAction) => {
+export const loginReducer = (state: StateType, action: ActionType) => {
     switch (action.type) {
         case LOGIN_INIT:
             return {

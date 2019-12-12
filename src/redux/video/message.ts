@@ -5,33 +5,34 @@ import {
     VIDEO_RELATED_SUCCESS,
     VIDEO_COMMENTS_SUCCESS,
     VIDEO_FAIL
-} from './constants'
+} from '../constants'
 
-export interface VideoDetailInitAction {
-    type: VIDEO_INIT
-}
+interface InitAction { type: VIDEO_INIT }
 
-export interface VideoDetailSuccessAction { type: VIDEO_DETAIL_SUCCESS, dataSource: any }
-export interface VideoUrlSuccessAction { type: VIDEO_URL_SUCCESS, movieUrlsData: any[] }
-export interface VideoRelatedSuccessAction { type: VIDEO_RELATED_SUCCESS, related: any[] }
+interface DetailSuccessAction { type: VIDEO_DETAIL_SUCCESS, dataSource: any }
 
-export interface VideoCommentsSuccessAction { type: VIDEO_COMMENTS_SUCCESS, comments: any }
+interface UrlSuccessAction { type: VIDEO_URL_SUCCESS, movieUrlsData: any[] }
 
-export interface VideoDetailFailAction {
-    type: VIDEO_FAIL
-}
+interface RelatedSuccessAction { type: VIDEO_RELATED_SUCCESS, related: any[] }
 
-export type VideoDetailAction =
-    VideoDetailInitAction |
-    VideoDetailSuccessAction |
-    VideoUrlSuccessAction |
-    VideoRelatedSuccessAction |
-    VideoDetailFailAction
+interface CommentsSuccessAction { type: VIDEO_COMMENTS_SUCCESS, comments: any }
 
-export type VideoCommentsAction = VideoDetailInitAction | VideoCommentsSuccessAction | VideoDetailFailAction
+interface FailAction { type: VIDEO_FAIL }
+
+type DetailActionType =
+    InitAction |
+    DetailSuccessAction |
+    UrlSuccessAction |
+    RelatedSuccessAction |
+    FailAction
+
+type CommentsActionType =
+    InitAction |
+    CommentsSuccessAction |
+    FailAction
 
 // 视频信息
-interface VideoDetailState {
+interface DetailStateType {
     isLoading: boolean
     isError: boolean
     dataSource: any // 详情数据
@@ -40,7 +41,7 @@ interface VideoDetailState {
 }
 
 // 评论
-interface VideoCommentsState {
+interface CommentsStateType {
     isLoading: boolean
     isError: boolean,
     // 评论
@@ -51,7 +52,7 @@ interface VideoCommentsState {
     }
 }
 
-export const videoDetailReducer = (state: VideoDetailState, action: VideoDetailAction): VideoDetailState => {
+export const videoDetailReducer = (state: DetailStateType, action: DetailActionType) => {
     switch (action.type) {
         case VIDEO_INIT:
             return { ...state, isLoading: true, isError: false };
@@ -68,7 +69,7 @@ export const videoDetailReducer = (state: VideoDetailState, action: VideoDetailA
     }
 };
 
-export const videoCommentsReducer = (state: VideoCommentsState, action: VideoCommentsAction): VideoCommentsState => {
+export const videoCommentsReducer = (state: CommentsStateType, action: CommentsActionType) => {
     switch (action.type) {
         case VIDEO_INIT:
             return { ...state, isLoading: true, isError: false };
@@ -79,4 +80,4 @@ export const videoCommentsReducer = (state: VideoCommentsState, action: VideoCom
         default:
             throw new Error();
     }
-}
+};

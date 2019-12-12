@@ -1,29 +1,25 @@
-import {
-    SEARCH_MUSIC_INIT,
-    SEARCH_MUSIC_SUCCESS,
-    SEARCH_MUSIC_FAIL
-} from './constants'
+import { SEARCH_MUSIC_INIT, SEARCH_MUSIC_SUCCESS, SEARCH_MUSIC_FAIL } from '../constants'
 
 // action creators
-export interface SearchMusicInitAction {
+interface InitAction {
     type: SEARCH_MUSIC_INIT
 }
 
-export interface SearchMusicSuccessAction {
+interface SuccessAction {
     type: SEARCH_MUSIC_SUCCESS,
     dataType: string,
     count: number,
     payLoad: any[]
 }
 
-export interface SearchMusicFailAction {
+interface FailAction {
     type: SEARCH_MUSIC_FAIL
 }
 
-export type SearchMusicAction = SearchMusicInitAction | SearchMusicSuccessAction | SearchMusicFailAction
+type ActionType = InitAction | SuccessAction | FailAction
 
 // initialState
-export interface SearchMusicState {
+interface StateType {
     isLoading: boolean,
     isError: boolean,
     dataType: string,
@@ -41,10 +37,7 @@ export interface SearchMusicState {
 }
 
 // reducer
-export const searchMusicReducer = (
-    state: SearchMusicState,
-    action: SearchMusicAction
-): SearchMusicState => {
+export const searchMusicReducer = (state: StateType, action: ActionType) => {
     switch (action.type) {
         case SEARCH_MUSIC_INIT:
             return {

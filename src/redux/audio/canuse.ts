@@ -1,20 +1,17 @@
-import { MUSIC_CAN_USE } from './constants'
+import { MUSIC_CAN_USE } from '../constants'
 
-export interface MusicCanuseAction {
+interface ActionType {
     type: MUSIC_CAN_USE;
     success: boolean;
     message: string;
 }
 
-export interface MusicCanuseState {
+interface StateType {
     success: boolean;
     message: string;
 }
 
-export const musicCanuseReducer = (
-    state: MusicCanuseState,
-    action: MusicCanuseAction
-) => {
+export const musicCanuseReducer = (state: StateType, action: ActionType) => {
     switch (action.type) {
         case "MUSIC_CAN_USE":
             return {

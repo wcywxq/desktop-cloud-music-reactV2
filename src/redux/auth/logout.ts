@@ -1,25 +1,25 @@
-import { LOGOUT_INIT, LOGOUT_SUCCESS, LOGOUT_FAIL } from './constants';
+import { LOGOUT_INIT, LOGOUT_SUCCESS, LOGOUT_FAIL } from '../constants';
 
-export interface LogoutInitAction {
+interface InitAction {
     type: LOGOUT_INIT
 }
 
-export interface LogoutSuccessAction {
+interface SuccessAction {
     type: LOGOUT_SUCCESS;
 }
 
-export interface LooutFailAction {
+interface FailAction {
     type: LOGOUT_FAIL
 }
 
-export type LogoutAction = LogoutInitAction | LogoutSuccessAction | LooutFailAction
+type ActionType = InitAction | SuccessAction | FailAction
 
-export interface LogoutState {
+interface StateType {
     isLoading: boolean;
     isError: boolean;
 }
 
-export const logoutReducer = (state: LogoutState, action: LogoutAction) => {
+export const logoutReducer = (state: StateType, action: ActionType) => {
     switch (action.type) {
         case LOGOUT_INIT:
             return {

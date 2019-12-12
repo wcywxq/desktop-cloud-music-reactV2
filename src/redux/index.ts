@@ -1,10 +1,14 @@
-export * from './login'
-export * from './logout'
-export * from './banner'
-export * from './search.music'
-export * from './search.hot'
-export * from './music.playList'
-export * from './music.message'
-export * from './music.canuse'
-export * from './recommand'
-export * from './video.message'
+export * from './auth/login'
+export * from './auth/logout'
+
+export * from './find-music/banner'
+export * from './find-music/recommand'
+
+export * from './search/music'
+export * from './search/hot'
+
+export * from './audio/playList'
+export * from './audio/message'
+export * from './audio/canuse'
+
+export * from './video/message'

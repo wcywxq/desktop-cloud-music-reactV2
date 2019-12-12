@@ -1,35 +1,28 @@
-import {
-    SEARCH_HOT_INIT,
-    SEARCH_HOT_SUCCESS,
-    SEARCH_HOT_FAIL
-} from './constants'
+import { SEARCH_HOT_INIT, SEARCH_HOT_SUCCESS, SEARCH_HOT_FAIL } from '../constants'
 
 // action creators
-export interface SearchHotInitAction {
+interface InitAction {
     type: SEARCH_HOT_INIT
 }
 
-export interface SearchHotSuccessAction {
+interface SuccessAction {
     type: SEARCH_HOT_SUCCESS,
     payLoad: any[]
 }
 
-export interface SearchHotFailAction {
+interface FailAction {
     type: SEARCH_HOT_FAIL
 }
 
-export type SearchHotAction = SearchHotInitAction | SearchHotSuccessAction | SearchHotFailAction
+type ActionType = InitAction | SuccessAction | FailAction
 
-export interface SearchHotState {
+interface StateType {
     isLoading: boolean,
     isError: boolean,
     data: any[]
 }
 
-export const searchHotReducer = (
-    state: SearchHotState,
-    action: SearchHotAction
-): SearchHotState => {
+export const searchHotReducer = (state: StateType, action: ActionType) => {
     switch (action.type) {
         case "SEARCH_HOT_INIT":
             return {

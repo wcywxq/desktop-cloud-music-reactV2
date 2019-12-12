@@ -1,10 +1,10 @@
-import { MUSIC_MESSAGE_INIT, MUSIC_MESSAGE_SUCCESS, MUSIC_MESSAGE_FAIL } from './constants'
+import { MUSIC_MESSAGE_INIT, MUSIC_MESSAGE_SUCCESS, MUSIC_MESSAGE_FAIL } from '../constants'
 
-export interface MusicMessageInitAction {
+interface InitAction {
     type: MUSIC_MESSAGE_INIT
 }
 
-export interface MusicMessageSuccessAction {
+interface SuccessAction {
     type: MUSIC_MESSAGE_SUCCESS,
     url: string[],
     picUrl: string,
@@ -15,13 +15,13 @@ export interface MusicMessageSuccessAction {
     "list.index": number
 }
 
-export interface MusicMessageFailAction {
+interface FailAction {
     type: MUSIC_MESSAGE_FAIL
 }
 
-export type MusicMessageAction = MusicMessageInitAction | MusicMessageSuccessAction | MusicMessageFailAction
+type ActionType = InitAction | SuccessAction | FailAction
 
-export interface MusicMessageState {
+interface StateType {
     isLoading: boolean,
     isError: boolean,
     url: string[],
@@ -33,10 +33,7 @@ export interface MusicMessageState {
     "list.index": number
 }
 
-export const musicUrlReducer = (
-    state: MusicMessageState,
-    action: MusicMessageAction
-) => {
+export const musicUrlReducer = (state: StateType, action: ActionType) => {
     switch (action.type) {
         case "MUSIC_MESSAGE_INIT":
             return {

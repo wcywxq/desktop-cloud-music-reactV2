@@ -1,10 +1,10 @@
-import { RECOMMAND_INIT, RECOMMAND_SUCCESS, RECOMMAND_FAIL } from './constants'
+import { RECOMMAND_INIT, RECOMMAND_SUCCESS, RECOMMAND_FAIL } from '../constants'
 
-export interface RecommandInitAction {
+interface InitAction {
     type: RECOMMAND_INIT
 }
 
-export interface RecommandSuccessAction {
+interface SuccessAction {
     type: RECOMMAND_SUCCESS,
     recommendSongList: any[], // 推荐歌单
     exclusiveBroadcast: any[], // 独家放送
@@ -13,13 +13,13 @@ export interface RecommandSuccessAction {
     djprogram: any[], // 推荐电台
 }
 
-export interface RecommandFailAction {
+interface FailAction {
     type: RECOMMAND_FAIL
 }
 
-export type RecommandAction = RecommandInitAction | RecommandSuccessAction | RecommandFailAction
+type ActionType = InitAction | SuccessAction | FailAction
 
-interface RecommandState {
+interface StateType {
     isLoading: boolean,
     isError: boolean,
     variety: {
@@ -31,10 +31,7 @@ interface RecommandState {
     }
 }
 
-export const RecommandReducer = (
-    state: RecommandState,
-    action: RecommandAction
-) => {
+export const RecommandReducer = (state: StateType, action: ActionType) => {
     switch (action.type) {
         case RECOMMAND_INIT:
             return {

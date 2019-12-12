@@ -1,30 +1,26 @@
-import { BANNER_INIT, BANNER_SUCCESS, BANNER_FAIL } from './constants'
+import { BANNER_INIT, BANNER_SUCCESS, BANNER_FAIL } from '../constants'
 
-export interface BannerInitAction {
+interface InitAction {
     type: BANNER_INIT
 }
 
-export interface BannerSuccessAction {
+interface SuccessAction {
     type: BANNER_SUCCESS,
     bannerUrl: any[]
 }
 
-export interface BannerFailAction {
+interface FailAction {
     type: BANNER_FAIL
 }
 
-export type BannerAction = BannerInitAction | BannerSuccessAction | BannerFailAction
-
-interface BannerState {
+type ActionType = InitAction | SuccessAction | FailAction
+interface StateType {
     isLoading: boolean,
     isError: boolean,
     bannerUrl: any[]
 }
 
-export const bannerReducer = (
-    state: BannerState,
-    action: BannerAction
-) => {
+export const bannerReducer = (state: StateType, action: ActionType) => {
     switch (action.type) {
         case "BANNER_INIT":
             return {

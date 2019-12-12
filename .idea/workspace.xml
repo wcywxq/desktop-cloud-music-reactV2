@@ -2,26 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85c9a38d-7305-462b-8f7e-391c6d04d9a7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/hooks/useAudio.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/useFindMusic.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/useSearch.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tools/Regions.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/personal-message/Editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/personal-message/Editor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useBanner.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useCanUse.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useCanUse.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useLogin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useAuth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useLogout.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useMusicMessage.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useMusicPlayList.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useRecommand.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useSearchHot.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useSearchMusic.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useVideoDetail.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useVideo.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tools/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/tools/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/banner.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/find-music/banner.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/login.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/logout.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/music.canuse.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/music.message.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/music.playList.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/recommand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/find-music/recommand.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/search.hot.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/search/search.hot.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/search.music.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/search/search.music.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/video.message.ts" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,6 +71,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/redux/search" />
+      <recent name="$PROJECT_DIR$/src/redux/find-music" />
       <recent name="$PROJECT_DIR$/src/assets/mixins" />
     </key>
   </component>
@@ -130,7 +124,9 @@
       <workItem from="1574955671290" duration="12319000" />
       <workItem from="1575039030140" duration="32804000" />
       <workItem from="1575863392578" duration="147000" />
-      <workItem from="1575863555200" duration="62220000" />
+      <workItem from="1575863555200" duration="62683000" />
+      <workItem from="1576116635699" duration="1169000" />
+      <workItem from="1576118686680" duration="58000" />
     </task>
     <servers />
   </component>

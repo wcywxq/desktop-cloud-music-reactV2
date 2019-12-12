@@ -1,8 +1,8 @@
-import { MUSIC_PROJECT_ADD, MUSIC_PROJECT_FILTER, MUSIC_PROJECT_DELETE } from './constants'
+import { MUSIC_PROJECT_ADD, MUSIC_PROJECT_FILTER, MUSIC_PROJECT_DELETE } from '../constants'
 import { removeDuplicates } from '@/tools'
 
 // action creators
-export interface MusicProjectAddAction {
+interface AddAction {
     type: MUSIC_PROJECT_ADD;
     // 传递的数据
     key: number;
@@ -11,26 +11,26 @@ export interface MusicProjectAddAction {
     duration: number;
 }
 
-export interface MusicProjectFilterAction {
+interface FilterAction {
     type: MUSIC_PROJECT_FILTER
 }
 
 
-export interface MusicProjectDeleteAction {
+interface DeleteAction {
     type: MUSIC_PROJECT_DELETE
 }
 
-export type MusicProjectAction = MusicProjectAddAction | MusicProjectFilterAction | MusicProjectDeleteAction
+type ActionType = AddAction | FilterAction | DeleteAction
 
 // 初始化数据类型
-export interface MusicProjectState {
+interface StateType {
     key: number;
     musicName: string;
     "artist.name": string;
     duration: number;
 }
 
-export const musicPlayListReducer = (state: MusicProjectState[], action: MusicProjectAction) => {
+export const musicPlayListReducer = (state: StateType[], action: ActionType) => {
     switch (action.type) {
         // 增
         case MUSIC_PROJECT_ADD:
