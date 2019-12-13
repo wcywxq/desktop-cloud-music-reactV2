@@ -155,3 +155,16 @@ export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export type LOGOUT_SUCCESS = typeof LOGOUT_SUCCESS
 export const LOGOUT_FAIL = 'LOGOUT_FAIL';
 export type LOGOUT_FAIL = typeof LOGOUT_FAIL
+
+/**
+ * 歌单分类 & 热门歌单分类
+ * @type {string}
+ */
+export const CATEGORY_INIT = 'CATEGORY_INIT';
+export type CATEGORY_INIT = typeof CATEGORY_INIT;
+export const CATEGORY_ALL_SUCCESS = 'CATEGORY_ALL_SUCCESS';
+export type CATEGORY_ALL_SUCCESS = typeof CATEGORY_ALL_SUCCESS;
+export const CATEGORY_HOT_SUCCESS = 'CATEGORY_HOT_SUCCESS';
+export type CATEGORY_HOT_SUCCESS = typeof CATEGORY_HOT_SUCCESS;
+export const CATEGORY_FAIL = 'CATEGORY_FAIL';
+export type CATEGORY_FAIL = typeof CATEGORY_FAIL;

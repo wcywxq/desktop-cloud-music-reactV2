@@ -3,6 +3,7 @@ import { useState } from 'reinspect'
 import { Tabs } from 'antd'
 
 import { Banner, Recommand, Adjustment } from "@/components/find-music";
+import { Classification } from '@/components/play-list';
 import { useBanner, useRecommand } from '@/hooks'
 
 const FindMusic: React.FC = () => {
@@ -45,7 +46,7 @@ const FindMusic: React.FC = () => {
                             <Adjustment getDataMethods={getDataMethods} />
                         </TabPane>
                         <TabPane tab="歌单" key="2">
-                            Content of Tab Pane 2
+                            <Classification />
                         </TabPane>
                         <TabPane tab="主播电台" key="3">
                             Content of Tab Pane 3

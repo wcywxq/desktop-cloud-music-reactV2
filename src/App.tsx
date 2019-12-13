@@ -3,9 +3,6 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { Layout, Menu, Icon } from "antd";
 import Loadable from 'react-loadable'
 
-// 路由的导入
-import router from "@/routers";
-
 // 路由加载动画
 import { Loading } from "@/routers/Loading";
 
@@ -120,14 +117,30 @@ const App: React.FC = () => {
                             </Sider>
                             <Content style={{ padding: '0 40px' }}>
                                 <Switch>
-                                    {router.map((route, key) => {
-                                        if (route.exact) {
-                                            return <Route exact key={key} path={route.path}
-                                                component={route.component} />
-                                        } else {
-                                            return <Route key={key} path={route.path} component={route.component} />
-                                        }
-                                    })}
+                                    <Route exact path="/" component={Loadable({
+                                        loader: () => import('@/views/FindMusic'),
+                                        loading: Loading
+                                    })} />
+                                    <Route path="/fm/" component={Loadable({
+                                        loader: () => import('@/views/PersonalFm'),
+                                        loading: Loading
+                                    })} />
+                                    <Route path="/videos/" component={Loadable({
+                                        loader: () => import('@/views/Videos'),
+                                        loading: Loading
+                                    })} />
+                                    <Route path="/penpal/" component={Loadable({
+                                        loader: () => import('@/views/Penpal'),
+                                        loading: Loading
+                                    })} />
+                                    <Route path="/search/:keywords/:type" component={Loadable({
+                                        loader: () => import('@/views/SearchMusic'),
+                                        loading: Loading
+                                    })} />
+                                    <Route path="/setting" component={Loadable({
+                                        loader: () => import('@/views/Settings'),
+                                        loading: Loading
+                                    })} />
                                 </Switch>
                             </Content>
                         </Layout>

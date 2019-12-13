@@ -2,14 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85c9a38d-7305-462b-8f7e-391c6d04d9a7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/play-list/Classification.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/play-list/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/usePlayList.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/play-list/category.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/auth/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/control/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/control/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/personal-message/Panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/personal-message/Panel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useAuth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useAuth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/auth/login.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/auth/login.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/auth/logout.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/auth/logout.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/find-music/banner.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/find-music/banner.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routers/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/FindMusic.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/FindMusic.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/PersonalFm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/PersonalFm.tsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -123,7 +127,7 @@
       <workItem from="1575863555200" duration="62683000" />
       <workItem from="1576116635699" duration="1169000" />
       <workItem from="1576118686680" duration="58000" />
-      <workItem from="1576123072117" duration="8896000" />
+      <workItem from="1576123072117" duration="19088000" />
     </task>
     <servers />
   </component>

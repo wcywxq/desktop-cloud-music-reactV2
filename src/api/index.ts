@@ -213,5 +213,20 @@ export const fetchApi = {
      * @param {{id: string | number}} params
      * @returns {Promise<any>}
      */
-    videoRelated: (params: { id: string | number }) => get('related/allvideo', params)
+    videoRelated: (params: { id: string | number }) => get('related/allvideo', params),
+    /**
+     * 歌单分类
+     * @returns {Promise<any>}
+     */
+    categoryCatList: () => get('playlist/catlist'),
+    /**
+     * 热门歌单分类
+     * @returns {Promise<any>}
+     */
+    categoryHot: () => get('playlist/hot'),
+    /**
+     * 私人fm
+     * @returns {Promise<any>}
+     */
+    personalFm: () => get('/personal_fm'),
 };
