@@ -33,7 +33,7 @@ const FindMusic: React.FC = () => {
                         defaultActiveKey="1"
                         onChange={key => console.log(key)}
                     >
-                        <TabPane tab="个性推荐" key="1">
+                        <TabPane tab="个性推荐" key="2">
                             {/* 轮播图 */}
                             <Banner data={state.bannerUrl} />
                             {/* 推荐内容 */}
@@ -45,7 +45,7 @@ const FindMusic: React.FC = () => {
                             {/* 调整排版控件 */}
                             <Adjustment getDataMethods={getDataMethods} />
                         </TabPane>
-                        <TabPane tab="歌单" key="2">
+                        <TabPane tab="歌单" key="1">
                             <Classification />
                         </TabPane>
                         <TabPane tab="主播电台" key="3">

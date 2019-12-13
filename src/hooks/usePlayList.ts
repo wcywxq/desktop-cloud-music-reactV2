@@ -9,7 +9,11 @@ export const useCategory = () => {
     const [categoryState, dispatch] = useReducer(categoryReducer, {
         isLoading: false,
         isError: false,
-        allData: [],
+        allData: {
+            all: {},
+            sub: [],
+            categories: {}
+        },
         hotData: []
     }, "歌单分类的reducer");
 
@@ -25,7 +29,11 @@ export const useCategory = () => {
                 if (!didCancel && res_all.data.code === 200) {
                     dispatch({
                         type: CATEGORY_ALL_SUCCESS,
-                        allData: res_all.data
+                        allData: {
+                            all: res_all.data.all,
+                            sub: res_all.data.sub,
+                            categories: res_all.data.categories
+                        }
                     });
                 }
                 if(!didCancel && res_hot.data.code === 200) {

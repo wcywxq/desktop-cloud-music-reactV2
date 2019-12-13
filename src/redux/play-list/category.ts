@@ -6,10 +6,13 @@ interface InitAction {
 
 interface AllSuccessAction {
     type: CATEGORY_ALL_SUCCESS,
-    allData: any
+    allData: {
+        all: any;
+        sub: any;
+        categories: any;
+    };
 }
-
-interface HotSuccessAction {
+ interface HotSuccessAction {
     type: CATEGORY_HOT_SUCCESS,
     hotData: any
 }
@@ -23,7 +26,11 @@ type ActionType = InitAction | AllSuccessAction | HotSuccessAction | FailAction;
 interface StateType {
     isLoading: boolean;
     isError: boolean;
-    allData: any;
+    allData: {
+        all: any;
+        sub: any;
+        categories: any;
+    };
     hotData: any;
 }
 
@@ -40,7 +47,12 @@ const categoryReducer = (state: StateType, action: ActionType) => {
                 ...state,
                 isLoading: false,
                 isError: false,
-                allData: action.allData
+                allData: {
+                    ...state.allData,
+                    all: action.allData.all,
+                    sub: action.allData.sub,
+                    categories: action.allData.categories
+                }
             };
         case CATEGORY_HOT_SUCCESS:
             return {

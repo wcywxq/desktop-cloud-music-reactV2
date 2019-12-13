@@ -60,6 +60,8 @@
 @include func-grid-settings(dj, 3, 33.333%, 10, 10);
 
 @include func-grid-settings(pg, 3, 33.333%, 0, 0);
+// 歌单分类
+@include func-grid-settings(cl, 6, 16.667%, 0, 0);
 
 /* 皮肤 */
 @include skin-color;
