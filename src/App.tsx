@@ -4,6 +4,7 @@ import { Layout, Menu, Icon } from "antd";
 import Loadable from 'react-loadable'
 
 // 路由加载动画
+import { router } from "@/routers";
 import { Loading } from "@/routers/Loading";
 
 // 导入 iconfont 图标库中的图标
@@ -15,6 +16,7 @@ import { Audio } from '@/components/audio';
 
 // 获取音乐信息
 import { useMusicMessage } from "@/hooks";
+
 
 // 内联样式
 const styles: { [propName: string]: React.CSSProperties } = {
@@ -117,30 +119,13 @@ const App: React.FC = () => {
                             </Sider>
                             <Content style={{ padding: '0 40px' }}>
                                 <Switch>
-                                    <Route exact path="/" component={Loadable({
-                                        loader: () => import('@/views/FindMusic'),
-                                        loading: Loading
-                                    })} />
-                                    <Route path="/fm/" component={Loadable({
-                                        loader: () => import('@/views/PersonalFm'),
-                                        loading: Loading
-                                    })} />
-                                    <Route path="/videos/" component={Loadable({
-                                        loader: () => import('@/views/Videos'),
-                                        loading: Loading
-                                    })} />
-                                    <Route path="/penpal/" component={Loadable({
-                                        loader: () => import('@/views/Penpal'),
-                                        loading: Loading
-                                    })} />
-                                    <Route path="/search/:keywords/:type" component={Loadable({
-                                        loader: () => import('@/views/SearchMusic'),
-                                        loading: Loading
-                                    })} />
-                                    <Route path="/setting" component={Loadable({
-                                        loader: () => import('@/views/Settings'),
-                                        loading: Loading
-                                    })} />
+                                    {router.map((item: any, index: number) => {
+                                        if (item.exact) {
+                                            return <Route exact path={item.path} component={item.component} key={index} />
+                                        } else {
+                                            return <Route path={item.path} component={item.component} key={index} />
+                                        }
+                                    })}
                                 </Switch>
                             </Content>
                         </Layout>

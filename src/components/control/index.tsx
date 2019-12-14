@@ -31,7 +31,7 @@ export const Control: React.FC = () => {
                         state.data.map((item, index) => {
                             return (
                                 <Tag key={index} className="u-tag-hot">
-                                    <Link to={`/search/${item.searchWord}/1`}>{item.searchWord}</Link>
+                                    <Link to={`/search?keywords=${item.searchWord}&type=1`}>{item.searchWord}</Link>
                                 </Tag>
                             )
                         })
@@ -80,7 +80,10 @@ export const Control: React.FC = () => {
                         onPressEnter={event => {
                             const target = event.target as HTMLInputElement;
                             if (target.value) {
-                                history.push(`/search/${target.value}/1`)
+                                history.push({
+                                    pathname: "/search",
+                                    search: `?keywords=${target.value}&type=1`
+                                })
                             }
                         }}
                     />

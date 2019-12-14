@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { useState } from 'reinspect'
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Tabs, Tag } from 'antd';
+import qs from 'qs';
 
 import { Single, Singer, Album, Video, Playlist, Lyric, Radio, User } from '@/components/search';
 
@@ -10,8 +11,9 @@ import { useSearchMusic } from '@/hooks';
 const SearchMusic: React.FC = () => {
     // 获取 history 对象
     const history = useHistory();
-    // 获取 params 参数
-    const { keywords } = useParams();
+    // 获取 query 参数
+    const { search } = useLocation();
+    const { keywords } = qs.parse(search.substr(1));
     // 显示的名字
     const [name, setName] = useState(['单曲', '首'], '显示的名字');
 
@@ -34,7 +36,10 @@ const SearchMusic: React.FC = () => {
             </div>
             <div className="ct">
                 <Tabs defaultActiveKey="1" onChange={key => {
-                    history.push(`/search/${keywords}/${key}`);
+                    history.push({
+                        pathname: "/search",
+                        search: `?keywords=${keywords}&type=${key}`
+                    });
                     setParams({ keywords, type: key, limit: 100, offset: 0 });
                     if (key === '100') {
                         setName(['歌手', '位']);

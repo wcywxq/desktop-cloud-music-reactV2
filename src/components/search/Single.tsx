@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { useState } from 'reinspect'
-import { useParams } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { Icon, Table, Empty, Modal } from 'antd';
+import qs from 'qs';
 
 import { IconFont, formatDuration } from '@/tools'
 
@@ -37,7 +38,8 @@ export const Single: React.FC<IProps> = (props) => {
     const { isLoading, isError, data, count, setParams } = props;
 
     // 获取 query 参数
-    const { keywords } = useParams();
+    const { search } = useLocation();
+    const { keywords } = qs.parse(search.substr(1));
 
     // 当前页码
     const [page, setPage] = useState(1, '当前页码');
