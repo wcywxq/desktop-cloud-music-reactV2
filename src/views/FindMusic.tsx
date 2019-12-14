@@ -3,8 +3,8 @@ import { useState } from 'reinspect'
 import { Tabs } from 'antd'
 
 import { Banner, Recommand, Adjustment } from "@/components/find-music";
-import { Classification } from '@/components/play-list';
-import { useBanner, useRecommand } from '@/hooks'
+import { Classification, ContentList } from '@/components/play-list';
+import { useBanner, useRecommand, useContentList } from '@/hooks'
 
 const FindMusic: React.FC = () => {
     const [sortElement, setSortElement] = useState([
@@ -15,9 +15,12 @@ const FindMusic: React.FC = () => {
         { k: 4, v: '主播电台' }
     ], '元素排序方式');
 
-    const { state } = useBanner();
-
+    // banner 数据
+    const { bannerState } = useBanner();
+    // 推荐数据
     const { recommandState } = useRecommand();
+    // 歌单分类内容列表数据
+    const { contentListState, setParams: setContentListParams } = useContentList();
 
     const { TabPane } = Tabs;
 
@@ -35,7 +38,7 @@ const FindMusic: React.FC = () => {
                     >
                         <TabPane tab="个性推荐" key="2">
                             {/* 轮播图 */}
-                            <Banner data={state.bannerUrl} />
+                            <Banner data={bannerState.bannerUrl} />
                             {/* 推荐内容 */}
                             <Recommand
                                 isLoading={recommandState.isLoading}
@@ -46,7 +49,10 @@ const FindMusic: React.FC = () => {
                             <Adjustment getDataMethods={getDataMethods} />
                         </TabPane>
                         <TabPane tab="歌单" key="1">
+                            {/* 分类 */}
                             <Classification />
+                            {/* 内容 */}
+                            <ContentList {...contentListState} setParams={setContentListParams} />
                         </TabPane>
                         <TabPane tab="主播电台" key="3">
                             Content of Tab Pane 3

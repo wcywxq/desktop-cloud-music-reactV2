@@ -18,6 +18,7 @@
 @include module-recommend;
 @include module-video;
 @include module-explain;
+@include module-playList;
 
 /* 元件 */
 @include unit-tag;
@@ -62,6 +63,8 @@
 @include func-grid-settings(pg, 3, 33.333%, 0, 0);
 // 歌单分类
 @include func-grid-settings(cl, 6, 16.667%, 0, 0);
+// 歌单内容列表
+@include func-grid-settings(content-list, 5, 19%, 15, 10);
 
 /* 皮肤 */
 @include skin-color;

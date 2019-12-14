@@ -27,7 +27,7 @@ export const Control: React.FC = () => {
             </div>
             <div className='ct'>
                 {
-                    state.isLoading ? <Spin/> :
+                    state.isLoading ? <Spin /> :
                         state.data.map((item, index) => {
                             return (
                                 <Tag key={index} className="u-tag-hot">
@@ -50,23 +50,23 @@ export const Control: React.FC = () => {
                     <Col span={16} onClick={() => setVisible(true)}>
                         {
                             localStorage.getItem("userInfo") ?
-                                <Avatar className="f-cp img" src={JSON.parse(localStorage.getItem("userInfo") as any).avatarUrl}/>
-                                : <Avatar className="f-cp img" icon={<Icon type="user"/>}/>
+                                <Avatar className="f-cp img" src={JSON.parse(localStorage.getItem("userInfo") as any).avatarUrl} />
+                                : <Avatar className="f-cp img" icon={<Icon type="user" />} />
                         }
                         <span className="f-cp">
                             {localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo") as any).nickname : "未登陆"}{" "}
-                            <Icon type="caret-right"/>
+                            <Icon type="caret-right" />
                         </span>
                     </Col>
                     <Col span={8}>
-                        <Icon className="u-icon u-icon-forward f-fz14" type="left" onClick={() => history.go(-1)}/>
-                        <Icon className="u-icon u-icon-go f-fz14" type="right" onClick={() => history.go(1)}/>
+                        <Icon className="u-icon u-icon-forward f-fz14" type="left" onClick={() => history.go(-1)} />
+                        <Icon className="u-icon u-icon-go f-fz14" type="right" onClick={() => history.go(1)} />
                     </Col>
                 </Row>
                 {/* 登陆 */}
                 {localStorage.getItem("userInfo") ?
                     <Panel visible={visible} setVisible={setVisible} /> :
-                    <Login visible={visible} setVisible={setVisible}/>
+                    <Login visible={visible} setVisible={setVisible} />
                 }
             </aside>
             <div className="f-js-end">
@@ -75,7 +75,7 @@ export const Control: React.FC = () => {
                         allowClear
                         placeholder="搜索"
                         width={200}
-                        prefix={<Icon type="search" className="s-cl-darkgray"/>}
+                        prefix={<Icon type="search" className="s-cl-darkgray" />}
                         onChange={(e) => console.log(e.target.value)}
                         onPressEnter={event => {
                             const target = event.target as HTMLInputElement;
@@ -87,13 +87,13 @@ export const Control: React.FC = () => {
                 </Popover>
             </div>
             <div className="f-js-end last">
-                <Icon className="u-icon u-icon-other f-fz16 f-cp" type="setting"/>
+                <Icon className="u-icon u-icon-other f-fz16 f-cp" type="setting" />
                 {" "}
                 <Badge count={90} offset={[-4, 4]}>
-                    <Icon className="u-icon u-icon-other f-fz16 f-cp" type="mail"/>
+                    <Icon className="u-icon u-icon-other f-fz16 f-cp" type="mail" />
                 </Badge>
                 {" "}
-                <Icon className="u-icon u-icon-other f-fz16 f-cp" type="skin"/>
+                <Icon className="u-icon u-icon-other f-fz16 f-cp" type="skin" />
                 {" "}
                 <Icon
                     className="u-icon u-icon-other f-fz16 f-cp"

@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Row, Col, Button, Icon, Breadcrumb, Popover } from 'antd';
+import { Row, Col, Button, Icon, Popover } from 'antd';
 
-import { useCategory } from "@/hooks/usePlayList";
+import { useCategory } from "@/hooks";
 import { IconFont } from "@/tools"
 
 export const Classification: React.FC = () => {
@@ -14,7 +14,6 @@ export const Classification: React.FC = () => {
             className="u-btn"
             style={{ width: '80px', margin: '10px auto' }}
             size="small"
-            type="danger"
         >
             {categoryState.allData.all.name}
         </Button>
@@ -49,13 +48,14 @@ export const Classification: React.FC = () => {
     );
 
     return (
-        <Row className="f-df f-ai-center">
+        <Row className="f-df f-ai-center" style={{ marginBottom: '10px' }}>
             <Col span={6}>
                 <Popover
                     title={title}
                     content={content}
                     trigger="click"
                     placement="bottomLeft"
+                    overlayClassName="f-usn"
                     overlayStyle={{ width: '50%' }}
                 >
                     <Button className="u-btn" style={{ width: '100px' }}>
@@ -64,15 +64,16 @@ export const Classification: React.FC = () => {
                 </Popover>
             </Col>
             <Col span={18} className="f-tar">
-                <Breadcrumb separator="">
-                    {categoryState.hotData.map((item: any, index: number) => (
-                        <Breadcrumb.Item key={index}>
-                            <span style={{ margin: '0 15px' }}>
-                                {item.name}
-                            </span>
-                        </Breadcrumb.Item>
-                    ))}
-                </Breadcrumb>
+                {categoryState.hotData.map((item: any, index: number) => (
+                    <span
+                        key={index}
+                        style={{
+                            padding: '0 15px',
+                            borderRight: index === categoryState.hotData.length - 1 ? 'none' : '1px solid #eee'
+                        }}>
+                        {item.name}
+                    </span>
+                ))}
             </Col>
         </Row>
     )

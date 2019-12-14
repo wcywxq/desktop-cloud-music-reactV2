@@ -570,3 +570,48 @@
     }
   }
 }
+
+// 推荐歌单列表
+@mixin module-playList {
+  .m-playList {
+    margin-bottom: 128px;
+
+    .item {
+      &:hover {
+        .playIcon {
+          animation: playIcon 1s ease .3s forwards;
+        }
+      }
+
+      @keyframes playIcon {
+        100% {
+          opacity: 1;
+        }
+      }
+    }
+
+    .img {
+      border-radius: 10px;
+    }
+
+    .playCount {
+      top: 5px;
+      right: 12%;
+    }
+
+    .nickname {
+      bottom: 5px;
+      left: 10px;
+    }
+
+    .playIcon {
+      bottom: 10px;
+      right: 12%;
+      opacity: 0;
+    }
+
+    .pagination {
+      margin: 30px 0;
+    }
+  }
+}

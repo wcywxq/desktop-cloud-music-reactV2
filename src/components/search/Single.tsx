@@ -36,7 +36,7 @@ export const Single: React.FC<IProps> = (props) => {
     // props 传递的数据
     const { isLoading, isError, data, count, setParams } = props;
 
-    // 获取参数
+    // 获取 query 参数
     const { keywords } = useParams();
 
     // 当前页码

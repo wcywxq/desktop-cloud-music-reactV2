@@ -37,3 +37,8 @@ export interface VideoCommentParams extends PaginationParams {
     id: string | number;
     before?: number;
 }
+
+export interface ContentListParams extends PaginationParams {
+    order?: string;
+    cat?: string;
+}

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useReducer } from 'reinspect'
+import { useReducer } from 'reinspect';
 
-import { fetchApi } from '@/api'
-import { bannerReducer, RecommandReducer } from '@/redux'
+import { fetchApi } from '@/api';
+import { bannerReducer, RecommandReducer } from '@/redux';
 import {
     BANNER_FAIL,
     BANNER_INIT,
@@ -10,11 +10,11 @@ import {
     RECOMMAND_INIT,
     RECOMMAND_SUCCESS,
     RECOMMAND_FAIL
-} from '@/redux/constants'
+} from '@/redux/constants';
 
 // banner 轮播
 export const useBanner = () => {
-    const [state, dispatch] = useReducer(bannerReducer, {
+    const [bannerState, dispatch] = useReducer(bannerReducer, {
         isLoading: false,
         isError: false,
         bannerUrl: []
@@ -53,7 +53,7 @@ export const useBanner = () => {
         }
     }, []);
 
-    return { state }
+    return { bannerState }
 };
 
 // 推荐内容

@@ -5,6 +5,7 @@ export * from './find-music/banner'
 export * from './find-music/recommand'
 
 export * from './play-list/category'
+export * from './play-list/contentList'
 
 export * from './search/music'
 export * from './search/hot'

@@ -1,6 +1,13 @@
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import { setAuthToken } from './setAuthToken';
-import { LoginPhoneParams, LoginEmailParams, UpdateUserSettingParams, SearchParams, VideoCommentParams } from './types';
+import {
+    LoginPhoneParams,
+    LoginEmailParams,
+    UpdateUserSettingParams,
+    SearchParams,
+    VideoCommentParams,
+    ContentListParams
+} from './types';
 
 // baseUrl
 axios.defaults.baseURL = 'http://localhost:5000/';
@@ -224,6 +231,13 @@ export const fetchApi = {
      * @returns {Promise<any>}
      */
     categoryHot: () => get('playlist/hot'),
+    /**
+     * 获取歌单内容（网友精选碟）
+     * @example /top/playlist?limit=10&order=new
+     * @params {{limit?: number, order?: string}}
+     * @returns {Promise<any>}
+     */
+    contentList: (params: ContentListParams) => get('top/playlist', params),
     /**
      * 私人fm
      * @returns {Promise<any>}

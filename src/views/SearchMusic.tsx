@@ -10,10 +10,8 @@ import { useSearchMusic } from '@/hooks';
 const SearchMusic: React.FC = () => {
     // 获取 history 对象
     const history = useHistory();
-
-    // 获取参数
+    // 获取 params 参数
     const { keywords } = useParams();
-
     // 显示的名字
     const [name, setName] = useState(['单曲', '首'], '显示的名字');
 
@@ -65,7 +63,7 @@ const SearchMusic: React.FC = () => {
                         />
                     </TabPane>
                     <TabPane tab="歌手" key="100">
-                        <Singer/>
+                        <Singer />
                         {/* <Singer
                                 {...searchMusicState}
                                 data={searchMusicState.dataObj.artists}
@@ -74,22 +72,22 @@ const SearchMusic: React.FC = () => {
                             /> */}
                     </TabPane>
                     <TabPane tab="专辑" key="10">
-                        <Album/>
+                        <Album />
                     </TabPane>
                     <TabPane tab="视频" key="1014">
-                        <Video/>
+                        <Video />
                     </TabPane>
                     <TabPane tab="歌单" key="1000">
-                        <Playlist/>
+                        <Playlist />
                     </TabPane>
                     <TabPane tab="歌词" key="1006">
-                        <Lyric/>
+                        <Lyric />
                     </TabPane>
                     <TabPane tab="主播电台" key="1009">
-                        <Radio/>
+                        <Radio />
                     </TabPane>
                     <TabPane tab="用户" key="1002">
-                        <User/>
+                        <User />
                     </TabPane>
                 </Tabs>
             </div>
