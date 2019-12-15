@@ -1,14 +1,14 @@
-import React, { useEffect, useRef } from "react"
-import { useState } from 'reinspect'
-import { Button, Col, Icon, Popover, Row, Slider, Table } from 'antd'
+import React, { useEffect } from "react";
+import { useState } from 'reinspect';
+import { Button, Col, Icon, Popover, Row, Slider, Table } from 'antd';
 
-import { formatDuration, IconFont } from '@/tools'
+import { formatDuration, IconFont } from '@/tools';
 // 删除
-import { MUSIC_PROJECT_DELETE } from "@/redux/constants"
-import { MessageStateType, ProjectStateType } from "@/redux"
-import { useMusicPlayList } from "@/hooks"
+import { MUSIC_PROJECT_DELETE } from "@/redux/constants";
+import { MessageStateType, ProjectStateType } from "@/redux";
+import { useMusicPlayList } from "@/hooks";
 // 类型
-import { ColumnProps } from "antd/lib/table"
+import { ColumnProps } from "antd/lib/table";
 // 组件
 import MusicDetailWidget from "@/components/MusicDetailWidget";
 
@@ -46,8 +46,7 @@ export const Audio: React.FC<IProps> = (props) => {
     const [currentTime, setCurrentTime] = useState<any>(0, '当前时间');
 
     // 播放控制部分
-    const audioRef = useRef<any>();
-    const audio = audioRef.current as unknown as HTMLAudioElement;
+    const audio = document.querySelector("audio");
 
     // 音量控制
     const SoundControl = <Slider vertical defaultValue={30} style={{ height: '100px' }} />;
@@ -201,10 +200,12 @@ export const Audio: React.FC<IProps> = (props) => {
      * @param value
      */
     function onSliderChange(value: any) {
-        // 将进度条的值赋予给 audio 播放的当前时间
-        audio.currentTime = value / 1000;
-        // 将当前播放时间传递给 state
-        setCurrentTime(value)
+        if (audio) {
+            // 将进度条的值赋予给 audio 播放的当前时间
+            audio.currentTime = value / 1000;
+            // 将当前播放时间传递给 state
+            setCurrentTime(value)
+        }
     }
 
     // 监听 audio 事件
@@ -260,7 +261,7 @@ export const Audio: React.FC<IProps> = (props) => {
         <div className='g-ft f-pr'>
             {
                 musicMsgState ?
-                    <audio ref={audioRef} src={musicMsgState.url[0]} style={{ height: 0 }} /> :
+                    <audio src={musicMsgState.url[0]} style={{ height: 0 }} /> :
                     null
             }
             <Slider

@@ -12,7 +12,7 @@ const VideoDetail: React.FC = () => {
     const history = useHistory();
 
     const { detailState, setVid } = useVideoDetail();
-    const { commentState, setParams } = useCommentsDetail()
+    const { commentState, setParams } = useCommentsDetail();
 
     const [current, setCurrent] = useState(1, "分页器当前页码");
     // 切换视频组件
@@ -35,11 +35,11 @@ const VideoDetail: React.FC = () => {
                 <Col span={16}>
                     <p className="f-fz16 f-fwb f-df f-ai-center">
                         <Icon type="left" className="u-icon u-icon-forward f-fz14"
-                              onClick={() => history.go(-1)}/>视频详情{" "}
+                            onClick={() => history.go(-1)} />视频详情{" "}
                         <Switch defaultChecked size="small" style={{ marginLeft: '10px' }} checked={checked}
-                                onChange={val => {
-                                    setChecked(val)
-                                }}/>
+                            onChange={val => {
+                                setChecked(val)
+                            }} />
                     </p>
                     {/* 视频 */}
                     {

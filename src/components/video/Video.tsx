@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'reinspect';
 import { Slider, Row, Col, Icon, Tooltip, Radio, Spin } from 'antd';
 import { RadioChangeEvent } from 'antd/lib/radio';
@@ -17,15 +17,13 @@ export const Video: React.FC<IProps> = (props) => {
   const [value, setValue] = useState("超 清", "清晰度");
   const [flag, setFlag] = useState(false, '控制视频播放暂停');
   const [currentTime, setCurrentTime] = useState<any>(0, '视频播放当前事件');
-  const videoRef = useRef<any>(null);
-  const video = videoRef.current as unknown as HTMLVideoElement;
+  const video = document.querySelector("video");
 
   /**
    * 处理播放暂停的回调
    * @param event 
    */
   function handlePlayClick(event: React.MouseEvent<HTMLElement, MouseEvent>) {
-    const video = videoRef.current as unknown as HTMLVideoElement;
     if (video) {
       if (video.src) {
         if (video.paused) {
@@ -44,13 +42,15 @@ export const Video: React.FC<IProps> = (props) => {
    * @param value 
    */
   function onSliderChange(value: any) {
-    video.currentTime = value / 1000;
-    setCurrentTime(value);
+    if (video) {
+      video.currentTime = value / 1000;
+      setCurrentTime(value);
+    }
   }
 
   // 初始化立即播放
   useEffect(() => {
-    const video = videoRef.current as unknown as HTMLVideoElement;
+    const video = document.querySelector("video");
     if (video) {
       // 客户端开始请求数据，直接将播放时间设置为0 
       video.addEventListener('loadstart', () => {
@@ -83,7 +83,6 @@ export const Video: React.FC<IProps> = (props) => {
           {
             movieUrlsData.length !== 0 ?
               <video
-                ref={videoRef}
                 poster={dataSource.coverUrl}
                 src={movieUrlsData[0].url}
                 width={'100%'}
